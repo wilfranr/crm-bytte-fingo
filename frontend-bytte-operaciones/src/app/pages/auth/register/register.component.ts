@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
 import { Component } from '@angular/core';
 import {
   FormBuilder,
@@ -61,7 +62,7 @@ export class RegisterComponent {
     this.registering = true;
 
     this.http
-      .post('http://localhost:3000/api/auth/register', this.model)
+      .post(`${environment.apiUrl}/auth/register`, this.model)
       .subscribe({
         next: () => {
           this.successMsg = '¡Usuario registrado! Ya puedes iniciar sesión.';

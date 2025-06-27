@@ -4,14 +4,13 @@ import path from "path";
 
 export default async function processExcel(req, res) {
   try {
-    console.log("Archivo recibido:", req.file);
+
 
     if (!req.file) {
       throw new Error("No se recibió ningún archivo.");
     }
 
     const filePath = req.file.path;
-    console.log("Ruta del archivo:", filePath);
 
     // Crear un nuevo libro de trabajo con ExcelJS
     const workbook = new ExcelJS.Workbook();
@@ -24,11 +23,10 @@ export default async function processExcel(req, res) {
       );
     }
 
-    console.log("Hoja cargada correctamente.");
+
 
     // Leer la fecha desde la celda C3
     const fechaC3 = worksheet.getCell("C3").value;
-    console.log("Fecha en C3:", fechaC3);
 
     // Filtrar las filas basadas en "ESTADO PROCESO"
     const estadoProcesoIndex = worksheet
@@ -124,14 +122,14 @@ export default async function processExcel(req, res) {
     const newFileName = `Reporte de Información ${fechaAyer}.xlsx`;
     const newFilePath = path.join("processed", newFileName);
 
-    console.log("Ruta del archivo procesado:", newFilePath);
+
 
     // Crear la carpeta 'processed' si no existe
     fs.ensureDirSync("processed");
     await workbook.xlsx.writeFile(newFilePath);
 
     fs.unlinkSync(filePath);
-    console.log("Nombre del archivo que se enviará:", newFileName);
+
 
     // Enviar el archivo al cliente
     res.setHeader(
@@ -144,13 +142,13 @@ export default async function processExcel(req, res) {
     );
     res.sendFile(path.resolve(newFilePath), (err) => {
       if (err) {
-        console.error("Error al enviar el archivo:", err);
+        /* Error al enviar el archivo */
       } else {
         fs.unlinkSync(newFilePath);
       }
     });
   } catch (error) {
-    console.error("Error en el procesamiento:", error);
+    /* Error en el procesamiento */
     if (!res.headersSent) {
       res.status(500).json({ error: error.message });
     }
