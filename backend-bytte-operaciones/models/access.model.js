@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const accessSchema = new mongoose.Schema({
   portalName: { type: String, required: true }, // Nombre del portal
@@ -10,4 +10,4 @@ const accessSchema = new mongoose.Schema({
 
 const Access = mongoose.model("Access", accessSchema);
 
-module.exports = Access;
+export default Access;

@@ -1,4 +1,4 @@
-module.exports = function (allowedRoles) {
+export default function (allowedRoles) {
   return function (req, res, next) {
     // Verifica si el usuario está autenticado
     if (!req.user || !req.user.role) {
@@ -12,4 +12,4 @@ module.exports = function (allowedRoles) {
 
     next();
   };
-};
+}

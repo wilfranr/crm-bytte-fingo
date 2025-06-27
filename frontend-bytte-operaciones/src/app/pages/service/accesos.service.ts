@@ -14,7 +14,7 @@ export interface Accesos {
   providedIn: 'root',
 })
 export class AccesosService {
-  private apiUrl = 'http://localhost:3000/api/access'; // Ajusta la URL si es necesario
+  private apiUrl = '/api/access'; // Ajusta la URL si es necesario
 
   constructor(private http: HttpClient) {}
 

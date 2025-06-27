@@ -7,6 +7,7 @@ import { LayoutService } from '../service/layout.service';
 import { jwtDecode } from 'jwt-decode';
 import { Router } from '@angular/router';
 import { AppConfigurator } from './app.configurator';
+import { AuthService } from '../../core/services/auth.service';
 
 @Component({
   selector: 'app-topbar',
@@ -124,6 +125,7 @@ export class AppTopbar {
   constructor(
     public layoutService: LayoutService,
     private router: Router,
+    private authservice: AuthService,
   ) {}
 
   toggleDarkMode(): void {
@@ -142,11 +144,11 @@ export class AppTopbar {
   ngOnInit(): void {
     const savedTheme = localStorage.getItem('darkMode');
 
-    const token = localStorage.getItem('token');
-    if (token) {
-      const decoded: any = jwtDecode(token);
-      this.userName = decoded.name || decoded.email || 'Usuario';
+    const userInfo = this.authservice.getUserInfo();
+    if (userInfo) {
+      this.userName = userInfo.name || userInfo.email || 'Usuario';
     }
+
     if (savedTheme !== null) {
       this.layoutService.layoutConfig.update((state) => ({
         ...state,
@@ -156,8 +158,7 @@ export class AppTopbar {
   }
 
   logout() {
-    localStorage.removeItem('token');
-    //redirect to login page
+    this.authservice.logout();
     this.router.navigate(['/auth/login']);
   }
 }

@@ -1,7 +1,7 @@
 import {
   AutoFocus,
   AutoFocusModule
-} from "./chunk-IC5EF4FN.js";
+} from "./chunk-CYEEP2YI.js";
 import {
   ConnectedOverlayScrollHandler
 } from "./chunk-5G7WYC4N.js";
@@ -10,16 +10,16 @@ import {
 } from "./chunk-2ZXM7VXU.js";
 import {
   BaseComponent
-} from "./chunk-5XKJN3WW.js";
-import "./chunk-TWY7W6OD.js";
+} from "./chunk-WYDSYGPZ.js";
+import "./chunk-C7GVLDKY.js";
 import {
   BaseStyle
-} from "./chunk-VER6NC4S.js";
+} from "./chunk-4MTOJ33D.js";
 import {
   OverlayService,
   SharedModule,
   TranslationKeys
-} from "./chunk-FHY75DV6.js";
+} from "./chunk-YDXZLNY7.js";
 import {
   absolutePosition,
   appendChild,
@@ -27,14 +27,14 @@ import {
   relativePosition
 } from "./chunk-GFVF2TMO.js";
 import {
-  NG_VALUE_ACCESSOR
-} from "./chunk-NXUEYVGX.js";
-import {
   animate,
   style,
   transition,
   trigger
 } from "./chunk-JTCDLDFO.js";
+import {
+  NG_VALUE_ACCESSOR
+} from "./chunk-NXUEYVGX.js";
 import {
   CommonModule,
   NgClass,
@@ -88,11 +88,11 @@ import {
   ɵɵtemplate,
   ɵɵviewQuery
 } from "./chunk-PYHRC3GA.js";
-import "./chunk-4N4GOYJH.js";
 import "./chunk-5OPE3T2R.js";
+import "./chunk-4N4GOYJH.js";
 import "./chunk-FHTVLBLO.js";
-import "./chunk-ITKLJM62.js";
-import "./chunk-AWYL7S6O.js";
+import "./chunk-O2NX5PGS.js";
+import "./chunk-5GVB2IES.js";
 import "./chunk-WDMUDEB6.js";
 
 // node_modules/primeng/fesm2022/primeng-colorpicker.mjs

@@ -1,8 +1,8 @@
-const ExcelJS = require("exceljs");
-const fs = require("fs-extra");
-const path = require("path");
+import ExcelJS from "exceljs";
+import fs from "fs-extra";
+import path from "path";
 
-exports.processExcel = async (req, res) => {
+export default async function processExcel(req, res) {
   try {
     console.log("Archivo recibido:", req.file);
 
@@ -20,7 +20,7 @@ exports.processExcel = async (req, res) => {
     const worksheet = workbook.getWorksheet("RptCuentaDigital");
     if (!worksheet) {
       throw new Error(
-        `La hoja "RptCuentaDigital" no se encontró en el archivo.`
+        `La hoja "RptCuentaDigital" no se encontró en el archivo.`,
       );
     }
 
@@ -29,8 +29,6 @@ exports.processExcel = async (req, res) => {
     // Leer la fecha desde la celda C3
     const fechaC3 = worksheet.getCell("C3").value;
     console.log("Fecha en C3:", fechaC3);
-
-    const fechaFormateada = new Date(fechaC3).toISOString().split("T")[0];
 
     // Filtrar las filas basadas en "ESTADO PROCESO"
     const estadoProcesoIndex = worksheet
@@ -42,7 +40,7 @@ exports.processExcel = async (req, res) => {
 
     if (estadoProcesoIndex === -1 || noDocumentoIndex === -1) {
       throw new Error(
-        "No se encontraron las columnas necesarias en el archivo."
+        "No se encontraron las columnas necesarias en el archivo.",
       );
     }
 
@@ -64,7 +62,7 @@ exports.processExcel = async (req, res) => {
 
     const totalTransacciones = Object.values(documentCounts).reduce(
       (acc, value) => acc + value,
-      0
+      0,
     );
 
     // Crear nueva hoja con los resultados
@@ -138,11 +136,11 @@ exports.processExcel = async (req, res) => {
     // Enviar el archivo al cliente
     res.setHeader(
       "Content-Disposition",
-      `attachment; filename="${newFileName}"`
+      `attachment; filename="${newFileName}"`,
     );
     res.setHeader(
       "Content-Type",
-      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
     );
     res.sendFile(path.resolve(newFilePath), (err) => {
       if (err) {
@@ -157,4 +155,4 @@ exports.processExcel = async (req, res) => {
       res.status(500).json({ error: error.message });
     }
   }
-};
+}

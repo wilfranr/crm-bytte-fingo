@@ -1,9 +1,12 @@
-const express = require("express");
-const cors = require("cors");
-const mongoose = require("mongoose");
-const ReporteInformacionRoutes = require("./routes/reporte_informacion.routes");
-const AccessRoutes = require("./routes/access.routes");
-const AuthRoutes = require("./routes/auth.routes");
+import express from "express";
+import "dotenv/config";
+import cors from "cors";
+import mongoose from "mongoose";
+import ReporteInformacionRoutes from "./routes/reporte_informacion.routes.js";
+import AccessRoutes from "./routes/access.routes.js";
+import AuthRoutes from "./routes/auth.routes.js";
+import UserRoutes from "./routes/user.routes.js";
+import authMiddleware from "./middlewares/auth.middleware.js";
 
 const app = express();
 const PORT = 3000;
@@ -27,15 +30,18 @@ const corsOptions = {
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"],
 };
-app.use(cors(corsOptions));
+
 app.use(express.json());
+app.use(cors(corsOptions));
 app.use("/api/auth", AuthRoutes);
+app.use(authMiddleware);
 app.use("/api/reporteinformacion", ReporteInformacionRoutes);
 app.use("/api/access", AccessRoutes);
+app.use("/api/users", UserRoutes);
 
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
 
-const InviteRoutes = require("./routes/invite.routes");
+import InviteRoutes from "./routes/invite.routes.js";
 app.use("/api/invite", InviteRoutes);

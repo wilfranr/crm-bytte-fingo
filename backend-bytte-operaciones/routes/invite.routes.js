@@ -1,10 +1,10 @@
-const express = require("express");
-const router = express.Router();
-const crypto = require("crypto");
-const InviteToken = require("../models/inviteToken.model");
-const authMiddleware = require("../middlewares/auth.middleware");
-const roleMiddleware = require("../middlewares/role.middleware");
+import express from "express";
+import crypto from "crypto";
+import InviteToken from "../models/inviteToken.model.js";
+import authMiddleware from "../middlewares/auth.middleware.js";
+import roleMiddleware from "../middlewares/role.middleware.js";
 
+const router = express.Router();
 // Solo admin puede generar tokens
 router.post(
   "/generate",
@@ -17,4 +17,4 @@ router.post(
   },
 );
 
-module.exports = router;
+export default router;

@@ -1,13 +1,10 @@
-const express = require("express");
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
-const User = require("../models/user.model");
+import express from "express";
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
+import User from "../models/user.model.js";
+import InviteToken from "../models/inviteToken.model.js";
 
 const router = express.Router();
-
-//Registro de usuario
-const InviteToken = require("../models/inviteToken.model");
-
 router.post("/register", async (req, res) => {
   try {
     const { name, email, password, token } = req.body;
@@ -67,8 +64,7 @@ router.post("/login", async (req, res) => {
         name: user.name,
         role: user.role,
       },
-      "secret_key",
-      { expiresIn: "2h" },
+      process.env.SECRET_KEY,
     );
 
     res.json({ token });
@@ -78,4 +74,4 @@ router.post("/login", async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;

@@ -6,19 +6,20 @@ import { Notfound } from './app/pages/notfound/notfound';
 import { Cortes } from './app/pages/dashboard/cortes';
 import { AccesosComponent } from './app/pages/dashboard/accesos';
 import { Access } from './app/pages/auth/access';
-import { AuthGuard } from './app/core/guards/auth.guard';
+import { roleGuard } from './app/core/guards/role.guard';
+import { authGuard } from './app/core/guards/auth.guard';
 
 export const appRoutes: Routes = [
   {
     path: '',
     component: AppLayout,
+    canActivate: [authGuard],
     children: [
       { path: '', component: Cortes },
       { path: 'cortes', component: Cortes },
       {
         path: 'accesos',
         component: AccesosComponent,
-        canActivate: [AuthGuard],
       },
       {
         path: 'uikit',
@@ -37,6 +38,13 @@ export const appRoutes: Routes = [
       {
         path: 'antel',
         loadChildren: () => import('./app/pages/antel/antel.routes'),
+      },
+      {
+        path: 'users',
+        loadChildren: () =>
+          import('./app/pages/users/users.routes').then((m) => m.usersRoutes),
+        canActivate: [authGuard, roleGuard],
+        data: { roles: ['admin', 'superadmin'] },
       },
     ],
   },

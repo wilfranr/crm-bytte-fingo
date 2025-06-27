@@ -1,6 +1,6 @@
-const express = require("express");
-const multer = require("multer");
-const { processExcel } = require("../controllers/reporte-informacion.controller");
+import express from "express";
+import multer from "multer";
+import processExcel from "../controllers/reporte-informacion.controller.js";
 
 const router = express.Router();
 
@@ -10,4 +10,4 @@ const upload = multer({ dest: "uploads/" });
 // Ruta para procesar el archivo
 router.post("/upload", upload.single("file"), processExcel);
 
-module.exports = router;
+export default router;
