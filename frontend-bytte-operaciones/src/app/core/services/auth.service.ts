@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, tap } from 'rxjs';
-import { jwtDecode } from 'jwt-decode';
+import { Observable, tap, map } from 'rxjs';
 
-interface DecodedToken {
-  userId: string;
-  email: string;
+export interface UserInfo {
+  id: string;
   name: string;
+  email: string;
   role: string;
 }
 
@@ -16,31 +15,31 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 
-  login(email: string, password: string): Observable<any> {
+  login(email: string, password: string): Observable<UserInfo> {
     return this.http
-      .post<{ token: string }>(`${this.apiUrl}/login`, { email, password })
+      .post<{ user: UserInfo }>(`${this.apiUrl}/login`, { email, password }, {
+        withCredentials: true,
+      })
       .pipe(
         tap((response) => {
-          localStorage.setItem('token', response.token);
+          localStorage.setItem('user', JSON.stringify(response.user));
         }),
+        map((response) => response.user),
       );
   }
 
-  logout(): void {
-    localStorage.removeItem('token');
+  logout(): Observable<any> {
+    return this.http.post(`${this.apiUrl}/logout`, {}, { withCredentials: true }).pipe(
+      tap(() => localStorage.removeItem('user')),
+    );
   }
 
   isLoggedIn(): boolean {
-    return !!localStorage.getItem('token');
+    return !!localStorage.getItem('user');
   }
 
-  getUserInfo(): DecodedToken | null {
-    const token = localStorage.getItem('token');
-    if (!token) return null;
-    try {
-      return jwtDecode<DecodedToken>(token);
-    } catch (e) {
-      return null;
-    }
+  getUserInfo(): UserInfo | null {
+    const data = localStorage.getItem('user');
+    return data ? (JSON.parse(data) as UserInfo) : null;
   }
 }

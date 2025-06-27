@@ -8,6 +8,7 @@ import { Table, TableModule } from 'primeng/table';
 import { IconFieldModule } from 'primeng/iconfield';
 import { DialogModule } from 'primeng/dialog';
 import { ConfirmationService, MessageService } from 'primeng/api';
+import { AuthService } from '../../../core/services/auth.service';
 import { ToolbarModule } from 'primeng/toolbar';
 import { InputIconModule } from 'primeng/inputicon';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
@@ -55,6 +56,7 @@ export class UserListComponent implements OnInit {
     private inviteService: InviteService,
     private messageService: MessageService,
     private confirmationService: ConfirmationService,
+    private authService: AuthService,
   ) {}
 
   ngOnInit(): void {
@@ -63,15 +65,8 @@ export class UserListComponent implements OnInit {
   }
 
   checkRole() {
-    const token = localStorage.getItem('token');
-    if (token) {
-      try {
-        const payload = JSON.parse(atob(token.split('.')[1]));
-        this.isAdmin = payload.role === 'admin';
-      } catch {
-        this.isAdmin = false;
-      }
-    }
+    const info = this.authService.getUserInfo();
+    this.isAdmin = info?.role === 'admin';
   }
 
   loadUsers(): void {

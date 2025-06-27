@@ -12,6 +12,10 @@ ng serve
 
 Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
+## API endpoint
+
+The base URL of the backend API is defined in `src/environments/environment.ts` and `src/environments/environment.prod.ts`. Update these files if your backend runs on a different host or port.
+
 ## Code scaffolding
 
 Angular CLI includes powerful code scaffolding tools. To generate a new component, run:

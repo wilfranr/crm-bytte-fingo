@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { environment } from '../../environments/environment';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MessageService } from 'primeng/api';
@@ -99,7 +100,7 @@ export class ReporteInformacionComponent {
 
     this.isLoading = true;
 
-    fetch('http://localhost:3000/api/reporteinformacion/upload', {
+    fetch(`${environment.apiUrl}/reporteinformacion/upload`, {
       method: 'POST',
       body: formData,
     })
@@ -108,10 +109,7 @@ export class ReporteInformacionComponent {
           const contentDisposition = response.headers.get(
             'Content-Disposition'
           );
-          console.log('contentDisposition:', contentDisposition);
-          
           const fileNameMatch = contentDisposition?.match(/filename="(.+)"/);
-          console.log('fileNameMatch:', fileNameMatch);
           let yesterday = new Date(); 
           yesterday.setDate(yesterday.getDate() - 1); 
           let day = ("0" + yesterday.getDate()).slice(-2); 
@@ -145,7 +143,6 @@ export class ReporteInformacionComponent {
         });
       })
       .catch((error) => {
-        console.error('Error al subir archivo:', error);
         this.messageService.add({
           severity: 'error',
           summary: 'Error',

@@ -381,7 +381,6 @@ export class AccesosComponent implements OnInit {
           summary: 'Info',
           detail: 'Texto Copiado',
         });
-        console.log('Texto copiado al portapapeles:', value);
       },
       (err) => {
         this.messageService.add({
@@ -389,7 +388,6 @@ export class AccesosComponent implements OnInit {
           summary: 'Error',
           detail: 'No se pudo copiar el texto.',
         });
-        console.error('Error al copiar al portapapeles:', err);
       },
     );
   }

@@ -1,0 +1,10 @@
+{
+  "name": "crm-bytte",
+  "private": true,
+  "scripts": {
+    "start": "concurrently \"npm --prefix backend-bytte-operaciones start\" \"npm --prefix frontend-bytte-operaciones start\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

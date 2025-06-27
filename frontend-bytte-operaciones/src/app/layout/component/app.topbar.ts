@@ -158,7 +158,9 @@ export class AppTopbar {
   }
 
   logout() {
-    this.authservice.logout();
-    this.router.navigate(['/auth/login']);
+    this.authservice.logout().subscribe({
+      next: () => this.router.navigate(['/auth/login']),
+      error: () => this.router.navigate(['/auth/login']),
+    });
   }
 }
