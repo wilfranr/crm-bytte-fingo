@@ -3,6 +3,8 @@ import "dotenv/config";
 import cors from "cors";
 import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
+import path from "path";
+import { fileURLToPath } from "url";
 import ReporteInformacionRoutes from "./routes/reporte_informacion.routes.js";
 import AccessRoutes from "./routes/access.routes.js";
 import AuthRoutes from "./routes/auth.routes.js";
@@ -12,6 +14,8 @@ import InviteRoutes from "./routes/invite.routes.js";
 
 const app = express();
 const PORT = 3000;
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const mongoUri = process.env.MONGODB_URI;
 
@@ -36,6 +40,7 @@ app.use("/api/reporteinformacion", ReporteInformacionRoutes);
 app.use("/api/access", AccessRoutes);
 app.use("/api/users", UserRoutes);
 app.use("/api/invite", InviteRoutes);
+app.use("/docs", express.static(path.resolve(__dirname, "../docs")));
 
 app.listen(PORT);
 
