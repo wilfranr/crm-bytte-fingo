@@ -2,7 +2,8 @@
   "name": "crm-bytte",
   "private": true,
   "scripts": {
-    "start": "concurrently \"npm --prefix backend-bytte-operaciones start\" \"npm --prefix frontend-bytte-operaciones start\""
+    "start": "concurrently \"npm --prefix backend-bytte-operaciones start\" \"npm --prefix frontend-bytte-operaciones start\"",
+    "generate-docs": "node generate-docs.js"
   },
   "devDependencies": {
     "concurrently": "^8.2.2"
