@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../../environments/environment';
 import { Component } from '@angular/core';
 import {
   FormBuilder,
@@ -15,6 +14,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { MessageModule } from 'primeng/message';
 import { PasswordModule } from 'primeng/password';
 import { ToastModule } from 'primeng/toast';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-register',

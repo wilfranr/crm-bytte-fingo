@@ -141,6 +141,7 @@ export class AppTopbar {
       };
     });
   }
+
   ngOnInit(): void {
     const savedTheme = localStorage.getItem('darkMode');
 

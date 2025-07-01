@@ -44,10 +44,11 @@ router.post("/register", async (req, res) => {
   }
 });
 
+const isProduction = process.env.NODE_ENV === "production";
 const COOKIE_OPTIONS = {
   httpOnly: true,
-  secure: process.env.NODE_ENV === "production",
-  sameSite: "strict",
+  secure: isProduction, // true solo en producción
+  sameSite: isProduction ? "strict" : "lax", // "lax" en desarrollo local
 };
 
 //Login de usuario

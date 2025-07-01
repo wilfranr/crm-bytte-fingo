@@ -17,9 +17,13 @@ export class AuthService {
 
   login(email: string, password: string): Observable<UserInfo> {
     return this.http
-      .post<{ user: UserInfo }>(`${this.apiUrl}/login`, { email, password }, {
-        withCredentials: true,
-      })
+      .post<{ user: UserInfo }>(
+        `${this.apiUrl}/login`,
+        { email, password },
+        {
+          withCredentials: true,
+        },
+      )
       .pipe(
         tap((response) => {
           localStorage.setItem('user', JSON.stringify(response.user));
@@ -29,9 +33,9 @@ export class AuthService {
   }
 
   logout(): Observable<any> {
-    return this.http.post(`${this.apiUrl}/logout`, {}, { withCredentials: true }).pipe(
-      tap(() => localStorage.removeItem('user')),
-    );
+    return this.http
+      .post(`${this.apiUrl}/logout`, {}, { withCredentials: true })
+      .pipe(tap(() => localStorage.removeItem('user')));
   }
 
   isLoggedIn(): boolean {
@@ -40,6 +44,16 @@ export class AuthService {
 
   getUserInfo(): UserInfo | null {
     const data = localStorage.getItem('user');
-    return data ? (JSON.parse(data) as UserInfo) : null;
+    // Asegura que data no sea null ni el string "undefined"
+    if (!data || data === 'undefined') {
+      return null;
+    }
+    try {
+      return JSON.parse(data) as UserInfo;
+    } catch {
+      // Si por alguna razón hay datos corruptos, limpialos para no romper la app
+      localStorage.removeItem('user');
+      return null;
+    }
   }
 }

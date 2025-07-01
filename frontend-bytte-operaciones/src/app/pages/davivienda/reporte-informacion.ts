@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { environment } from '../../environments/environment';
+import { environment } from '../../../environments/environment';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MessageService } from 'primeng/api';
@@ -10,7 +10,13 @@ import { ToolbarModule } from 'primeng/toolbar';
 @Component({
   selector: 'app-reporte-informacion',
   standalone: true,
-  imports: [CommonModule, FormsModule, FileUploadModule, ToastModule, ToolbarModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    FileUploadModule,
+    ToastModule,
+    ToolbarModule,
+  ],
   providers: [MessageService],
   template: `
     <div class="col-12">
@@ -27,7 +33,7 @@ import { ToolbarModule } from 'primeng/toolbar';
                   rel="noopener"
                   >CASB Davivienda</a
                 >
-              </li> 
+              </li>
               <li>
                 Cargar reporte:
                 <p-fileUpload
@@ -107,15 +113,16 @@ export class ReporteInformacionComponent {
       .then((response) => {
         if (response.ok) {
           const contentDisposition = response.headers.get(
-            'Content-Disposition'
+            'Content-Disposition',
           );
           const fileNameMatch = contentDisposition?.match(/filename="(.+)"/);
-          let yesterday = new Date(); 
-          yesterday.setDate(yesterday.getDate() - 1); 
-          let day = ("0" + yesterday.getDate()).slice(-2); 
-          let month = ("0" + (yesterday.getMonth() + 1)).slice(-2); 
-          let year = yesterday.getFullYear(); let formattedDate = `${day}-${month}-${year}`
-          
+          let yesterday = new Date();
+          yesterday.setDate(yesterday.getDate() - 1);
+          let day = ('0' + yesterday.getDate()).slice(-2);
+          let month = ('0' + (yesterday.getMonth() + 1)).slice(-2);
+          let year = yesterday.getFullYear();
+          let formattedDate = `${day}-${month}-${year}`;
+
           const fileName = fileNameMatch
             ? fileNameMatch[0]
             : 'Reporte de Información ' + formattedDate + '.xlsx';
@@ -134,7 +141,7 @@ export class ReporteInformacionComponent {
         a.click();
         a.remove();
         window.URL.revokeObjectURL(url);
-    
+
         this.generateMailtoLink(fileName);
         this.messageService.add({
           severity: 'success',
@@ -152,9 +159,6 @@ export class ReporteInformacionComponent {
       .finally(() => {
         this.isLoading = false;
       });
-    
-    
-    
   }
 
   generateMailtoLink(fileName: string): void {
@@ -163,10 +167,10 @@ export class ReporteInformacionComponent {
     const ccEmails =
       'mvpineros@davivienda.com,area.servicios@bytte.com.co,wcorreag@davivienda.com';
     const subject = encodeURIComponent(
-      'Reporte de Información y generación indicadores (CONFIDENCIAL)'
+      'Reporte de Información y generación indicadores (CONFIDENCIAL)',
     );
     const body = encodeURIComponent(
-      `Buen día,\n\nAdjunto encontrarás el reporte generado: ${fileName}\n\nEl documento anexo se encuentra encriptado.`
+      `Buen día,\n\nAdjunto encontrarás el reporte generado: ${fileName}\n\nEl documento anexo se encuentra encriptado.`,
     );
     this.mailtoLink = `mailto:${toEmails}?cc=${ccEmails}&subject=${subject}&body=${body}`;
   }
