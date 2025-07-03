@@ -99,14 +99,22 @@ router.post("/login", async (req, res) => {
   }
 });
 
-router.post("/refresh", (req, res) => {
+router.post("/refresh", async (req, res) => {
   const token = req.cookies.refreshToken;
   if (!token)
     return res.status(401).json({ message: "Refresh token no proporcionado" });
   try {
     const decoded = jwt.verify(token, process.env.SECRET_KEY);
+    const user = await User.findById(decoded.userId);
+    if (!user) {
+      return res.status(401).json({ message: "Usuario no encontrado" });
+    }
+
     const payload = {
-      userId: decoded.userId,
+      userId: user.id,
+      email: user.email,
+      name: user.name,
+      role: user.role,
     };
     const accessToken = jwt.sign(payload, process.env.SECRET_KEY, {
       expiresIn: "15m",
