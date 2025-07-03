@@ -45,13 +45,15 @@ npm start
 
 Esto ejecutará los dos proyectos de manera concurrente.
 
-## Autenticación con cookies
+## Autenticación con cookies y Refresco Automático
 
 Al iniciar sesión, el backend emite dos cookies HTTP-only:
 
-* `accessToken` – token de acceso con expiración corta.
-* `refreshToken` – token para obtener un nuevo `accessToken` sin volver a ingresar credenciales.
+* `accessToken` – token de acceso con expiración corta (15 minutos).
+* `refreshToken` – token para obtener un nuevo `accessToken` sin volver a ingresar credenciales (7 días).
 
-Ambas cookies se crean con los atributos `HttpOnly` y `SameSite=Strict`, por lo que no son accesibles desde JavaScript. Para renovar la sesión se expone la ruta `POST /api/auth/refresh`, que devuelve un nuevo `accessToken` si el `refreshToken` es válido.
+Ambas cookies se crean con los atributos `HttpOnly` y `SameSite=Strict`, por lo que no son accesibles desde JavaScript.
 
-El frontend guarda únicamente la información pública del usuario en `localStorage` y envía las cookies automáticamente en cada petición gracias a la configuración `withCredentials` del interceptor HTTP.
+El frontend implementa un `HttpInterceptor` que se encarga de la renovación automática de la sesión. Cuando el `accessToken` expira y el backend devuelve un error `401 Unauthorized`, el interceptor utiliza el `refreshToken` para solicitar un nuevo `accessToken` de forma silenciosa a través de la ruta `POST /api/auth/refresh`.
+
+Si el refresco es exitoso, la petición original se reintenta sin que el usuario lo note. Si el `refreshToken` también ha expirado, el interceptor redirigirá automáticamente al usuario a la página de inicio de sesión.
