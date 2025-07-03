@@ -11,9 +11,10 @@ import AuthRoutes from "./routes/auth.routes.js";
 import UserRoutes from "./routes/user.routes.js";
 import authMiddleware from "./middlewares/auth.middleware.js";
 import InviteRoutes from "./routes/invite.routes.js";
+import { setupSwaggerDocs } from "./utils/swagger.js";
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -42,5 +43,8 @@ app.use("/api/users", UserRoutes);
 app.use("/api/invite", InviteRoutes);
 app.use("/docs", express.static(path.resolve(__dirname, "../docs")));
 
-app.listen(PORT);
+app.listen(PORT, () => {
+  console.log(`🚀 Servidor corriendo en el puerto ${PORT}`);
+  setupSwaggerDocs(app, PORT);
+});
 

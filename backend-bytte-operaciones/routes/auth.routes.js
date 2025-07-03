@@ -4,7 +4,54 @@ import jwt from "jsonwebtoken";
 import User from "../models/user.model.js";
 import InviteToken from "../models/inviteToken.model.js";
 
+/**
+ * @swagger
+ * tags:
+ *   name: Autenticación
+ *   description: Endpoints para el manejo de usuarios y autenticación
+ */
+
 const router = express.Router();
+/**
+ * @swagger
+ * /api/auth/register:
+ *   post:
+ *     summary: Registra un nuevo usuario
+ *     tags: [Autenticación]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - name
+ *               - email
+ *               - password
+ *               - token
+ *             properties:
+ *               name:
+ *                 type: string
+ *                 description: Nombre del usuario.
+ *               email:
+ *                 type: string
+ *                 format: email
+ *                 description: Correo electrónico del usuario.
+ *               password:
+ *                 type: string
+ *                 format: password
+ *                 description: Contraseña del usuario.
+ *               token:
+ *                 type: string
+ *                 description: Token de invitación para el registro.
+ *     responses:
+ *       201:
+ *         description: Usuario registrado exitosamente.
+ *       400:
+ *         description: Token de invitación inválido/expirado o usuario ya existe.
+ *       500:
+ *         description: Error del servidor al registrar usuario.
+ */
 router.post("/register", async (req, res) => {
   try {
     const { name, email, password, token } = req.body;
@@ -51,7 +98,54 @@ const COOKIE_OPTIONS = {
   sameSite: isProduction ? "strict" : "lax", // "lax" en desarrollo local
 };
 
-//Login de usuario
+/**
+ * @swagger
+ * /api/auth/login:
+ *   post:
+ *     summary: Inicia sesión de un usuario
+ *     tags: [Autenticación]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - email
+ *               - password
+ *             properties:
+ *               email:
+ *                 type: string
+ *                 format: email
+ *                 description: Correo electrónico del usuario.
+ *               password:
+ *                 type: string
+ *                 format: password
+ *                 description: Contraseña del usuario.
+ *     responses:
+ *       200:
+ *         description: Inicio de sesión exitoso. Devuelve cookies de sesión (accessToken, refreshToken) y la información pública del usuario.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 user:
+ *                   type: object
+ *                   properties:
+ *                     id:
+ *                       type: string
+ *                     name:
+ *                       type: string
+ *                     email:
+ *                       type: string
+ *                     role:
+ *                       type: string
+ *       400:
+ *         description: Usuario no encontrado o contraseña incorrecta.
+ *       500:
+ *         description: Error del servidor al iniciar sesión.
+ */
 router.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -99,6 +193,19 @@ router.post("/login", async (req, res) => {
   }
 });
 
+/**
+ * @swagger
+ * /api/auth/refresh:
+ *   post:
+ *     summary: Refresca el token de acceso
+ *     tags: [Autenticación]
+ *     description: Utiliza el refreshToken (en una cookie HTTP-only) para obtener un nuevo accessToken.
+ *     responses:
+ *       200:
+ *         description: Token de acceso refrescado exitosamente. Se establece una nueva cookie de accessToken.
+ *       401:
+ *         description: Refresh token no proporcionado o inválido.
+ */
 router.post("/refresh", async (req, res) => {
   const token = req.cookies.refreshToken;
   if (!token)
@@ -129,6 +236,17 @@ router.post("/refresh", async (req, res) => {
   }
 });
 
+/**
+ * @swagger
+ * /api/auth/logout:
+ *   post:
+ *     summary: Cierra la sesión del usuario
+ *     tags: [Autenticación]
+ *     description: Elimina las cookies de accessToken y refreshToken, cerrando la sesión del usuario.
+ *     responses:
+ *       200:
+ *         description: Sesión cerrada exitosamente.
+ */
 router.post("/logout", (_req, res) => {
   res.clearCookie("accessToken", COOKIE_OPTIONS);
   res.clearCookie("refreshToken", COOKIE_OPTIONS);
