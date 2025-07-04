@@ -19,6 +19,6 @@ export class FacturacionService {
       'Authorization': `Bearer ${localStorage.getItem('token')}` // Asumiendo que el token se guarda en localStorage
     });
 
-    return this.http.post(`${this.apiUrl}/procesar`, formData, { headers: headers });
+    return this.http.post(`${this.apiUrl}/procesar`, formData, { headers: headers, responseType: 'blob' });
   }
 }

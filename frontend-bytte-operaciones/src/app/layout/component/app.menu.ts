@@ -57,9 +57,15 @@ export class AppMenu {
         label: 'Itaú',
         items: [
           {
-            label: 'Facturación',
+            label: 'Facturación-CASB',
             icon: 'pi pi-fw pi-dollar',
             routerLink: ['/itau/facturacion'],
+          },
+
+          {
+            label: 'Facturación MIID',
+            icon: 'pi pi-fw pi-dollar',
+            routerLink: ['/facturacion-miid'],
           },
 
           // { label: 'Form Layout', icon: 'pi pi-fw pi-id-card', routerLink: ['/uikit/formlayout'] },
@@ -106,11 +112,6 @@ export class AppMenu {
             label: 'Usuarios',
             icon: 'pi pi-fw pi-users',
             routerLink: ['/users'],
-          },
-          {
-            label: 'Facturación MIID',
-            icon: 'pi pi-fw pi-file-excel',
-            routerLink: ['/facturacion-miid'],
           },
         ],
       },

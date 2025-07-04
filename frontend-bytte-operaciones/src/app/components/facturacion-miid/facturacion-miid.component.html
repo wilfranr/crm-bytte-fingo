@@ -1,23 +1,50 @@
 <p-toast></p-toast>
-<div class="card">
-    <h5>Procesamiento de Facturación MIID</h5>
-    <p>Seleccione el archivo Excel con el reporte de transacciones para procesar.</p>
-    
-    <input type="file" (change)="onFileSelected($event)" accept=".xlsx, .xls" #fileUpload>
+<div class="card" style="max-width: 500px; margin: 40px auto;">
+    <h5 class="mb-1">
+        <i class="pi pi-cog mr-2 text-primary"></i>
+        Procesamiento de Facturación MIID
+    </h5>
+    <p class="mb-4 text-secondary" style="font-size: 1rem;">
+        Gestiona aquí el procesamiento de archivos de facturación de MIID.
+    </p>
 
-    <button (click)="onUpload()" [disabled]="!selectedFile" class="p-button-primary">Procesar Archivo</button>
+    <div class="flex flex-wrap align-items-center gap-3 mb-4">
+        <p-button
+            (click)="openReportMiid()"
+            label="Descargar reporte"
+            icon="pi pi-file-excel"
+        ></p-button>
+        <p-message severity="info" class="flex-1">
+            La fecha y el aliado son configurados de forma automática
+        </p-message>
+    </div>
 
-    <div *ngIf="message" class="p-mt-4">
+    <div class="card mb-4 p-3" style="background: var(--surface-card);">
+        <div class="font-semibold text-xl mb-2">
+            <i class="pi pi-upload mr-2 text-primary"></i>
+            Cargar Archivo Excel
+        </div>
+        <p-fileupload
+            name="excelFile"
+            (onSelect)="onSelectFile($event)"
+            accept=".xlsx, .xls"
+            [customUpload]="true"
+            mode="basic"
+            chooseLabel="Seleccionar Archivo"
+        ></p-fileupload>
+    </div>
+
+    <div *ngIf="message" class="mb-3">
         <p-message [severity]="message.severity" [text]="message.text"></p-message>
     </div>
 
-    <div *ngIf="isLoading" class="p-mt-4">
-        <p-progressSpinner></p-progressSpinner>
-        <p>Procesando archivo, por favor espere...</p>
+    <div *ngIf="isLoading" class="mb-4">
+        <div class="mb-2 font-semibold">Procesando archivo...</div>
+        <p-progressbar [value]="progressValue" [showValue]="true"></p-progressbar>
     </div>
 
-    <div *ngIf="results" class="p-mt-4">
-        <h6>Resultados del Procesamiento</h6>
+    <div *ngIf="results" class="mt-4">
+        <h6 class="mb-2">Resultados del Procesamiento</h6>
         <div class="p-grid">
             <div class="p-col-6">Enrolados Facturables:</div>
             <div class="p-col-6"><strong>{{ results.enrolados }}</strong></div>
