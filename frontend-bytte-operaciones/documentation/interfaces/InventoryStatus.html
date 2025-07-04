@@ -1,0 +1,1640 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>frontend-bytte-operaciones documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">frontend-bytte-operaciones documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content interface">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Interfaces</li>
+  <li class="breadcrumb-item"
+  >
+  InventoryStatus</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" 
+                class="nav-link"
+                
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/app/pages/service/product.service.ts</code>
+        </p>
+
+
+
+
+        <section data-compodoc="block-index">
+            <h3 id="index">Index</h3>
+            <table class="table table-sm table-bordered index-table">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Properties</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                        <a href="#label" 
+>
+                                            label
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#value" 
+>
+                                            value
+                                        </a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+
+
+            <section data-compodoc="block-properties">
+                <h3 id="inputs">Properties</h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="label"></a>
+                                        <span class="name "><b>label</b>
+                                            <a href="#label">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>label:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="value"></a>
+                                        <span class="name "><b>value</b>
+                                            <a href="#value">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>value:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+            </section>
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { HttpClient } from &#x27;@angular/common/http&#x27;;
+import { Injectable } from &#x27;@angular/core&#x27;;
+
+interface InventoryStatus {
+    label: string;
+    value: string;
+}
+
+export interface Product {
+    id?: string;
+    code?: string;
+    name?: string;
+    description?: string;
+    price?: number;
+    quantity?: number;
+    inventoryStatus?: string;
+    category?: string;
+    image?: string;
+    rating?: number;
+}
+
+@Injectable()
+export class ProductService {
+    getProductsData() {
+        return [
+            {
+                id: &#x27;1000&#x27;,
+                code: &#x27;f230fh0g3&#x27;,
+                name: &#x27;Bamboo Watch&#x27;,
+                description: &#x27;Product Description&#x27;,
+                image: &#x27;bamboo-watch.jpg&#x27;,
+                price: 65,
+                category: &#x27;Accessories&#x27;,
+                quantity: 24,
+                inventoryStatus: &#x27;INSTOCK&#x27;,
+                rating: 5
+            },
+            {
+                id: &#x27;1001&#x27;,
+                code: &#x27;nvklal433&#x27;,
+                name: &#x27;Black Watch&#x27;,
+                description: &#x27;Product Description&#x27;,
+                image: &#x27;black-watch.jpg&#x27;,
+                price: 72,
+                category: &#x27;Accessories&#x27;,
+                quantity: 61,
+                inventoryStatus: &#x27;INSTOCK&#x27;,
+                rating: 4
+            },
+            {
+                id: &#x27;1002&#x27;,
+                code: &#x27;zz21cz3c1&#x27;,
+                name: &#x27;Blue Band&#x27;,
+                description: &#x27;Product Description&#x27;,
+                image: &#x27;blue-band.jpg&#x27;,
+                price: 79,
+                category: &#x27;Fitness&#x27;,
+                quantity: 2,
+                inventoryStatus: &#x27;LOWSTOCK&#x27;,
+                rating: 3
+            },
+            {
+                id: &#x27;1003&#x27;,
+                code: &#x27;244wgerg2&#x27;,
+                name: &#x27;Blue T-Shirt&#x27;,
+                description: &#x27;Product Description&#x27;,
+                image: &#x27;blue-t-shirt.jpg&#x27;,
+                price: 29,
+                category: &#x27;Clothing&#x27;,
+                quantity: 25,
+                inventoryStatus: &#x27;INSTOCK&#x27;,
+                rating: 5
+            },
+            {
+                id: &#x27;1004&#x27;,
+                code: &#x27;h456wer53&#x27;,
+                name: &#x27;Bracelet&#x27;,
+                description: &#x27;Product Description&#x27;,
+                image: &#x27;bracelet.jpg&#x27;,
+                price: 15,
+                category: &#x27;Accessories&#x27;,
+                quantity: 73,
+                inventoryStatus: &#x27;INSTOCK&#x27;,
+                rating: 4
+            },
+            {
+                id: &#x27;1005&#x27;,
+                code: &#x27;av2231fwg&#x27;,
+                name: &#x27;Brown Purse&#x27;,
+                description: &#x27;Product Description&#x27;,
+                image: &#x27;brown-purse.jpg&#x27;,
+                price: 120,
+                category: &#x27;Accessories&#x27;,
+                quantity: 0,
+                inventoryStatus: &#x27;OUTOFSTOCK&#x27;,
+                rating: 4
+            },
+            {
+                id: &#x27;1006&#x27;,
+                code: &#x27;bib36pfvm&#x27;,
+                name: &#x27;Chakra Bracelet&#x27;,
+                description: &#x27;Product Description&#x27;,
+                image: &#x27;chakra-bracelet.jpg&#x27;,
+                price: 32,
+                category: &#x27;Accessories&#x27;,
+                quantity: 5,
+                inventoryStatus: &#x27;LOWSTOCK&#x27;,
+                rating: 3
+            },
+            {
+                id: &#x27;1007&#x27;,
+                code: &#x27;mbvjkgip5&#x27;,
+                name: &#x27;Galaxy Earrings&#x27;,
+                description: &#x27;Product Description&#x27;,
+                image: &#x27;galaxy-earrings.jpg&#x27;,
+                price: 34,
+                category: &#x27;Accessories&#x27;,
+                quantity: 23,
+                inventoryStatus: &#x27;INSTOCK&#x27;,
+                rating: 5
+            },
+            {
+                id: &#x27;1008&#x27;,
+                code: &#x27;vbb124btr&#x27;,
+                name: &#x27;Game Controller&#x27;,
+                description: &#x27;Product Description&#x27;,
+                image: &#x27;game-controller.jpg&#x27;,
+                price: 99,
+                category: &#x27;Electronics&#x27;,
+                quantity: 2,
+                inventoryStatus: &#x27;LOWSTOCK&#x27;,
+                rating: 4
+            },
+            {
+                id: &#x27;1009&#x27;,
+                code: &#x27;cm230f032&#x27;,
+                name: &#x27;Gaming Set&#x27;,
+                description: &#x27;Product Description&#x27;,
+                image: &#x27;gaming-set.jpg&#x27;,
+                price: 299,
+                category: &#x27;Electronics&#x27;,
+                quantity: 63,
+                inventoryStatus: &#x27;INSTOCK&#x27;,
+                rating: 3
+            },
+            {
+                id: &#x27;1010&#x27;,
+                code: &#x27;plb34234v&#x27;,
+                name: &#x27;Gold Phone Case&#x27;,
+                description: &#x27;Product Description&#x27;,
+                image: &#x27;gold-phone-case.jpg&#x27;,
+                price: 24,
+                category: &#x27;Accessories&#x27;,
+                quantity: 0,
+                inventoryStatus: &#x27;OUTOFSTOCK&#x27;,
+                rating: 4
+            },
+            {
+                id: &#x27;1011&#x27;,
+                code: &#x27;4920nnc2d&#x27;,
+                name: &#x27;Green Earbuds&#x27;,
+                description: &#x27;Product Description&#x27;,
+                image: &#x27;green-earbuds.jpg&#x27;,
+                price: 89,
+                category: &#x27;Electronics&#x27;,
+                quantity: 23,
+                inventoryStatus: &#x27;INSTOCK&#x27;,
+                rating: 4
+            },
+            {
+                id: &#x27;1012&#x27;,
+                code: &#x27;250vm23cc&#x27;,
+                name: &#x27;Green T-Shirt&#x27;,
+                description: &#x27;Product Description&#x27;,
+                image: &#x27;green-t-shirt.jpg&#x27;,
+                price: 49,
+                category: &#x27;Clothing&#x27;,
+                quantity: 74,
+                inventoryStatus: &#x27;INSTOCK&#x27;,
+                rating: 5
+            },
+            {
+                id: &#x27;1013&#x27;,
+                code: &#x27;fldsmn31b&#x27;,
+                name: &#x27;Grey T-Shirt&#x27;,
+                description: &#x27;Product Description&#x27;,
+                image: &#x27;grey-t-shirt.jpg&#x27;,
+                price: 48,
+                category: &#x27;Clothing&#x27;,
+                quantity: 0,
+                inventoryStatus: &#x27;OUTOFSTOCK&#x27;,
+                rating: 3
+            },
+            {
+                id: &#x27;1014&#x27;,
+                code: &#x27;waas1x2as&#x27;,
+                name: &#x27;Headphones&#x27;,
+                description: &#x27;Product Description&#x27;,
+                image: &#x27;headphones.jpg&#x27;,
+                price: 175,
+                category: &#x27;Electronics&#x27;,
+                quantity: 8,
+                inventoryStatus: &#x27;LOWSTOCK&#x27;,
+                rating: 5
+            },
+            {
+                id: &#x27;1015&#x27;,
+                code: &#x27;vb34btbg5&#x27;,
+                name: &#x27;Light Green T-Shirt&#x27;,
+                description: &#x27;Product Description&#x27;,
+                image: &#x27;light-green-t-shirt.jpg&#x27;,
+                price: 49,
+                category: &#x27;Clothing&#x27;,
+                quantity: 34,
+                inventoryStatus: &#x27;INSTOCK&#x27;,
+                rating: 4
+            },
+            {
+                id: &#x27;1016&#x27;,
+                code: &#x27;k8l6j58jl&#x27;,
+                name: &#x27;Lime Band&#x27;,
+                description: &#x27;Product Description&#x27;,
+                image: &#x27;lime-band.jpg&#x27;,
+                price: 79,
+                category: &#x27;Fitness&#x27;,
+                quantity: 12,
+                inventoryStatus: &#x27;INSTOCK&#x27;,
+                rating: 3
+            },
+            {
+                id: &#x27;1017&#x27;,
+                code: &#x27;v435nn85n&#x27;,
+                name: &#x27;Mini Speakers&#x27;,
+                description: &#x27;Product Description&#x27;,
+                image: &#x27;mini-speakers.jpg&#x27;,
+                price: 85,
+                category: &#x27;Clothing&#x27;,
+                quantity: 42,
+                inventoryStatus: &#x27;INSTOCK&#x27;,
+                rating: 4
+            },
+            {
+                id: &#x27;1018&#x27;,
+                code: &#x27;09zx9c0zc&#x27;,
+                name: &#x27;Painted Phone Case&#x27;,
+                description: &#x27;Product Description&#x27;,
+                image: &#x27;painted-phone-case.jpg&#x27;,
+                price: 56,
+                category: &#x27;Accessories&#x27;,
+                quantity: 41,
+                inventoryStatus: &#x27;INSTOCK&#x27;,
+                rating: 5
+            },
+            {
+                id: &#x27;1019&#x27;,
+                code: &#x27;mnb5mb2m5&#x27;,
+                name: &#x27;Pink Band&#x27;,
+                description: &#x27;Product Description&#x27;,
+                image: &#x27;pink-band.jpg&#x27;,
+                price: 79,
+                category: &#x27;Fitness&#x27;,
+                quantity: 63,
+                inventoryStatus: &#x27;INSTOCK&#x27;,
+                rating: 4
+            },
+            {
+                id: &#x27;1020&#x27;,
+                code: &#x27;r23fwf2w3&#x27;,
+                name: &#x27;Pink Purse&#x27;,
+                description: &#x27;Product Description&#x27;,
+                image: &#x27;pink-purse.jpg&#x27;,
+                price: 110,
+                category: &#x27;Accessories&#x27;,
+                quantity: 0,
+                inventoryStatus: &#x27;OUTOFSTOCK&#x27;,
+                rating: 4
+            },
+            {
+                id: &#x27;1021&#x27;,
+                code: &#x27;pxpzczo23&#x27;,
+                name: &#x27;Purple Band&#x27;,
+                description: &#x27;Product Description&#x27;,
+                image: &#x27;purple-band.jpg&#x27;,
+                price: 79,
+                category: &#x27;Fitness&#x27;,
+                quantity: 6,
+                inventoryStatus: &#x27;LOWSTOCK&#x27;,
+                rating: 3
+            },
+            {
+                id: &#x27;1022&#x27;,
+                code: &#x27;2c42cb5cb&#x27;,
+                name: &#x27;Purple Gemstone Necklace&#x27;,
+                description: &#x27;Product Description&#x27;,
+                image: &#x27;purple-gemstone-necklace.jpg&#x27;,
+                price: 45,
+                category: &#x27;Accessories&#x27;,
+                quantity: 62,
+                inventoryStatus: &#x27;INSTOCK&#x27;,
+                rating: 4
+            },
+            {
+                id: &#x27;1023&#x27;,
+                code: &#x27;5k43kkk23&#x27;,
+                name: &#x27;Purple T-Shirt&#x27;,
+                description: &#x27;Product Description&#x27;,
+                image: &#x27;purple-t-shirt.jpg&#x27;,
+                price: 49,
+                category: &#x27;Clothing&#x27;,
+                quantity: 2,
+                inventoryStatus: &#x27;LOWSTOCK&#x27;,
+                rating: 5
+            },
+            {
+                id: &#x27;1024&#x27;,
+                code: &#x27;lm2tny2k4&#x27;,
+                name: &#x27;Shoes&#x27;,
+                description: &#x27;Product Description&#x27;,
+                image: &#x27;shoes.jpg&#x27;,
+                price: 64,
+                category: &#x27;Clothing&#x27;,
+                quantity: 0,
+                inventoryStatus: &#x27;INSTOCK&#x27;,
+                rating: 4
+            },
+            {
+                id: &#x27;1025&#x27;,
+                code: &#x27;nbm5mv45n&#x27;,
+                name: &#x27;Sneakers&#x27;,
+                description: &#x27;Product Description&#x27;,
+                image: &#x27;sneakers.jpg&#x27;,
+                price: 78,
+                category: &#x27;Clothing&#x27;,
+                quantity: 52,
+                inventoryStatus: &#x27;INSTOCK&#x27;,
+                rating: 4
+            },
+            {
+                id: &#x27;1026&#x27;,
+                code: &#x27;zx23zc42c&#x27;,
+                name: &#x27;Teal T-Shirt&#x27;,
+                description: &#x27;Product Description&#x27;,
+                image: &#x27;teal-t-shirt.jpg&#x27;,
+                price: 49,
+                category: &#x27;Clothing&#x27;,
+                quantity: 3,
+                inventoryStatus: &#x27;LOWSTOCK&#x27;,
+                rating: 3
+            },
+            {
+                id: &#x27;1027&#x27;,
+                code: &#x27;acvx872gc&#x27;,
+                name: &#x27;Yellow Earbuds&#x27;,
+                description: &#x27;Product Description&#x27;,
+                image: &#x27;yellow-earbuds.jpg&#x27;,
+                price: 89,
+                category: &#x27;Electronics&#x27;,
+                quantity: 35,
+                inventoryStatus: &#x27;INSTOCK&#x27;,
+                rating: 3
+            },
+            {
+                id: &#x27;1028&#x27;,
+                code: &#x27;tx125ck42&#x27;,
+                name: &#x27;Yoga Mat&#x27;,
+                description: &#x27;Product Description&#x27;,
+                image: &#x27;yoga-mat.jpg&#x27;,
+                price: 20,
+                category: &#x27;Fitness&#x27;,
+                quantity: 15,
+                inventoryStatus: &#x27;INSTOCK&#x27;,
+                rating: 5
+            },
+            {
+                id: &#x27;1029&#x27;,
+                code: &#x27;gwuby345v&#x27;,
+                name: &#x27;Yoga Set&#x27;,
+                description: &#x27;Product Description&#x27;,
+                image: &#x27;yoga-set.jpg&#x27;,
+                price: 20,
+                category: &#x27;Fitness&#x27;,
+                quantity: 25,
+                inventoryStatus: &#x27;INSTOCK&#x27;,
+                rating: 8
+            }
+        ];
+    }
+
+    getProductsWithOrdersData() {
+        return [
+            {
+                id: &#x27;1000&#x27;,
+                code: &#x27;f230fh0g3&#x27;,
+                name: &#x27;Bamboo Watch&#x27;,
+                description: &#x27;Product Description&#x27;,
+                image: &#x27;bamboo-watch.jpg&#x27;,
+                price: 65,
+                category: &#x27;Accessories&#x27;,
+                quantity: 24,
+                inventoryStatus: &#x27;INSTOCK&#x27;,
+                rating: 5,
+                orders: [
+                    {
+                        id: &#x27;1000-0&#x27;,
+                        productCode: &#x27;f230fh0g3&#x27;,
+                        date: &#x27;2020-09-13&#x27;,
+                        amount: 65,
+                        quantity: 1,
+                        customer: &#x27;David James&#x27;,
+                        status: &#x27;PENDING&#x27;
+                    },
+                    {
+                        id: &#x27;1000-1&#x27;,
+                        productCode: &#x27;f230fh0g3&#x27;,
+                        date: &#x27;2020-05-14&#x27;,
+                        amount: 130,
+                        quantity: 2,
+                        customer: &#x27;Leon Rodrigues&#x27;,
+                        status: &#x27;DELIVERED&#x27;
+                    },
+                    {
+                        id: &#x27;1000-2&#x27;,
+                        productCode: &#x27;f230fh0g3&#x27;,
+                        date: &#x27;2019-01-04&#x27;,
+                        amount: 65,
+                        quantity: 1,
+                        customer: &#x27;Juan Alejandro&#x27;,
+                        status: &#x27;RETURNED&#x27;
+                    },
+                    {
+                        id: &#x27;1000-3&#x27;,
+                        productCode: &#x27;f230fh0g3&#x27;,
+                        date: &#x27;2020-09-13&#x27;,
+                        amount: 195,
+                        quantity: 3,
+                        customer: &#x27;Claire Morrow&#x27;,
+                        status: &#x27;CANCELLED&#x27;
+                    }
+                ]
+            },
+            {
+                id: &#x27;1001&#x27;,
+                code: &#x27;nvklal433&#x27;,
+                name: &#x27;Black Watch&#x27;,
+                description: &#x27;Product Description&#x27;,
+                image: &#x27;black-watch.jpg&#x27;,
+                price: 72,
+                category: &#x27;Accessories&#x27;,
+                quantity: 61,
+                inventoryStatus: &#x27;INSTOCK&#x27;,
+                rating: 4,
+                orders: [
+                    {
+                        id: &#x27;1001-0&#x27;,
+                        productCode: &#x27;nvklal433&#x27;,
+                        date: &#x27;2020-05-14&#x27;,
+                        amount: 72,
+                        quantity: 1,
+                        customer: &#x27;Maisha Jefferson&#x27;,
+                        status: &#x27;DELIVERED&#x27;
+                    },
+                    {
+                        id: &#x27;1001-1&#x27;,
+                        productCode: &#x27;nvklal433&#x27;,
+                        date: &#x27;2020-02-28&#x27;,
+                        amount: 144,
+                        quantity: 2,
+                        customer: &#x27;Octavia Murillo&#x27;,
+                        status: &#x27;PENDING&#x27;
+                    }
+                ]
+            },
+            {
+                id: &#x27;1002&#x27;,
+                code: &#x27;zz21cz3c1&#x27;,
+                name: &#x27;Blue Band&#x27;,
+                description: &#x27;Product Description&#x27;,
+                image: &#x27;blue-band.jpg&#x27;,
+                price: 79,
+                category: &#x27;Fitness&#x27;,
+                quantity: 2,
+                inventoryStatus: &#x27;LOWSTOCK&#x27;,
+                rating: 3,
+                orders: [
+                    {
+                        id: &#x27;1002-0&#x27;,
+                        productCode: &#x27;zz21cz3c1&#x27;,
+                        date: &#x27;2020-07-05&#x27;,
+                        amount: 79,
+                        quantity: 1,
+                        customer: &#x27;Stacey Leja&#x27;,
+                        status: &#x27;DELIVERED&#x27;
+                    },
+                    {
+                        id: &#x27;1002-1&#x27;,
+                        productCode: &#x27;zz21cz3c1&#x27;,
+                        date: &#x27;2020-02-06&#x27;,
+                        amount: 79,
+                        quantity: 1,
+                        customer: &#x27;Ashley Wickens&#x27;,
+                        status: &#x27;DELIVERED&#x27;
+                    }
+                ]
+            },
+            {
+                id: &#x27;1003&#x27;,
+                code: &#x27;244wgerg2&#x27;,
+                name: &#x27;Blue T-Shirt&#x27;,
+                description: &#x27;Product Description&#x27;,
+                image: &#x27;blue-t-shirt.jpg&#x27;,
+                price: 29,
+                category: &#x27;Clothing&#x27;,
+                quantity: 25,
+                inventoryStatus: &#x27;INSTOCK&#x27;,
+                rating: 5,
+                orders: []
+            },
+            {
+                id: &#x27;1004&#x27;,
+                code: &#x27;h456wer53&#x27;,
+                name: &#x27;Bracelet&#x27;,
+                description: &#x27;Product Description&#x27;,
+                image: &#x27;bracelet.jpg&#x27;,
+                price: 15,
+                category: &#x27;Accessories&#x27;,
+                quantity: 73,
+                inventoryStatus: &#x27;INSTOCK&#x27;,
+                rating: 4,
+                orders: [
+                    {
+                        id: &#x27;1004-0&#x27;,
+                        productCode: &#x27;h456wer53&#x27;,
+                        date: &#x27;2020-09-05&#x27;,
+                        amount: 60,
+                        quantity: 4,
+                        customer: &#x27;Mayumi Misaki&#x27;,
+                        status: &#x27;PENDING&#x27;
+                    },
+                    {
+                        id: &#x27;1004-1&#x27;,
+                        productCode: &#x27;h456wer53&#x27;,
+                        date: &#x27;2019-04-16&#x27;,
+                        amount: 2,
+                        quantity: 30,
+                        customer: &#x27;Francesco Salvatore&#x27;,
+                        status: &#x27;DELIVERED&#x27;
+                    }
+                ]
+            },
+            {
+                id: &#x27;1005&#x27;,
+                code: &#x27;av2231fwg&#x27;,
+                name: &#x27;Brown Purse&#x27;,
+                description: &#x27;Product Description&#x27;,
+                image: &#x27;brown-purse.jpg&#x27;,
+                price: 120,
+                category: &#x27;Accessories&#x27;,
+                quantity: 0,
+                inventoryStatus: &#x27;OUTOFSTOCK&#x27;,
+                rating: 4,
+                orders: [
+                    {
+                        id: &#x27;1005-0&#x27;,
+                        productCode: &#x27;av2231fwg&#x27;,
+                        date: &#x27;2020-01-25&#x27;,
+                        amount: 120,
+                        quantity: 1,
+                        customer: &#x27;Isabel Sinclair&#x27;,
+                        status: &#x27;RETURNED&#x27;
+                    },
+                    {
+                        id: &#x27;1005-1&#x27;,
+                        productCode: &#x27;av2231fwg&#x27;,
+                        date: &#x27;2019-03-12&#x27;,
+                        amount: 240,
+                        quantity: 2,
+                        customer: &#x27;Lionel Clifford&#x27;,
+                        status: &#x27;DELIVERED&#x27;
+                    },
+                    {
+                        id: &#x27;1005-2&#x27;,
+                        productCode: &#x27;av2231fwg&#x27;,
+                        date: &#x27;2019-05-05&#x27;,
+                        amount: 120,
+                        quantity: 1,
+                        customer: &#x27;Cody Chavez&#x27;,
+                        status: &#x27;DELIVERED&#x27;
+                    }
+                ]
+            },
+            {
+                id: &#x27;1006&#x27;,
+                code: &#x27;bib36pfvm&#x27;,
+                name: &#x27;Chakra Bracelet&#x27;,
+                description: &#x27;Product Description&#x27;,
+                image: &#x27;chakra-bracelet.jpg&#x27;,
+                price: 32,
+                category: &#x27;Accessories&#x27;,
+                quantity: 5,
+                inventoryStatus: &#x27;LOWSTOCK&#x27;,
+                rating: 3,
+                orders: [
+                    {
+                        id: &#x27;1006-0&#x27;,
+                        productCode: &#x27;bib36pfvm&#x27;,
+                        date: &#x27;2020-02-24&#x27;,
+                        amount: 32,
+                        quantity: 1,
+                        customer: &#x27;Arvin Darci&#x27;,
+                        status: &#x27;DELIVERED&#x27;
+                    },
+                    {
+                        id: &#x27;1006-1&#x27;,
+                        productCode: &#x27;bib36pfvm&#x27;,
+                        date: &#x27;2020-01-14&#x27;,
+                        amount: 64,
+                        quantity: 2,
+                        customer: &#x27;Izzy Jones&#x27;,
+                        status: &#x27;PENDING&#x27;
+                    }
+                ]
+            },
+            {
+                id: &#x27;1007&#x27;,
+                code: &#x27;mbvjkgip5&#x27;,
+                name: &#x27;Galaxy Earrings&#x27;,
+                description: &#x27;Product Description&#x27;,
+                image: &#x27;galaxy-earrings.jpg&#x27;,
+                price: 34,
+                category: &#x27;Accessories&#x27;,
+                quantity: 23,
+                inventoryStatus: &#x27;INSTOCK&#x27;,
+                rating: 5,
+                orders: [
+                    {
+                        id: &#x27;1007-0&#x27;,
+                        productCode: &#x27;mbvjkgip5&#x27;,
+                        date: &#x27;2020-06-19&#x27;,
+                        amount: 34,
+                        quantity: 1,
+                        customer: &#x27;Jennifer Smith&#x27;,
+                        status: &#x27;DELIVERED&#x27;
+                    }
+                ]
+            },
+            {
+                id: &#x27;1008&#x27;,
+                code: &#x27;vbb124btr&#x27;,
+                name: &#x27;Game Controller&#x27;,
+                description: &#x27;Product Description&#x27;,
+                image: &#x27;game-controller.jpg&#x27;,
+                price: 99,
+                category: &#x27;Electronics&#x27;,
+                quantity: 2,
+                inventoryStatus: &#x27;LOWSTOCK&#x27;,
+                rating: 4,
+                orders: [
+                    {
+                        id: &#x27;1008-0&#x27;,
+                        productCode: &#x27;vbb124btr&#x27;,
+                        date: &#x27;2020-01-05&#x27;,
+                        amount: 99,
+                        quantity: 1,
+                        customer: &#x27;Jeanfrancois David&#x27;,
+                        status: &#x27;DELIVERED&#x27;
+                    },
+                    {
+                        id: &#x27;1008-1&#x27;,
+                        productCode: &#x27;vbb124btr&#x27;,
+                        date: &#x27;2020-01-19&#x27;,
+                        amount: 198,
+                        quantity: 2,
+                        customer: &#x27;Ivar Greenwood&#x27;,
+                        status: &#x27;RETURNED&#x27;
+                    }
+                ]
+            },
+            {
+                id: &#x27;1009&#x27;,
+                code: &#x27;cm230f032&#x27;,
+                name: &#x27;Gaming Set&#x27;,
+                description: &#x27;Product Description&#x27;,
+                image: &#x27;gaming-set.jpg&#x27;,
+                price: 299,
+                category: &#x27;Electronics&#x27;,
+                quantity: 63,
+                inventoryStatus: &#x27;INSTOCK&#x27;,
+                rating: 3,
+                orders: [
+                    {
+                        id: &#x27;1009-0&#x27;,
+                        productCode: &#x27;cm230f032&#x27;,
+                        date: &#x27;2020-06-24&#x27;,
+                        amount: 299,
+                        quantity: 1,
+                        customer: &#x27;Kadeem Mujtaba&#x27;,
+                        status: &#x27;PENDING&#x27;
+                    },
+                    {
+                        id: &#x27;1009-1&#x27;,
+                        productCode: &#x27;cm230f032&#x27;,
+                        date: &#x27;2020-05-11&#x27;,
+                        amount: 299,
+                        quantity: 1,
+                        customer: &#x27;Ashley Wickens&#x27;,
+                        status: &#x27;DELIVERED&#x27;
+                    },
+                    {
+                        id: &#x27;1009-2&#x27;,
+                        productCode: &#x27;cm230f032&#x27;,
+                        date: &#x27;2019-02-07&#x27;,
+                        amount: 299,
+                        quantity: 1,
+                        customer: &#x27;Julie Johnson&#x27;,
+                        status: &#x27;DELIVERED&#x27;
+                    },
+                    {
+                        id: &#x27;1009-3&#x27;,
+                        productCode: &#x27;cm230f032&#x27;,
+                        date: &#x27;2020-04-26&#x27;,
+                        amount: 299,
+                        quantity: 1,
+                        customer: &#x27;Tony Costa&#x27;,
+                        status: &#x27;CANCELLED&#x27;
+                    }
+                ]
+            },
+            {
+                id: &#x27;1010&#x27;,
+                code: &#x27;plb34234v&#x27;,
+                name: &#x27;Gold Phone Case&#x27;,
+                description: &#x27;Product Description&#x27;,
+                image: &#x27;gold-phone-case.jpg&#x27;,
+                price: 24,
+                category: &#x27;Accessories&#x27;,
+                quantity: 0,
+                inventoryStatus: &#x27;OUTOFSTOCK&#x27;,
+                rating: 4,
+                orders: [
+                    {
+                        id: &#x27;1010-0&#x27;,
+                        productCode: &#x27;plb34234v&#x27;,
+                        date: &#x27;2020-02-04&#x27;,
+                        amount: 24,
+                        quantity: 1,
+                        customer: &#x27;James Butt&#x27;,
+                        status: &#x27;DELIVERED&#x27;
+                    },
+                    {
+                        id: &#x27;1010-1&#x27;,
+                        productCode: &#x27;plb34234v&#x27;,
+                        date: &#x27;2020-05-05&#x27;,
+                        amount: 48,
+                        quantity: 2,
+                        customer: &#x27;Josephine Darakjy&#x27;,
+                        status: &#x27;DELIVERED&#x27;
+                    }
+                ]
+            },
+            {
+                id: &#x27;1011&#x27;,
+                code: &#x27;4920nnc2d&#x27;,
+                name: &#x27;Green Earbuds&#x27;,
+                description: &#x27;Product Description&#x27;,
+                image: &#x27;green-earbuds.jpg&#x27;,
+                price: 89,
+                category: &#x27;Electronics&#x27;,
+                quantity: 23,
+                inventoryStatus: &#x27;INSTOCK&#x27;,
+                rating: 4,
+                orders: [
+                    {
+                        id: &#x27;1011-0&#x27;,
+                        productCode: &#x27;4920nnc2d&#x27;,
+                        date: &#x27;2020-06-01&#x27;,
+                        amount: 89,
+                        quantity: 1,
+                        customer: &#x27;Art Venere&#x27;,
+                        status: &#x27;DELIVERED&#x27;
+                    }
+                ]
+            },
+            {
+                id: &#x27;1012&#x27;,
+                code: &#x27;250vm23cc&#x27;,
+                name: &#x27;Green T-Shirt&#x27;,
+                description: &#x27;Product Description&#x27;,
+                image: &#x27;green-t-shirt.jpg&#x27;,
+                price: 49,
+                category: &#x27;Clothing&#x27;,
+                quantity: 74,
+                inventoryStatus: &#x27;INSTOCK&#x27;,
+                rating: 5,
+                orders: [
+                    {
+                        id: &#x27;1012-0&#x27;,
+                        productCode: &#x27;250vm23cc&#x27;,
+                        date: &#x27;2020-02-05&#x27;,
+                        amount: 49,
+                        quantity: 1,
+                        customer: &#x27;Lenna Paprocki&#x27;,
+                        status: &#x27;DELIVERED&#x27;
+                    },
+                    {
+                        id: &#x27;1012-1&#x27;,
+                        productCode: &#x27;250vm23cc&#x27;,
+                        date: &#x27;2020-02-15&#x27;,
+                        amount: 49,
+                        quantity: 1,
+                        customer: &#x27;Donette Foller&#x27;,
+                        status: &#x27;PENDING&#x27;
+                    }
+                ]
+            },
+            {
+                id: &#x27;1013&#x27;,
+                code: &#x27;fldsmn31b&#x27;,
+                name: &#x27;Grey T-Shirt&#x27;,
+                description: &#x27;Product Description&#x27;,
+                image: &#x27;grey-t-shirt.jpg&#x27;,
+                price: 48,
+                category: &#x27;Clothing&#x27;,
+                quantity: 0,
+                inventoryStatus: &#x27;OUTOFSTOCK&#x27;,
+                rating: 3,
+                orders: [
+                    {
+                        id: &#x27;1013-0&#x27;,
+                        productCode: &#x27;fldsmn31b&#x27;,
+                        date: &#x27;2020-04-01&#x27;,
+                        amount: 48,
+                        quantity: 1,
+                        customer: &#x27;Simona Morasca&#x27;,
+                        status: &#x27;DELIVERED&#x27;
+                    }
+                ]
+            },
+            {
+                id: &#x27;1014&#x27;,
+                code: &#x27;waas1x2as&#x27;,
+                name: &#x27;Headphones&#x27;,
+                description: &#x27;Product Description&#x27;,
+                image: &#x27;headphones.jpg&#x27;,
+                price: 175,
+                category: &#x27;Electronics&#x27;,
+                quantity: 8,
+                inventoryStatus: &#x27;LOWSTOCK&#x27;,
+                rating: 5,
+                orders: [
+                    {
+                        id: &#x27;1014-0&#x27;,
+                        productCode: &#x27;waas1x2as&#x27;,
+                        date: &#x27;2020-05-15&#x27;,
+                        amount: 175,
+                        quantity: 1,
+                        customer: &#x27;Lenna Paprocki&#x27;,
+                        status: &#x27;DELIVERED&#x27;
+                    },
+                    {
+                        id: &#x27;1014-1&#x27;,
+                        productCode: &#x27;waas1x2as&#x27;,
+                        date: &#x27;2020-01-02&#x27;,
+                        amount: 175,
+                        quantity: 1,
+                        customer: &#x27;Donette Foller&#x27;,
+                        status: &#x27;CANCELLED&#x27;
+                    }
+                ]
+            },
+            {
+                id: &#x27;1015&#x27;,
+                code: &#x27;vb34btbg5&#x27;,
+                name: &#x27;Light Green T-Shirt&#x27;,
+                description: &#x27;Product Description&#x27;,
+                image: &#x27;light-green-t-shirt.jpg&#x27;,
+                price: 49,
+                category: &#x27;Clothing&#x27;,
+                quantity: 34,
+                inventoryStatus: &#x27;INSTOCK&#x27;,
+                rating: 4,
+                orders: [
+                    {
+                        id: &#x27;1015-0&#x27;,
+                        productCode: &#x27;vb34btbg5&#x27;,
+                        date: &#x27;2020-07-02&#x27;,
+                        amount: 98,
+                        quantity: 2,
+                        customer: &#x27;Mitsue Tollner&#x27;,
+                        status: &#x27;DELIVERED&#x27;
+                    }
+                ]
+            },
+            {
+                id: &#x27;1016&#x27;,
+                code: &#x27;k8l6j58jl&#x27;,
+                name: &#x27;Lime Band&#x27;,
+                description: &#x27;Product Description&#x27;,
+                image: &#x27;lime-band.jpg&#x27;,
+                price: 79,
+                category: &#x27;Fitness&#x27;,
+                quantity: 12,
+                inventoryStatus: &#x27;INSTOCK&#x27;,
+                rating: 3,
+                orders: []
+            },
+            {
+                id: &#x27;1017&#x27;,
+                code: &#x27;v435nn85n&#x27;,
+                name: &#x27;Mini Speakers&#x27;,
+                description: &#x27;Product Description&#x27;,
+                image: &#x27;mini-speakers.jpg&#x27;,
+                price: 85,
+                category: &#x27;Clothing&#x27;,
+                quantity: 42,
+                inventoryStatus: &#x27;INSTOCK&#x27;,
+                rating: 4,
+                orders: [
+                    {
+                        id: &#x27;1017-0&#x27;,
+                        productCode: &#x27;v435nn85n&#x27;,
+                        date: &#x27;2020-07-12&#x27;,
+                        amount: 85,
+                        quantity: 1,
+                        customer: &#x27;Minna Amigon&#x27;,
+                        status: &#x27;DELIVERED&#x27;
+                    }
+                ]
+            },
+            {
+                id: &#x27;1018&#x27;,
+                code: &#x27;09zx9c0zc&#x27;,
+                name: &#x27;Painted Phone Case&#x27;,
+                description: &#x27;Product Description&#x27;,
+                image: &#x27;painted-phone-case.jpg&#x27;,
+                price: 56,
+                category: &#x27;Accessories&#x27;,
+                quantity: 41,
+                inventoryStatus: &#x27;INSTOCK&#x27;,
+                rating: 5,
+                orders: [
+                    {
+                        id: &#x27;1018-0&#x27;,
+                        productCode: &#x27;09zx9c0zc&#x27;,
+                        date: &#x27;2020-07-01&#x27;,
+                        amount: 56,
+                        quantity: 1,
+                        customer: &#x27;Abel Maclead&#x27;,
+                        status: &#x27;DELIVERED&#x27;
+                    },
+                    {
+                        id: &#x27;1018-1&#x27;,
+                        productCode: &#x27;09zx9c0zc&#x27;,
+                        date: &#x27;2020-05-02&#x27;,
+                        amount: 56,
+                        quantity: 1,
+                        customer: &#x27;Minna Amigon&#x27;,
+                        status: &#x27;RETURNED&#x27;
+                    }
+                ]
+            },
+            {
+                id: &#x27;1019&#x27;,
+                code: &#x27;mnb5mb2m5&#x27;,
+                name: &#x27;Pink Band&#x27;,
+                description: &#x27;Product Description&#x27;,
+                image: &#x27;pink-band.jpg&#x27;,
+                price: 79,
+                category: &#x27;Fitness&#x27;,
+                quantity: 63,
+                inventoryStatus: &#x27;INSTOCK&#x27;,
+                rating: 4,
+                orders: []
+            },
+            {
+                id: &#x27;1020&#x27;,
+                code: &#x27;r23fwf2w3&#x27;,
+                name: &#x27;Pink Purse&#x27;,
+                description: &#x27;Product Description&#x27;,
+                image: &#x27;pink-purse.jpg&#x27;,
+                price: 110,
+                category: &#x27;Accessories&#x27;,
+                quantity: 0,
+                inventoryStatus: &#x27;OUTOFSTOCK&#x27;,
+                rating: 4,
+                orders: [
+                    {
+                        id: &#x27;1020-0&#x27;,
+                        productCode: &#x27;r23fwf2w3&#x27;,
+                        date: &#x27;2020-05-29&#x27;,
+                        amount: 110,
+                        quantity: 1,
+                        customer: &#x27;Kiley Caldarera&#x27;,
+                        status: &#x27;DELIVERED&#x27;
+                    },
+                    {
+                        id: &#x27;1020-1&#x27;,
+                        productCode: &#x27;r23fwf2w3&#x27;,
+                        date: &#x27;2020-02-11&#x27;,
+                        amount: 220,
+                        quantity: 2,
+                        customer: &#x27;Graciela Ruta&#x27;,
+                        status: &#x27;DELIVERED&#x27;
+                    }
+                ]
+            },
+            {
+                id: &#x27;1021&#x27;,
+                code: &#x27;pxpzczo23&#x27;,
+                name: &#x27;Purple Band&#x27;,
+                description: &#x27;Product Description&#x27;,
+                image: &#x27;purple-band.jpg&#x27;,
+                price: 79,
+                category: &#x27;Fitness&#x27;,
+                quantity: 6,
+                inventoryStatus: &#x27;LOWSTOCK&#x27;,
+                rating: 3,
+                orders: [
+                    {
+                        id: &#x27;1021-0&#x27;,
+                        productCode: &#x27;pxpzczo23&#x27;,
+                        date: &#x27;2020-02-02&#x27;,
+                        amount: 79,
+                        quantity: 1,
+                        customer: &#x27;Cammy Albares&#x27;,
+                        status: &#x27;DELIVERED&#x27;
+                    }
+                ]
+            },
+            {
+                id: &#x27;1022&#x27;,
+                code: &#x27;2c42cb5cb&#x27;,
+                name: &#x27;Purple Gemstone Necklace&#x27;,
+                description: &#x27;Product Description&#x27;,
+                image: &#x27;purple-gemstone-necklace.jpg&#x27;,
+                price: 45,
+                category: &#x27;Accessories&#x27;,
+                quantity: 62,
+                inventoryStatus: &#x27;INSTOCK&#x27;,
+                rating: 4,
+                orders: [
+                    {
+                        id: &#x27;1022-0&#x27;,
+                        productCode: &#x27;2c42cb5cb&#x27;,
+                        date: &#x27;2020-06-29&#x27;,
+                        amount: 45,
+                        quantity: 1,
+                        customer: &#x27;Mattie Poquette&#x27;,
+                        status: &#x27;DELIVERED&#x27;
+                    },
+                    {
+                        id: &#x27;1022-1&#x27;,
+                        productCode: &#x27;2c42cb5cb&#x27;,
+                        date: &#x27;2020-02-11&#x27;,
+                        amount: 135,
+                        quantity: 3,
+                        customer: &#x27;Meaghan Garufi&#x27;,
+                        status: &#x27;DELIVERED&#x27;
+                    }
+                ]
+            },
+            {
+                id: &#x27;1023&#x27;,
+                code: &#x27;5k43kkk23&#x27;,
+                name: &#x27;Purple T-Shirt&#x27;,
+                description: &#x27;Product Description&#x27;,
+                image: &#x27;purple-t-shirt.jpg&#x27;,
+                price: 49,
+                category: &#x27;Clothing&#x27;,
+                quantity: 2,
+                inventoryStatus: &#x27;LOWSTOCK&#x27;,
+                rating: 5,
+                orders: [
+                    {
+                        id: &#x27;1023-0&#x27;,
+                        productCode: &#x27;5k43kkk23&#x27;,
+                        date: &#x27;2020-04-15&#x27;,
+                        amount: 49,
+                        quantity: 1,
+                        customer: &#x27;Gladys Rim&#x27;,
+                        status: &#x27;RETURNED&#x27;
+                    }
+                ]
+            },
+            {
+                id: &#x27;1024&#x27;,
+                code: &#x27;lm2tny2k4&#x27;,
+                name: &#x27;Shoes&#x27;,
+                description: &#x27;Product Description&#x27;,
+                image: &#x27;shoes.jpg&#x27;,
+                price: 64,
+                category: &#x27;Clothing&#x27;,
+                quantity: 0,
+                inventoryStatus: &#x27;INSTOCK&#x27;,
+                rating: 4,
+                orders: []
+            },
+            {
+                id: &#x27;1025&#x27;,
+                code: &#x27;nbm5mv45n&#x27;,
+                name: &#x27;Sneakers&#x27;,
+                description: &#x27;Product Description&#x27;,
+                image: &#x27;sneakers.jpg&#x27;,
+                price: 78,
+                category: &#x27;Clothing&#x27;,
+                quantity: 52,
+                inventoryStatus: &#x27;INSTOCK&#x27;,
+                rating: 4,
+                orders: [
+                    {
+                        id: &#x27;1025-0&#x27;,
+                        productCode: &#x27;nbm5mv45n&#x27;,
+                        date: &#x27;2020-02-19&#x27;,
+                        amount: 78,
+                        quantity: 1,
+                        customer: &#x27;Yuki Whobrey&#x27;,
+                        status: &#x27;DELIVERED&#x27;
+                    },
+                    {
+                        id: &#x27;1025-1&#x27;,
+                        productCode: &#x27;nbm5mv45n&#x27;,
+                        date: &#x27;2020-05-21&#x27;,
+                        amount: 78,
+                        quantity: 1,
+                        customer: &#x27;Fletcher Flosi&#x27;,
+                        status: &#x27;PENDING&#x27;
+                    }
+                ]
+            },
+            {
+                id: &#x27;1026&#x27;,
+                code: &#x27;zx23zc42c&#x27;,
+                name: &#x27;Teal T-Shirt&#x27;,
+                description: &#x27;Product Description&#x27;,
+                image: &#x27;teal-t-shirt.jpg&#x27;,
+                price: 49,
+                category: &#x27;Clothing&#x27;,
+                quantity: 3,
+                inventoryStatus: &#x27;LOWSTOCK&#x27;,
+                rating: 3,
+                orders: [
+                    {
+                        id: &#x27;1026-0&#x27;,
+                        productCode: &#x27;zx23zc42c&#x27;,
+                        date: &#x27;2020-04-24&#x27;,
+                        amount: 98,
+                        quantity: 2,
+                        customer: &#x27;Bette Nicka&#x27;,
+                        status: &#x27;DELIVERED&#x27;
+                    }
+                ]
+            },
+            {
+                id: &#x27;1027&#x27;,
+                code: &#x27;acvx872gc&#x27;,
+                name: &#x27;Yellow Earbuds&#x27;,
+                description: &#x27;Product Description&#x27;,
+                image: &#x27;yellow-earbuds.jpg&#x27;,
+                price: 89,
+                category: &#x27;Electronics&#x27;,
+                quantity: 35,
+                inventoryStatus: &#x27;INSTOCK&#x27;,
+                rating: 3,
+                orders: [
+                    {
+                        id: &#x27;1027-0&#x27;,
+                        productCode: &#x27;acvx872gc&#x27;,
+                        date: &#x27;2020-01-29&#x27;,
+                        amount: 89,
+                        quantity: 1,
+                        customer: &#x27;Veronika Inouye&#x27;,
+                        status: &#x27;DELIVERED&#x27;
+                    },
+                    {
+                        id: &#x27;1027-1&#x27;,
+                        productCode: &#x27;acvx872gc&#x27;,
+                        date: &#x27;2020-06-11&#x27;,
+                        amount: 89,
+                        quantity: 1,
+                        customer: &#x27;Willard Kolmetz&#x27;,
+                        status: &#x27;DELIVERED&#x27;
+                    }
+                ]
+            },
+            {
+                id: &#x27;1028&#x27;,
+                code: &#x27;tx125ck42&#x27;,
+                name: &#x27;Yoga Mat&#x27;,
+                description: &#x27;Product Description&#x27;,
+                image: &#x27;yoga-mat.jpg&#x27;,
+                price: 20,
+                category: &#x27;Fitness&#x27;,
+                quantity: 15,
+                inventoryStatus: &#x27;INSTOCK&#x27;,
+                rating: 5,
+                orders: []
+            },
+            {
+                id: &#x27;1029&#x27;,
+                code: &#x27;gwuby345v&#x27;,
+                name: &#x27;Yoga Set&#x27;,
+                description: &#x27;Product Description&#x27;,
+                image: &#x27;yoga-set.jpg&#x27;,
+                price: 20,
+                category: &#x27;Fitness&#x27;,
+                quantity: 25,
+                inventoryStatus: &#x27;INSTOCK&#x27;,
+                rating: 8,
+                orders: [
+                    {
+                        id: &#x27;1029-0&#x27;,
+                        productCode: &#x27;gwuby345v&#x27;,
+                        date: &#x27;2020-02-14&#x27;,
+                        amount: 4,
+                        quantity: 80,
+                        customer: &#x27;Maryann Royster&#x27;,
+                        status: &#x27;DELIVERED&#x27;
+                    }
+                ]
+            }
+        ];
+    }
+
+    status: string[] &#x3D; [&#x27;OUTOFSTOCK&#x27;, &#x27;INSTOCK&#x27;, &#x27;LOWSTOCK&#x27;];
+
+    productNames: string[] &#x3D; [
+        &#x27;Bamboo Watch&#x27;,
+        &#x27;Black Watch&#x27;,
+        &#x27;Blue Band&#x27;,
+        &#x27;Blue T-Shirt&#x27;,
+        &#x27;Bracelet&#x27;,
+        &#x27;Brown Purse&#x27;,
+        &#x27;Chakra Bracelet&#x27;,
+        &#x27;Galaxy Earrings&#x27;,
+        &#x27;Game Controller&#x27;,
+        &#x27;Gaming Set&#x27;,
+        &#x27;Gold Phone Case&#x27;,
+        &#x27;Green Earbuds&#x27;,
+        &#x27;Green T-Shirt&#x27;,
+        &#x27;Grey T-Shirt&#x27;,
+        &#x27;Headphones&#x27;,
+        &#x27;Light Green T-Shirt&#x27;,
+        &#x27;Lime Band&#x27;,
+        &#x27;Mini Speakers&#x27;,
+        &#x27;Painted Phone Case&#x27;,
+        &#x27;Pink Band&#x27;,
+        &#x27;Pink Purse&#x27;,
+        &#x27;Purple Band&#x27;,
+        &#x27;Purple Gemstone Necklace&#x27;,
+        &#x27;Purple T-Shirt&#x27;,
+        &#x27;Shoes&#x27;,
+        &#x27;Sneakers&#x27;,
+        &#x27;Teal T-Shirt&#x27;,
+        &#x27;Yellow Earbuds&#x27;,
+        &#x27;Yoga Mat&#x27;,
+        &#x27;Yoga Set&#x27;
+    ];
+
+    constructor(private http: HttpClient) {}
+
+    getProductsMini() {
+        return Promise.resolve(this.getProductsData().slice(0, 5));
+    }
+
+    getProductsSmall() {
+        return Promise.resolve(this.getProductsData().slice(0, 10));
+    }
+
+    getProducts() {
+        return Promise.resolve(this.getProductsData());
+    }
+
+    getProductsWithOrdersSmall() {
+        return Promise.resolve(this.getProductsWithOrdersData().slice(0, 10));
+    }
+
+    generatePrduct(): Product {
+        const product: Product &#x3D; {
+            id: this.generateId(),
+            name: this.generateName(),
+            description: &#x27;Product Description&#x27;,
+            price: this.generatePrice(),
+            quantity: this.generateQuantity(),
+            category: &#x27;Product Category&#x27;,
+            inventoryStatus: this.generateStatus(),
+            rating: this.generateRating()
+        };
+
+        product.image &#x3D; product.name?.toLocaleLowerCase().split(/[ ,]+/).join(&#x27;-&#x27;) + &#x27;.jpg&#x27;;
+        return product;
+    }
+
+    generateId() {
+        let text &#x3D; &#x27;&#x27;;
+        let possible &#x3D; &#x27;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789&#x27;;
+
+        for (var i &#x3D; 0; i &lt; 5; i++) {
+            text +&#x3D; possible.charAt(Math.floor(Math.random() * possible.length));
+        }
+
+        return text;
+    }
+
+    generateName() {
+        return this.productNames[Math.floor(Math.random() * Math.floor(30))];
+    }
+
+    generatePrice() {
+        return Math.floor(Math.random() * Math.floor(299) + 1);
+    }
+
+    generateQuantity() {
+        return Math.floor(Math.random() * Math.floor(75) + 1);
+    }
+
+    generateStatus() {
+        return this.status[Math.floor(Math.random() * Math.floor(3))];
+    }
+
+    generateRating() {
+        return Math.floor(Math.random() * Math.floor(5) + 1);
+    }
+}
+</code></pre>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
+            var COMPODOC_CURRENT_PAGE_URL = 'InventoryStatus.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

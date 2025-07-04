@@ -5,6 +5,10 @@ import { RecentSalesWidget } from './components/recentsaleswidget';
 import { BestSellingWidget } from './components/bestsellingwidget';
 import { RevenueStreamWidget } from './components/revenuestreamwidget';
 
+/**
+ * @description Componente principal del Dashboard.
+ * Agrega y organiza varios widgets para mostrar información general de la aplicación.
+ */
 @Component({
     selector: 'app-dashboard',
     imports: [StatsWidget, RecentSalesWidget, BestSellingWidget, RevenueStreamWidget, NotificationsWidget],

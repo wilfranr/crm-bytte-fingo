@@ -2,6 +2,10 @@ import { Component } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 import { MenuModule } from 'primeng/menu';
 
+/**
+ * @description Widget que muestra las notificaciones de la aplicación.
+ * Presenta notificaciones categorizadas por tiempo (hoy, ayer, la semana pasada).
+ */
 @Component({
     standalone: true,
     selector: 'app-notifications-widget',
@@ -73,6 +77,9 @@ import { MenuModule } from 'primeng/menu';
     </div>`
 })
 export class NotificationsWidget {
+    /**
+     * @description Elementos del menú de opciones del widget.
+     */
     items = [
         { label: 'Add New', icon: 'pi pi-fw pi-plus' },
         { label: 'Remove', icon: 'pi pi-fw pi-trash' }

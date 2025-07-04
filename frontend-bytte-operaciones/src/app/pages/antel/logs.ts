@@ -8,6 +8,10 @@ import { ToolbarModule } from 'primeng/toolbar';
 import { MessageModule } from 'primeng/message';
 
 
+/**
+ * @description Componente para la revisión y procesamiento de logs de Antel.
+ * Permite subir archivos para su procesamiento y muestra el estado de la operación.
+ */
 @Component({
   selector: 'app-logs',
   standalone: true,
@@ -74,11 +78,26 @@ import { MessageModule } from 'primeng/message';
 })
 
 export class LogsComponent {
-  isLoading: boolean = false; // Indicador de carga
-  mailtoLink: string = ''; // Link mailto
+  /**
+   * @description Indicador de carga para mostrar el estado de procesamiento.
+   */
+  isLoading: boolean = false; 
+  /**
+   * @description Enlace mailto para enviar correos.
+   */
+  mailtoLink: string = ''; 
 
+  /**
+   * @description Constructor del componente LogsComponent.
+   * @param messageService Servicio para mostrar mensajes de notificación.
+   */
   constructor(private messageService: MessageService) {}
 
+  /**
+   * @description Maneja la subida personalizada de archivos.
+   * Simula un procesamiento y muestra mensajes de éxito o error.
+   * @param event Objeto de evento que contiene los archivos seleccionados.
+   */
   customUpload(event: { files: File[] }): void {
     if (!event.files || event.files.length === 0) {
       this.messageService.add({
@@ -101,6 +120,9 @@ export class LogsComponent {
     }, 2000); // Simular tiempo de procesamiento
   }
 
+  /**
+   * @description Abre un enlace mailto en el navegador.
+   */
   openMailto(): void {
     window.location.href = this.mailtoLink;
   }

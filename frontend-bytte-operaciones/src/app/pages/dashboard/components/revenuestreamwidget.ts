@@ -3,6 +3,10 @@ import { ChartModule } from 'primeng/chart';
 import { debounceTime, Subscription } from 'rxjs';
 import { LayoutService } from '../../../layout/service/layout.service';
 
+/**
+ * @description Widget que muestra un gráfico de barras de los ingresos por diferentes fuentes.
+ * Se actualiza dinámicamente con los cambios de configuración del layout.
+ */
 @Component({
     standalone: true,
     selector: 'app-revenue-stream-widget',
@@ -13,22 +17,43 @@ import { LayoutService } from '../../../layout/service/layout.service';
     </div>`
 })
 export class RevenueStreamWidget {
+    /**
+     * @description Datos para el gráfico de barras.
+     */
     chartData: any;
 
+    /**
+     * @description Opciones de configuración para el gráfico de barras.
+     */
     chartOptions: any;
 
+    /**
+     * @description Suscripción a los cambios de configuración del layout.
+     */
     subscription!: Subscription;
 
+    /**
+     * @description Constructor del componente RevenueStreamWidget.
+     * @param layoutService Servicio para gestionar el estado del layout.
+     */
     constructor(public layoutService: LayoutService) {
         this.subscription = this.layoutService.configUpdate$.pipe(debounceTime(25)).subscribe(() => {
             this.initChart();
         });
     }
 
+    /**
+     * @description Hook del ciclo de vida de Angular que se ejecuta después de que el componente ha sido inicializado.
+     * Inicializa los datos y opciones del gráfico.
+     */
     ngOnInit() {
         this.initChart();
     }
 
+    /**
+     * @description Inicializa los datos y opciones del gráfico de barras.
+     * Configura los colores y etiquetas del gráfico basándose en el tema actual.
+     */
     initChart() {
         const documentStyle = getComputedStyle(document.documentElement);
         const textColor = documentStyle.getPropertyValue('--text-color');
@@ -105,9 +130,14 @@ export class RevenueStreamWidget {
         };
     }
 
+    /**
+     * @description Hook del ciclo de vida de Angular que se ejecuta cuando el componente es destruido.
+     * Desuscribe la suscripción para evitar fugas de memoria.
+     */
     ngOnDestroy() {
         if (this.subscription) {
             this.subscription.unsubscribe();
         }
     }
 }
+

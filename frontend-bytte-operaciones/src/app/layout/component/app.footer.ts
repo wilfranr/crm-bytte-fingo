@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 
+/**
+ * @description Componente del pie de página de la aplicación.
+ * Muestra el logo y el nombre de la empresa.
+ */
 @Component({
     standalone: true,
     selector: 'app-footer',

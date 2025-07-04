@@ -2,6 +2,10 @@ import { Component } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 import { FluidModule } from 'primeng/fluid';
 
+/**
+ * @description Componente para la generación y visualización de cortes y reportes.
+ * Permite abrir enlaces a portales y reportes de Power BI, así como generar reportes con fechas dinámicas.
+ */
 @Component({
   selector: 'app-cortes',
   standalone: true,
@@ -45,6 +49,9 @@ import { FluidModule } from 'primeng/fluid';
   `,
 })
 export class Cortes {
+  /**
+   * @description Abre una serie de enlaces a portales en nuevas pestañas.
+   */
   openPortals(): void {
     const links = [
       'https://itau.bytte.com.co/casb/web/(S(cehgeaouu2p45ic4h1tjj0s4))/Reportes/ReporteConsultaLogANI',
@@ -62,6 +69,9 @@ export class Cortes {
     });
   }
 
+  /**
+   * @description Abre una serie de enlaces a reportes con fechas dinámicas (hoy y 8 días atrás) en nuevas pestañas.
+   */
   openReports(): void {
     const eightDaysAgo = new Date();
     eightDaysAgo.setDate(eightDaysAgo.getDate() - 8); // 8 días atrás
@@ -96,6 +106,9 @@ export class Cortes {
       window.open(link, '_blank');
     });
   }
+  /**
+   * @description Abre una serie de enlaces a reportes con fechas dinámicas (ayer) en nuevas pestañas.
+   */
   openReportsYestarday(): void {
     const todayDMY = this.getFormattedDate(new Date(), 'dd/mm/yyyy');
     const tomorrowDMY = this.getFormattedDate(
@@ -128,6 +141,9 @@ export class Cortes {
       window.open(link, '_blank');
     });
   }
+  /**
+   * @description Abre un enlace a un reporte de oficina con fecha de hoy en una nueva pestaña.
+   */
   openReportOficina(): void {
     const todayDMY = this.getFormattedDate(new Date(), 'dd/mm/yyyy');
     const tomorrowDMY = this.getFormattedDate(
@@ -148,6 +164,9 @@ export class Cortes {
       window.open(link, '_blank');
     });
   }
+  /**
+   * @description Abre un enlace a un reporte de oficina con fecha de ayer en una nueva pestaña.
+   */
   openReportOficinaYesterday(): void {
     const todayDMY = this.getFormattedDate(new Date(), 'dd/mm/yyyy');
     const tomorrowDMY = this.getFormattedDate(
@@ -177,6 +196,12 @@ export class Cortes {
     });
   }
 
+  /**
+   * @description Formatea una fecha según el formato especificado.
+   * @param date La fecha a formatear.
+   * @param format El formato deseado ('dd/mm/yyyy' o 'yyyy-mm-dd').
+   * @returns La fecha formateada como cadena de texto.
+   */
   private getFormattedDate(
     date: Date,
     format: 'dd/mm/yyyy' | 'yyyy-mm-dd',
@@ -191,6 +216,12 @@ export class Cortes {
     return `${day}/${month}/${year}`;
   }
 
+  /**
+   * @description Añade o resta días a una fecha dada.
+   * @param date La fecha original.
+   * @param days El número de días a añadir (positivo) o restar (negativo).
+   * @returns Una nueva instancia de Date con los días ajustados.
+   */
   private addDays(date: Date, days: number): Date {
     const newDate = new Date(date);
     newDate.setDate(newDate.getDate() + days);

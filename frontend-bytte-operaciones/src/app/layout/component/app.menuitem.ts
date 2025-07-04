@@ -8,6 +8,10 @@ import { RippleModule } from 'primeng/ripple';
 import { MenuItem } from 'primeng/api';
 import { LayoutService } from '../service/layout.service';
 
+/**
+ * @description Componente que representa un elemento individual del menú.
+ * Maneja la lógica de activación, navegación y submenús.
+ */
 @Component({
     // eslint-disable-next-line @angular-eslint/component-selector
     selector: '[app-menuitem]',
@@ -70,22 +74,51 @@ import { LayoutService } from '../service/layout.service';
     providers: [LayoutService]
 })
 export class AppMenuitem {
+    /**
+     * @description El elemento del menú a renderizar.
+     */
     @Input() item!: MenuItem;
 
+    /**
+     * @description El índice del elemento del menú.
+     */
     @Input() index!: number;
 
+    /**
+     * @description Indica si este es un elemento raíz del menú.
+     */
     @Input() @HostBinding('class.layout-root-menuitem') root!: boolean;
 
+    /**
+     * @description La clave del elemento padre del menú.
+     */
     @Input() parentKey!: string;
 
+    /**
+     * @description Indica si el elemento del menú está activo.
+     */
     active = false;
 
+    /**
+     * @description Suscripción a los eventos de la fuente del menú.
+     */
     menuSourceSubscription: Subscription;
 
+    /**
+     * @description Suscripción a los eventos de reinicio del menú.
+     */
     menuResetSubscription: Subscription;
 
+    /**
+     * @description Clave única para el elemento del menú.
+     */
     key: string = '';
 
+    /**
+     * @description Constructor del componente AppMenuitem.
+     * @param router Servicio de enrutamiento de Angular.
+     * @param layoutService Servicio para gestionar el estado del layout.
+     */
     constructor(
         public router: Router,
         private layoutService: LayoutService
@@ -113,6 +146,10 @@ export class AppMenuitem {
         });
     }
 
+    /**
+     * @description Hook del ciclo de vida de Angular que se ejecuta después de que el componente ha sido inicializado.
+     * Inicializa la clave del elemento y actualiza el estado activo si tiene un routerLink.
+     */
     ngOnInit() {
         this.key = this.parentKey ? this.parentKey + '-' + this.index : String(this.index);
 
@@ -121,6 +158,9 @@ export class AppMenuitem {
         }
     }
 
+    /**
+     * @description Actualiza el estado activo del elemento del menú basado en la ruta actual.
+     */
     updateActiveStateFromRoute() {
         let activeRoute = this.router.isActive(this.item.routerLink[0], { paths: 'exact', queryParams: 'ignored', matrixParams: 'ignored', fragment: 'ignored' });
 
@@ -129,6 +169,10 @@ export class AppMenuitem {
         }
     }
 
+    /**
+     * @description Maneja el evento de clic en un elemento del menú.
+     * @param event El evento de clic.
+     */
     itemClick(event: Event) {
         // avoid processing disabled items
         if (this.item.disabled) {
@@ -149,15 +193,26 @@ export class AppMenuitem {
         this.layoutService.onMenuStateChange({ key: this.key });
     }
 
+    /**
+     * @description Obtiene el estado de la animación del submenú.
+     * @returns El estado de la animación ('expanded' o 'collapsed').
+     */
     get submenuAnimation() {
         return this.root ? 'expanded' : this.active ? 'expanded' : 'collapsed';
     }
 
+    /**
+     * @description Clase CSS para indicar si el elemento del menú está activo.
+     */
     @HostBinding('class.active-menuitem')
     get activeClass() {
         return this.active && !this.root;
     }
 
+    /**
+     * @description Hook del ciclo de vida de Angular que se ejecuta cuando el componente es destruido.
+     * Limpia las suscripciones para evitar fugas de memoria.
+     */
     ngOnDestroy() {
         if (this.menuSourceSubscription) {
             this.menuSourceSubscription.unsubscribe();
@@ -168,3 +223,4 @@ export class AppMenuitem {
         }
     }
 }
+

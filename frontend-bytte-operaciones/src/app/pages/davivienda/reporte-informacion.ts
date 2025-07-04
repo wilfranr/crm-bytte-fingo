@@ -7,6 +7,10 @@ import { FileUploadModule } from 'primeng/fileupload';
 import { ToastModule } from 'primeng/toast';
 import { ToolbarModule } from 'primeng/toolbar';
 
+/**
+ * @description Componente para el reporte de información y generación de indicadores de Davivienda.
+ * Permite subir archivos Excel para su procesamiento y generar enlaces para enviar reportes por correo.
+ */
 @Component({
   selector: 'app-reporte-informacion',
   standalone: true,
@@ -86,11 +90,26 @@ import { ToolbarModule } from 'primeng/toolbar';
   ],
 })
 export class ReporteInformacionComponent {
-  isLoading: boolean = false; // Indicador de carga
-  mailtoLink: string = ''; // Link mailto
+  /**
+   * @description Indicador de carga para mostrar el estado de procesamiento del archivo.
+   */
+  isLoading: boolean = false; 
+  /**
+   * @description Enlace mailto generado para enviar el reporte por correo.
+   */
+  mailtoLink: string = ''; 
 
+  /**
+   * @description Constructor del componente ReporteInformacionComponent.
+   * @param messageService Servicio para mostrar mensajes de notificación.
+   */
   constructor(private messageService: MessageService) {}
 
+  /**
+   * @description Maneja la subida personalizada de archivos.
+   * Envía el archivo al backend para procesamiento, descarga el resultado y genera un enlace mailto.
+   * @param event Objeto de evento que contiene los archivos seleccionados.
+   */
   customUpload(event: { files: File[] }): void {
     if (!event.files || event.files.length === 0) {
       this.messageService.add({
@@ -161,6 +180,10 @@ export class ReporteInformacionComponent {
       });
   }
 
+  /**
+   * @description Genera el enlace mailto con los destinatarios, asunto y cuerpo predefinidos.
+   * @param fileName El nombre del archivo adjunto al correo.
+   */
   generateMailtoLink(fileName: string): void {
     const toEmails =
       'jcortegon@davivienda.com,jpalonso@davivienda.com,paula.beltran@davivienda.com';
@@ -175,6 +198,10 @@ export class ReporteInformacionComponent {
     this.mailtoLink = `mailto:${toEmails}?cc=${ccEmails}&subject=${subject}&body=${body}`;
   }
 
+  /**
+   * @description Abre el enlace mailto generado en una nueva ventana del navegador.
+   * Muestra una alerta si el enlace no está disponible.
+   */
   openMailto(): void {
     if (this.mailtoLink) {
       window.open(this.mailtoLink, '_blank');

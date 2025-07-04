@@ -1,0 +1,970 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>frontend-bytte-operaciones documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">frontend-bytte-operaciones documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  AppTopbar</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/layout/component/app.topbar.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Contiene el logo, el botón de menú, el selector de tema y las opciones de usuario.</p>
+
+    </p>
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-topbar</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>RouterModule</code>
+                            <code>CommonModule</code>
+                            <code>StyleClassModule</code>
+                                <code><a href="../components/AppConfigurator.html" target="_self" >AppConfigurator</a></code>
+                </td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">template</td>
+                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;layout-topbar&quot;&gt;   &lt;div class&#x3D;&quot;layout-topbar-logo-container&quot;&gt;
+     &lt;button
+       class&#x3D;&quot;layout-menu-button layout-topbar-action&quot;
+       (click)&#x3D;&quot;layoutService.onMenuToggle()&quot;
+     &gt;
+       &lt;i class&#x3D;&quot;pi pi-bars&quot;&gt;&lt;/i&gt;
+     &lt;/button&gt;
+     &lt;a class&#x3D;&quot;layout-topbar-logo&quot; routerLink&#x3D;&quot;/&quot;&gt;
+       &lt;img
+         src&#x3D;&quot;assets/layout/images/logo-bytte2x.png&quot;
+         alt&#x3D;&quot;Logo&quot;
+         class&#x3D;&quot;logo-image&quot;
+         width&#x3D;&quot;30px&quot;
+       /&gt;
+       &lt;span&gt;Operaciones&lt;/span&gt;
+     &lt;/a&gt;
+   &lt;/div&gt;
+
+   &lt;div class&#x3D;&quot;layout-topbar-actions&quot;&gt;
+     &lt;div class&#x3D;&quot;layout-config-menu&quot;&gt;
+       &lt;button
+         type&#x3D;&quot;button&quot;
+         class&#x3D;&quot;layout-topbar-action&quot;
+         (click)&#x3D;&quot;toggleDarkMode()&quot;
+       &gt;
+         &lt;i
+           [ngClass]&#x3D;&quot;{
+             &#x27;pi &#x27;: true,
+             &#x27;pi-moon&#x27;: layoutService.isDarkTheme(),
+             &#x27;pi-sun&#x27;: !layoutService.isDarkTheme(),
+           }&quot;
+         &gt;&lt;/i&gt;
+       &lt;/button&gt;
+       &lt;div class&#x3D;&quot;relative&quot;&gt;
+         &lt;button
+           class&#x3D;&quot;layout-topbar-action layout-topbar-action-highlight&quot;
+           pStyleClass&#x3D;&quot;@next&quot;
+           enterFromClass&#x3D;&quot;hidden&quot;
+           enterActiveClass&#x3D;&quot;animate-scalein&quot;
+           leaveToClass&#x3D;&quot;hidden&quot;
+           leaveActiveClass&#x3D;&quot;animate-fadeout&quot;
+           [hideOnOutsideClick]&#x3D;&quot;true&quot;
+         &gt;
+           &lt;i class&#x3D;&quot;pi pi-palette&quot;&gt;&lt;/i&gt;
+         &lt;/button&gt;
+         &lt;app-configurator /&gt;
+       &lt;/div&gt;
+     &lt;/div&gt;
+
+     &lt;button
+       class&#x3D;&quot;layout-topbar-menu-button layout-topbar-action&quot;
+       pStyleClass&#x3D;&quot;@next&quot;
+       enterFromClass&#x3D;&quot;hidden&quot;
+       enterActiveClass&#x3D;&quot;animate-scalein&quot;
+       leaveToClass&#x3D;&quot;hidden&quot;
+       leaveActiveClass&#x3D;&quot;animate-fadeout&quot;
+       [hideOnOutsideClick]&#x3D;&quot;true&quot;
+     &gt;
+       &lt;i class&#x3D;&quot;pi pi-ellipsis-v&quot;&gt;&lt;/i&gt;
+     &lt;/button&gt;
+
+     &lt;div class&#x3D;&quot;layout-topbar-menu hidden lg:block&quot;&gt;
+       &lt;div class&#x3D;&quot;layout-topbar-menu-content&quot;&gt;
+         &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;layout-topbar-action&quot;&gt;
+           &lt;i class&#x3D;&quot;pi pi-calendar&quot;&gt;&lt;/i&gt;
+           &lt;span&gt;Calendar&lt;/span&gt;
+         &lt;/button&gt;
+         &lt;div class&#x3D;&quot;relative&quot;&gt;
+           &lt;button
+             class&#x3D;&quot;layout-topbar-action&quot;
+             pStyleClass&#x3D;&quot;@next&quot;
+             enterFromClass&#x3D;&quot;hidden&quot;
+             enterActiveClass&#x3D;&quot;animate-scalein&quot;
+             leaveToClass&#x3D;&quot;hidden&quot;
+             leaveActiveClass&#x3D;&quot;animate-fadeout&quot;
+             [hideOnOutsideClick]&#x3D;&quot;true&quot;
+           &gt;
+             &lt;i class&#x3D;&quot;pi pi-user&quot;&gt;&lt;/i&gt;
+             &lt;span class&#x3D;&quot;ml-2&quot;&gt;Perfil&lt;/span&gt;
+           &lt;/button&gt;
+
+           &lt;!-- Dropdown personalizado --&gt;
+           &lt;div
+             class&#x3D;&quot;absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded shadow z-50 hidden&quot;
+           &gt;
+             &lt;div class&#x3D;&quot;py-2&quot;&gt;
+               &lt;p class&#x3D;&quot;px-4 py-2 text-gray-700 dark:text-gray-200&quot;&gt;
+                 {{ userName }}
+               &lt;/p&gt;
+               &lt;hr class&#x3D;&quot;border-gray-200 dark:border-gray-700&quot; /&gt;
+             &lt;/div&gt;
+             &lt;button
+               class&#x3D;&quot;w-full px-4 py-2 text-left hover:bg-gray-100 dark:hover:bg-gray-700&quot;
+               (click)&#x3D;&quot;logout()&quot;
+             &gt;
+               &lt;i class&#x3D;&quot;pi pi-sign-out mr-2&quot;&gt;&lt;/i&gt; Cerrar sesión
+             &lt;/button&gt;
+           &lt;/div&gt;
+         &lt;/div&gt;
+       &lt;/div&gt;
+     &lt;/div&gt;
+   &lt;/div&gt;
+ &lt;/div&gt;</code></pre></td>
+            </tr>
+
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#items" >items</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#layoutService" >layoutService</a>
+                            </li>
+                            <li>
+                                <a href="#userName" >userName</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#logout" >logout</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#toggleDarkMode" >toggleDarkMode</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(layoutService: <a href="../injectables/LayoutService.html" target="_self">LayoutService</a>, router: Router, authservice: <a href="../injectables/AuthService.html" target="_self">AuthService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="133" class="link-to-prism">src/app/layout/component/app.topbar.ts:133</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>layoutService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/LayoutService.html" target="_self" >LayoutService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Servicio para gestionar el estado del layout.</p>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                    <code>Router</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Servicio de enrutamiento de Angular.</p>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>authservice</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AuthService.html" target="_self" >AuthService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Servicio de autenticación para gestionar el login/logout.</p>
+
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="logout"></a>
+                    <span class="name">
+                        <span ><b>logout</b></span>
+                        <a href="#logout"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>logout()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="188"
+                                    class="link-to-prism">src/app/layout/component/app.topbar.ts:188</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="169"
+                                    class="link-to-prism">src/app/layout/component/app.topbar.ts:169</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Carga la preferencia de tema oscuro desde localStorage y obtiene la información del usuario.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="toggleDarkMode"></a>
+                    <span class="name">
+                        <span ><b>toggleDarkMode</b></span>
+                        <a href="#toggleDarkMode"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>toggleDarkMode()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="151"
+                                    class="link-to-prism">src/app/layout/component/app.topbar.ts:151</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Guarda la preferencia en el localStorage.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="items"></a>
+                    <span class="name">
+                        <span ><b>items</b></span>
+                        <a href="#items"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>MenuItem[]</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="129" class="link-to-prism">src/app/layout/component/app.topbar.ts:129</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="layoutService"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>layoutService</b></span>
+                        <a href="#layoutService"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../injectables/LayoutService.html" target="_self" >LayoutService</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="142" class="link-to-prism">src/app/layout/component/app.topbar.ts:142</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description">Servicio para gestionar el estado del layout.</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="userName"></a>
+                    <span class="name">
+                        <span ><b>userName</b></span>
+                        <a href="#userName"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="133" class="link-to-prism">src/app/layout/component/app.topbar.ts:133</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
+import { MenuItem } from &#x27;primeng/api&#x27;;
+import { RouterModule } from &#x27;@angular/router&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { StyleClassModule } from &#x27;primeng/styleclass&#x27;;
+import { LayoutService } from &#x27;../service/layout.service&#x27;;
+import { jwtDecode } from &#x27;jwt-decode&#x27;;
+import { Router } from &#x27;@angular/router&#x27;;
+import { AppConfigurator } from &#x27;./app.configurator&#x27;;
+import { AuthService } from &#x27;../../core/services/auth.service&#x27;;
+
+/**
+ * @description Componente de la barra superior de la aplicación.
+ * Contiene el logo, el botón de menú, el selector de tema y las opciones de usuario.
+ */
+@Component({
+  selector: &#x27;app-topbar&#x27;,
+  standalone: true,
+  imports: [RouterModule, CommonModule, StyleClassModule, AppConfigurator],
+  template: &#x60; &lt;div class&#x3D;&quot;layout-topbar&quot;&gt;
+    &lt;div class&#x3D;&quot;layout-topbar-logo-container&quot;&gt;
+      &lt;button
+        class&#x3D;&quot;layout-menu-button layout-topbar-action&quot;
+        (click)&#x3D;&quot;layoutService.onMenuToggle()&quot;
+      &gt;
+        &lt;i class&#x3D;&quot;pi pi-bars&quot;&gt;&lt;/i&gt;
+      &lt;/button&gt;
+      &lt;a class&#x3D;&quot;layout-topbar-logo&quot; routerLink&#x3D;&quot;/&quot;&gt;
+        &lt;img
+          src&#x3D;&quot;assets/layout/images/logo-bytte2x.png&quot;
+          alt&#x3D;&quot;Logo&quot;
+          class&#x3D;&quot;logo-image&quot;
+          width&#x3D;&quot;30px&quot;
+        /&gt;
+        &lt;span&gt;Operaciones&lt;/span&gt;
+      &lt;/a&gt;
+    &lt;/div&gt;
+
+    &lt;div class&#x3D;&quot;layout-topbar-actions&quot;&gt;
+      &lt;div class&#x3D;&quot;layout-config-menu&quot;&gt;
+        &lt;button
+          type&#x3D;&quot;button&quot;
+          class&#x3D;&quot;layout-topbar-action&quot;
+          (click)&#x3D;&quot;toggleDarkMode()&quot;
+        &gt;
+          &lt;i
+            [ngClass]&#x3D;&quot;{
+              &#x27;pi &#x27;: true,
+              &#x27;pi-moon&#x27;: layoutService.isDarkTheme(),
+              &#x27;pi-sun&#x27;: !layoutService.isDarkTheme(),
+            }&quot;
+          &gt;&lt;/i&gt;
+        &lt;/button&gt;
+        &lt;div class&#x3D;&quot;relative&quot;&gt;
+          &lt;button
+            class&#x3D;&quot;layout-topbar-action layout-topbar-action-highlight&quot;
+            pStyleClass&#x3D;&quot;@next&quot;
+            enterFromClass&#x3D;&quot;hidden&quot;
+            enterActiveClass&#x3D;&quot;animate-scalein&quot;
+            leaveToClass&#x3D;&quot;hidden&quot;
+            leaveActiveClass&#x3D;&quot;animate-fadeout&quot;
+            [hideOnOutsideClick]&#x3D;&quot;true&quot;
+          &gt;
+            &lt;i class&#x3D;&quot;pi pi-palette&quot;&gt;&lt;/i&gt;
+          &lt;/button&gt;
+          &lt;app-configurator /&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;button
+        class&#x3D;&quot;layout-topbar-menu-button layout-topbar-action&quot;
+        pStyleClass&#x3D;&quot;@next&quot;
+        enterFromClass&#x3D;&quot;hidden&quot;
+        enterActiveClass&#x3D;&quot;animate-scalein&quot;
+        leaveToClass&#x3D;&quot;hidden&quot;
+        leaveActiveClass&#x3D;&quot;animate-fadeout&quot;
+        [hideOnOutsideClick]&#x3D;&quot;true&quot;
+      &gt;
+        &lt;i class&#x3D;&quot;pi pi-ellipsis-v&quot;&gt;&lt;/i&gt;
+      &lt;/button&gt;
+
+      &lt;div class&#x3D;&quot;layout-topbar-menu hidden lg:block&quot;&gt;
+        &lt;div class&#x3D;&quot;layout-topbar-menu-content&quot;&gt;
+          &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;layout-topbar-action&quot;&gt;
+            &lt;i class&#x3D;&quot;pi pi-calendar&quot;&gt;&lt;/i&gt;
+            &lt;span&gt;Calendar&lt;/span&gt;
+          &lt;/button&gt;
+          &lt;div class&#x3D;&quot;relative&quot;&gt;
+            &lt;button
+              class&#x3D;&quot;layout-topbar-action&quot;
+              pStyleClass&#x3D;&quot;@next&quot;
+              enterFromClass&#x3D;&quot;hidden&quot;
+              enterActiveClass&#x3D;&quot;animate-scalein&quot;
+              leaveToClass&#x3D;&quot;hidden&quot;
+              leaveActiveClass&#x3D;&quot;animate-fadeout&quot;
+              [hideOnOutsideClick]&#x3D;&quot;true&quot;
+            &gt;
+              &lt;i class&#x3D;&quot;pi pi-user&quot;&gt;&lt;/i&gt;
+              &lt;span class&#x3D;&quot;ml-2&quot;&gt;Perfil&lt;/span&gt;
+            &lt;/button&gt;
+
+            &lt;!-- Dropdown personalizado --&gt;
+            &lt;div
+              class&#x3D;&quot;absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded shadow z-50 hidden&quot;
+            &gt;
+              &lt;div class&#x3D;&quot;py-2&quot;&gt;
+                &lt;p class&#x3D;&quot;px-4 py-2 text-gray-700 dark:text-gray-200&quot;&gt;
+                  {{ userName }}
+                &lt;/p&gt;
+                &lt;hr class&#x3D;&quot;border-gray-200 dark:border-gray-700&quot; /&gt;
+              &lt;/div&gt;
+              &lt;button
+                class&#x3D;&quot;w-full px-4 py-2 text-left hover:bg-gray-100 dark:hover:bg-gray-700&quot;
+                (click)&#x3D;&quot;logout()&quot;
+              &gt;
+                &lt;i class&#x3D;&quot;pi pi-sign-out mr-2&quot;&gt;&lt;/i&gt; Cerrar sesión
+              &lt;/button&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;&#x60;,
+})
+export class AppTopbar {
+  /**
+   * @description Elementos del menú de la barra superior.
+   */
+  items!: MenuItem[];
+  /**
+   * @description Nombre del usuario actual, mostrado en el perfil.
+   */
+  userName: string | null &#x3D; null;
+
+  /**
+   * @description Constructor del componente AppTopbar.
+   * @param layoutService Servicio para gestionar el estado del layout.
+   * @param router Servicio de enrutamiento de Angular.
+   * @param authservice Servicio de autenticación para gestionar el login/logout.
+   */
+  constructor(
+    public layoutService: LayoutService,
+    private router: Router,
+    private authservice: AuthService,
+  ) {}
+
+  /**
+   * @description Alterna entre el modo oscuro y claro del tema de la aplicación.
+   * Guarda la preferencia en el localStorage.
+   */
+  toggleDarkMode(): void {
+    this.layoutService.layoutConfig.update((state) &#x3D;&gt; {
+      const newDarkModeState &#x3D; !state.darkTheme;
+
+      // Guardar preferencia en localStorage
+      localStorage.setItem(&#x27;darkMode&#x27;, JSON.stringify(newDarkModeState));
+
+      return {
+        ...state,
+        darkTheme: newDarkModeState,
+      };
+    });
+  }
+
+  /**
+   * @description Hook del ciclo de vida de Angular que se ejecuta después de que el componente ha sido inicializado.
+   * Carga la preferencia de tema oscuro desde localStorage y obtiene la información del usuario.
+   */
+  ngOnInit(): void {
+    const savedTheme &#x3D; localStorage.getItem(&#x27;darkMode&#x27;);
+
+    const userInfo &#x3D; this.authservice.getUserInfo();
+    if (userInfo) {
+      this.userName &#x3D; userInfo.name || userInfo.email || &#x27;Usuario&#x27;;
+    }
+
+    if (savedTheme !&#x3D;&#x3D; null) {
+      this.layoutService.layoutConfig.update((state) &#x3D;&gt; ({
+        ...state,
+        darkTheme: JSON.parse(savedTheme),
+      }));
+    }
+  }
+
+  /**
+   * @description Cierra la sesión del usuario y redirige a la página de login.
+   */
+  logout() {
+    this.authservice.logout().subscribe({
+      next: () &#x3D;&gt; this.router.navigate([&#x27;/auth/login&#x27;]),
+      error: () &#x3D;&gt; this.router.navigate([&#x27;/auth/login&#x27;]),
+    });
+  }
+}
+</code></pre>
+    </div>
+
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="layout-topbar">   <div class="layout-topbar-logo-container">     <button       class="layout-menu-button layout-topbar-action"       (click)="layoutService.onMenuToggle()"     >       <i class="pi pi-bars"></i>     </button>     <a class="layout-topbar-logo" routerLink="/">       <img         src="assets/layout/images/logo-bytte2x.png"         alt="Logo"         class="logo-image"         width="30px"       />       <span>Operaciones</span>     </a>   </div>   <div class="layout-topbar-actions">     <div class="layout-config-menu">       <button         type="button"         class="layout-topbar-action"         (click)="toggleDarkMode()"       >         <i           [ngClass]="{             \'pi \': true,             \'pi-moon\': layoutService.isDarkTheme(),             \'pi-sun\': !layoutService.isDarkTheme(),           }"         ></i>       </button>       <div class="relative">         <button           class="layout-topbar-action layout-topbar-action-highlight"           pStyleClass="@next"           enterFromClass="hidden"           enterActiveClass="animate-scalein"           leaveToClass="hidden"           leaveActiveClass="animate-fadeout"           [hideOnOutsideClick]="true"         >           <i class="pi pi-palette"></i>         </button>         <app-configurator />       </div>     </div>     <button       class="layout-topbar-menu-button layout-topbar-action"       pStyleClass="@next"       enterFromClass="hidden"       enterActiveClass="animate-scalein"       leaveToClass="hidden"       leaveActiveClass="animate-fadeout"       [hideOnOutsideClick]="true"     >       <i class="pi pi-ellipsis-v"></i>     </button>     <div class="layout-topbar-menu hidden lg:block">       <div class="layout-topbar-menu-content">         <button type="button" class="layout-topbar-action">           <i class="pi pi-calendar"></i>           <span>Calendar</span>         </button>         <div class="relative">           <button             class="layout-topbar-action"             pStyleClass="@next"             enterFromClass="hidden"             enterActiveClass="animate-scalein"             leaveToClass="hidden"             leaveActiveClass="animate-fadeout"             [hideOnOutsideClick]="true"           >             <i class="pi pi-user"></i>             <span class="ml-2">Perfil</span>           </button>           <!-- Dropdown personalizado -->           <div             class="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded shadow z-50 hidden"           >             <div class="py-2">               <p class="px-4 py-2 text-gray-700 dark:text-gray-200">                 {{ userName }}               </p>               <hr class="border-gray-200 dark:border-gray-700" />             </div>             <button               class="w-full px-4 py-2 text-left hover:bg-gray-100 dark:hover:bg-gray-700"               (click)="logout()"             >               <i class="pi pi-sign-out mr-2"></i> Cerrar sesión             </button>           </div>         </div>       </div>     </div>   </div> </div></div>'
+    var COMPONENTS = [{'name': 'AccesosComponent', 'selector': 'app-accesos'},{'name': 'Access', 'selector': 'app-access'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AppConfigurator', 'selector': 'app-configurator'},{'name': 'AppFloatingConfigurator', 'selector': 'app-floating-configurator'},{'name': 'AppFooter', 'selector': 'app-footer'},{'name': 'AppLayout', 'selector': 'app-layout'},{'name': 'AppMenu', 'selector': 'app-menu'},{'name': 'AppMenuitem', 'selector': '[app-menuitem]'},{'name': 'AppSidebar', 'selector': 'app-sidebar'},{'name': 'AppTopbar', 'selector': 'app-topbar'},{'name': 'BestSellingWidget', 'selector': 'app-best-selling-widget'},{'name': 'ButtonDemo', 'selector': 'app-button-demo'},{'name': 'ChartDemo', 'selector': 'app-chart-demo'},{'name': 'Cortes', 'selector': 'app-cortes'},{'name': 'Crud', 'selector': 'app-crud'},{'name': 'Dashboard', 'selector': 'app-dashboard'},{'name': 'Documentation', 'selector': 'app-documentation'},{'name': 'Empty', 'selector': 'app-empty'},{'name': 'Error', 'selector': 'app-error'},{'name': 'Facturacion', 'selector': 'app.facturacion-itau'},{'name': 'FeaturesWidget', 'selector': 'features-widget'},{'name': 'FileDemo', 'selector': 'app-file-demo'},{'name': 'FooterWidget', 'selector': 'footer-widget'},{'name': 'FormLayoutDemo', 'selector': 'app-formlayout-demo'},{'name': 'HeroWidget', 'selector': 'hero-widget'},{'name': 'HighlightsWidget', 'selector': 'highlights-widget'},{'name': 'InputDemo', 'selector': 'app-input-demo'},{'name': 'Landing', 'selector': 'app-landing'},{'name': 'ListDemo', 'selector': 'app-list-demo'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'LogsComponent', 'selector': 'app-logs'},{'name': 'MediaDemo', 'selector': 'app-media-demo'},{'name': 'MenuDemo', 'selector': 'app-menu-demo'},{'name': 'MessagesDemo', 'selector': 'app-messages-demo'},{'name': 'MiscDemo', 'selector': 'app-misc-demo'},{'name': 'Notfound', 'selector': 'app-notfound'},{'name': 'NotificationsWidget', 'selector': 'app-notifications-widget'},{'name': 'OverlayDemo', 'selector': 'app-overlay-demo'},{'name': 'PanelsDemo', 'selector': 'app-panels-demo'},{'name': 'PricingWidget', 'selector': 'pricing-widget'},{'name': 'RecentSalesWidget', 'selector': 'app-recent-sales-widget'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'ReporteInformacionComponent', 'selector': 'app-reporte-informacion'},{'name': 'RevenueStreamWidget', 'selector': 'app-revenue-stream-widget'},{'name': 'StatsWidget', 'selector': 'app-stats-widget'},{'name': 'TableDemo', 'selector': 'app-table-demo'},{'name': 'TimelineDemo', 'selector': 'app-timeline-demo'},{'name': 'TopbarWidget', 'selector': 'topbar-widget'},{'name': 'TreeDemo', 'selector': 'app-tree-demo'},{'name': 'UserFormComponent', 'selector': 'app-user-form'},{'name': 'UserListComponent', 'selector': 'app-user-list'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'AppTopbar'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'AppTopbar.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

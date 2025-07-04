@@ -4,6 +4,10 @@ import { ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
 import { AppFloatingConfigurator } from '../../layout/component/app.floatingconfigurator';
 
+/**
+ * @description Componente para la página de Acceso Denegado.
+ * Se muestra cuando un usuario intenta acceder a una ruta sin los permisos necesarios.
+ */
 @Component({
     selector: 'app-access',
     standalone: true,

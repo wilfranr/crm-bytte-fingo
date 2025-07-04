@@ -5,6 +5,10 @@ import { ButtonModule } from 'primeng/button';
 import { CommonModule } from '@angular/common';
 import { Product, ProductService } from '../../service/product.service';
 
+/**
+ * @description Widget que muestra las ventas recientes de productos.
+ * Presenta una tabla paginada con información de productos y opciones de visualización.
+ */
 @Component({
     standalone: true,
     selector: 'app-recent-sales-widget',
@@ -37,10 +41,21 @@ import { Product, ProductService } from '../../service/product.service';
     providers: [ProductService]
 })
 export class RecentSalesWidget {
+    /**
+     * @description Lista de productos para mostrar en la tabla.
+     */
     products!: Product[];
 
+    /**
+     * @description Constructor del componente RecentSalesWidget.
+     * @param productService Servicio para obtener datos de productos.
+     */
     constructor(private productService: ProductService) {}
 
+    /**
+     * @description Hook del ciclo de vida de Angular que se ejecuta después de que el componente ha sido inicializado.
+     * Carga una pequeña cantidad de datos de productos al iniciar el componente.
+     */
     ngOnInit() {
         this.productService.getProductsSmall().then((data) => (this.products = data));
     }

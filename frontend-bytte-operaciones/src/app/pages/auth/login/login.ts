@@ -10,6 +10,10 @@ import { AuthService } from '../../../core/services/auth.service';
 import { CommonModule } from '@angular/common';
 import { AppFloatingConfigurator } from '../../../layout/component/app.floatingconfigurator';
 
+/**
+ * @description Componente para la página de inicio de sesión.
+ * Permite a los usuarios autenticarse en la aplicación.
+ */
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -133,16 +137,37 @@ import { AppFloatingConfigurator } from '../../../layout/component/app.floatingc
   `,
 })
 export class LoginComponent {
+  /**
+   * @description Modelo para el campo de correo electrónico del formulario de login.
+   */
   email: string = '';
+  /**
+   * @description Modelo para el campo de contraseña del formulario de login.
+   */
   password: string = '';
+  /**
+   * @description Modelo para el checkbox "Recordar".
+   */
   checked: boolean = false;
+  /**
+   * @description Mensaje de error a mostrar en caso de fallo en el login.
+   */
   errorMessage: string = '';
 
+  /**
+   * @description Constructor del componente LoginComponent.
+   * @param authService Servicio de autenticación para manejar el login.
+   * @param router Servicio de enrutamiento de Angular para la navegación.
+   */
   constructor(
     private authService: AuthService,
     private router: Router,
   ) {}
 
+  /**
+   * @description Maneja el envío del formulario de login.
+   * Intenta autenticar al usuario y redirige a la página principal si es exitoso, o muestra un mensaje de error.
+   */
   login() {
     this.authService.login(this.email, this.password).subscribe({
       next: () => {
@@ -156,5 +181,8 @@ export class LoginComponent {
     });
   }
 
+  /**
+   * @description Método para la funcionalidad de registro (actualmente vacío).
+   */
   register() {}
 }

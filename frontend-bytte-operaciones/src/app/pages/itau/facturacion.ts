@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { FluidModule } from 'primeng/fluid';
 
+/**
+ * @description Componente para la sección de facturación de Itaú.
+ * Muestra un ejemplo de la funcionalidad de facturación.
+ */
 @Component({
   selector: 'app.facturacion-itau',
   standalone: true,

@@ -20,17 +20,27 @@ import { IconFieldModule } from 'primeng/iconfield';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { Product, ProductService } from '../service/product.service';
 
+/**
+ * @description Interfaz que define la estructura de una columna de la tabla.
+ */
 interface Column {
     field: string;
     header: string;
     customExportHeader?: string;
 }
 
+/**
+ * @description Interfaz que define la estructura de una columna para exportación.
+ */
 interface ExportColumn {
     title: string;
     dataKey: string;
 }
 
+/**
+ * @description Componente para la gestión de productos (CRUD).
+ * Permite visualizar, añadir, editar y eliminar productos, así como exportar los datos.
+ */
 @Component({
     selector: 'app-crud',
     standalone: true,
@@ -211,38 +221,81 @@ interface ExportColumn {
     providers: [MessageService, ProductService, ConfirmationService]
 })
 export class Crud implements OnInit {
+    /**
+     * @description Controla la visibilidad del diálogo de producto.
+     */
     productDialog: boolean = false;
 
+    /**
+     * @description Señal que contiene la lista de productos.
+     */
     products = signal<Product[]>([]);
 
+    /**
+     * @description Producto actualmente seleccionado o en edición.
+     */
     product!: Product;
 
+    /**
+     * @description Productos seleccionados en la tabla.
+     */
     selectedProducts!: Product[] | null;
 
+    /**
+     * @description Indica si el formulario ha sido enviado.
+     */
     submitted: boolean = false;
 
+    /**
+     * @description Opciones de estado de inventario.
+     */
     statuses!: any[];
 
+    /**
+     * @description Referencia a la tabla de productos.
+     */
     @ViewChild('dt') dt!: Table;
 
+    /**
+     * @description Columnas para la exportación de datos.
+     */
     exportColumns!: ExportColumn[];
 
+    /**
+     * @description Definición de las columnas de la tabla.
+     */
     cols!: Column[];
 
+    /**
+     * @description Constructor del componente Crud.
+     * @param productService Servicio para la gestión de productos.
+     * @param messageService Servicio para mostrar mensajes de notificación.
+     * @param confirmationService Servicio para mostrar diálogos de confirmación.
+     */
     constructor(
         private productService: ProductService,
         private messageService: MessageService,
         private confirmationService: ConfirmationService
     ) {}
 
+    /**
+     * @description Exporta los datos de la tabla a un archivo CSV.
+     */
     exportCSV() {
         this.dt.exportCSV();
     }
 
+    /**
+     * @description Hook del ciclo de vida de Angular que se ejecuta después de que el componente ha sido inicializado.
+     * Carga los datos de demostración al iniciar el componente.
+     */
     ngOnInit() {
         this.loadDemoData();
     }
 
+    /**
+     * @description Carga los datos de productos de demostración y configura las columnas y estados.
+     */
     loadDemoData() {
         this.productService.getProducts().then((data) => {
             this.products.set(data);
@@ -265,21 +318,37 @@ export class Crud implements OnInit {
         this.exportColumns = this.cols.map((col) => ({ title: col.header, dataKey: col.field }));
     }
 
+    /**
+     * @description Filtra la tabla globalmente.
+     * @param table La instancia de la tabla de PrimeNG.
+     * @param event El evento de entrada del campo de búsqueda.
+     */
     onGlobalFilter(table: Table, event: Event) {
         table.filterGlobal((event.target as HTMLInputElement).value, 'contains');
     }
 
+    /**
+     * @description Abre el diálogo para crear un nuevo producto.
+     */
     openNew() {
         this.product = {};
         this.submitted = false;
         this.productDialog = true;
     }
 
+    /**
+     * @description Abre el diálogo para editar un producto existente.
+     * @param product El producto a editar.
+     */
     editProduct(product: Product) {
         this.product = { ...product };
         this.productDialog = true;
     }
 
+    /**
+     * @description Elimina los productos seleccionados en la tabla.
+     * Muestra un diálogo de confirmación antes de eliminar.
+     */
     deleteSelectedProducts() {
         this.confirmationService.confirm({
             message: 'Are you sure you want to delete the selected products?',
@@ -298,11 +367,19 @@ export class Crud implements OnInit {
         });
     }
 
+    /**
+     * @description Oculta el diálogo de producto y restablece el estado de envío.
+     */
     hideDialog() {
         this.productDialog = false;
         this.submitted = false;
     }
 
+    /**
+     * @description Elimina un producto específico de la tabla.
+     * Muestra un diálogo de confirmación antes de eliminar.
+     * @param product El producto a eliminar.
+     */
     deleteProduct(product: Product) {
         this.confirmationService.confirm({
             message: 'Are you sure you want to delete ' + product.name + '?',
@@ -321,6 +398,11 @@ export class Crud implements OnInit {
         });
     }
 
+    /**
+     * @description Encuentra el índice de un producto en la lista por su ID.
+     * @param id El ID del producto a buscar.
+     * @returns El índice del producto, o -1 si no se encuentra.
+     */
     findIndexById(id: string): number {
         let index = -1;
         for (let i = 0; i < this.products().length; i++) {
@@ -333,6 +415,10 @@ export class Crud implements OnInit {
         return index;
     }
 
+    /**
+     * @description Genera un ID único para un nuevo producto.
+     * @returns Un ID de cadena generado aleatoriamente.
+     */
     createId(): string {
         let id = '';
         var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -342,6 +428,11 @@ export class Crud implements OnInit {
         return id;
     }
 
+    /**
+     * @description Obtiene la severidad de la etiqueta de estado de inventario.
+     * @param status El estado de inventario del producto.
+     * @returns La severidad correspondiente ('success', 'warn', 'danger', 'info').
+     */
     getSeverity(status: string) {
         switch (status) {
             case 'INSTOCK':
@@ -355,6 +446,10 @@ export class Crud implements OnInit {
         }
     }
 
+    /**
+     * @description Guarda un producto (nuevo o editado).
+     * Añade el producto a la lista o actualiza uno existente.
+     */
     saveProduct() {
         this.submitted = true;
         let _products = this.products();

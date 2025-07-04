@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 
+/**
+ * @description Componente de página vacía.
+ * Sirve como plantilla para crear nuevas páginas con contenido personalizado.
+ */
 @Component({
     selector: 'app-empty',
     standalone: true,

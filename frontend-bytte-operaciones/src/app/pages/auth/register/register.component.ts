@@ -1,13 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import {
-  FormBuilder,
-  FormGroup,
-  FormsModule,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
@@ -16,6 +10,10 @@ import { PasswordModule } from 'primeng/password';
 import { ToastModule } from 'primeng/toast';
 import { environment } from '../../../../environments/environment';
 
+/**
+ * @description Componente para el registro de nuevos usuarios.
+ * Permite a los usuarios registrarse utilizando un token de invitación.
+ */
 @Component({
   selector: 'app-register',
   imports: [
@@ -33,16 +31,34 @@ import { environment } from '../../../../environments/environment';
   styleUrl: './register.component.scss',
 })
 export class RegisterComponent {
+  /**
+   * @description Modelo de datos para el formulario de registro.
+   */
   model = {
     token: '',
     name: '',
     email: '',
     password: '',
   };
+  /**
+   * @description Indicador de estado de registro en curso.
+   */
   registering = false;
+  /**
+   * @description Mensaje de error a mostrar en caso de fallo en el registro.
+   */
   errorMsg = '';
+  /**
+   * @description Mensaje de éxito a mostrar después de un registro exitoso.
+   */
   successMsg = '';
 
+  /**
+   * @description Constructor del componente RegisterComponent.
+   * @param http Cliente HTTP para realizar peticiones al backend.
+   * @param router Servicio de enrutamiento de Angular para la navegación.
+   * @param route Servicio para acceder a los parámetros de la ruta activada.
+   */
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -56,6 +72,10 @@ export class RegisterComponent {
     });
   }
 
+  /**
+   * @description Maneja el envío del formulario de registro.
+   * Envía los datos del usuario al backend para su registro.
+   */
   onSubmit() {
     this.errorMsg = '';
     this.successMsg = '';

@@ -4,6 +4,10 @@ import { StyleClassModule } from 'primeng/styleclass';
 import { AppConfigurator } from './app.configurator';
 import { LayoutService } from '../service/layout.service';
 
+/**
+ * @description Componente flotante para la configuración rápida de la aplicación.
+ * Permite alternar entre el modo oscuro/claro y acceder al configurador de temas.
+ */
 @Component({
   selector: 'app-floating-configurator',
   imports: [ButtonModule, StyleClassModule, AppConfigurator],
@@ -34,10 +38,19 @@ import { LayoutService } from '../service/layout.service';
   `,
 })
 export class AppFloatingConfigurator {
+  /**
+   * @description Servicio de layout para gestionar la configuración de la interfaz.
+   */
   LayoutService = inject(LayoutService);
 
+  /**
+   * @description Indica si el tema oscuro está activo.
+   */
   isDarkTheme = computed(() => this.LayoutService.layoutConfig().darkTheme);
 
+  /**
+   * @description Alterna entre el modo oscuro y claro del tema.
+   */
   toggleDarkMode() {
     this.LayoutService.layoutConfig.update((state) => ({
       ...state,

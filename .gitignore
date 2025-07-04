@@ -5,3 +5,4 @@ package-lock.json
 # Environment files
 .env
 \"frontend-bytte-operaciones/.angular/cache/\" 
+\"frontend-bytte-operaciones/documentation/\" 

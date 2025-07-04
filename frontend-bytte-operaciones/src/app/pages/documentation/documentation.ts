@@ -1,6 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 
+/**
+ * @description Componente de documentación de la aplicación.
+ * Proporciona información sobre cómo empezar con el proyecto, su estructura, el menú, el servicio de layout y el uso de Tailwind CSS.
+ */
 @Component({
     selector: 'app-documentation',
     standalone: true,

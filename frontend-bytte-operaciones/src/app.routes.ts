@@ -46,6 +46,12 @@ export const appRoutes: Routes = [
         canActivate: [authGuard, roleGuard],
         data: { roles: ['admin', 'superadmin'] },
       },
+      {
+        path: 'facturacion-miid',
+        loadComponent: () => import('./app/components/facturacion-miid/facturacion-miid.component').then(m => m.FacturacionMiidComponent),
+        canActivate: [authGuard, roleGuard],
+        data: { roles: ['admin', 'superadmin'] },
+      },
     ],
   },
   { path: 'access', component: Access },

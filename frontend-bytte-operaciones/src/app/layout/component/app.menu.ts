@@ -4,6 +4,10 @@ import { RouterModule } from '@angular/router';
 import { MenuItem } from 'primeng/api';
 import { AppMenuitem } from './app.menuitem';
 
+/**
+ * @description Componente del menú principal de la aplicación.
+ * Renderiza los elementos del menú y sus submenús.
+ */
 @Component({
   selector: 'app-menu',
   standalone: true,
@@ -22,8 +26,15 @@ import { AppMenuitem } from './app.menuitem';
   </ul> `,
 })
 export class AppMenu {
+  /**
+   * @description Modelo de datos para los elementos del menú.
+   */
   model: MenuItem[] = [];
 
+  /**
+   * @description Hook del ciclo de vida de Angular que se ejecuta después de que el componente ha sido inicializado.
+   * Inicializa el modelo del menú con las opciones de navegación de la aplicación.
+   */
   ngOnInit() {
     this.model = [
       {
@@ -95,6 +106,11 @@ export class AppMenu {
             label: 'Usuarios',
             icon: 'pi pi-fw pi-users',
             routerLink: ['/users'],
+          },
+          {
+            label: 'Facturación MIID',
+            icon: 'pi pi-fw pi-file-excel',
+            routerLink: ['/facturacion-miid'],
           },
         ],
       },

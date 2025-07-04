@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+/**
+ * @description Widget que muestra las características destacadas de la aplicación en la página de aterrizaje.
+ */
 @Component({
     selector: 'features-widget',
     standalone: true,

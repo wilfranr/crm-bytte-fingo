@@ -22,8 +22,14 @@ const presets = {
   Nora,
 } as const;
 
+/**
+ * @description Tipo auxiliar para obtener las claves de un tipo.
+ */
 declare type KeyOfType<T> = keyof T extends infer U ? U : never;
 
+/**
+ * @description Interfaz que define la estructura de una superficie de color.
+ */
 declare type SurfacesType = {
   name?: string;
   palette?: {
@@ -42,6 +48,10 @@ declare type SurfacesType = {
   };
 };
 
+/**
+ * @description Componente para la configuración de la aplicación (temas, colores, modo de menú).
+ * Permite al usuario personalizar la apariencia de la aplicación.
+ */
 @Component({
   selector: 'app-configurator',
   standalone: true,
@@ -124,31 +134,63 @@ declare type SurfacesType = {
   },
 })
 export class AppConfigurator {
+  /**
+   * @description Instancia del Router de Angular.
+   */
   router = inject(Router);
 
+  /**
+   * @description Configuración de PrimeNG.
+   */
   config: PrimeNG = inject(PrimeNG);
 
+  /**
+   * @description Servicio de layout para gestionar la configuración de la interfaz.
+   */
   layoutService: LayoutService = inject(LayoutService);
 
+  /**
+   * @description ID de la plataforma para verificar si se ejecuta en el navegador.
+   */
   platformId = inject(PLATFORM_ID);
 
+  /**
+   * @description Instancia de PrimeNG.
+   */
   primeng = inject(PrimeNG);
 
+  /**
+   * @description Lista de presets de temas disponibles.
+   */
   presets = Object.keys(presets);
 
+  /**
+   * @description Señal que indica si se debe mostrar el botón de modo de menú.
+   * Se oculta en rutas de autenticación.
+   */
   showMenuModeButton = signal(!this.router.url.includes('auth'));
 
+  /**
+   * @description Opciones disponibles para el modo de menú.
+   */
   menuModeOptions = [
     { label: 'Static', value: 'static' },
     { label: 'Overlay', value: 'overlay' },
   ];
 
+  /**
+   * @description Hook del ciclo de vida de Angular que se ejecuta después de que el componente ha sido inicializado.
+   * Aplica el preset de tema inicial si se ejecuta en el navegador.
+   */
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)) {
       this.onPresetChange(this.layoutService.layoutConfig().preset);
     }
   }
 
+  /**
+   * @description Lista de superficies de color disponibles.
+   */
   surfaces: SurfacesType[] = [
     {
       name: 'slate',
@@ -288,18 +330,33 @@ export class AppConfigurator {
     },
   ];
 
+  /**
+   * @description Color primario seleccionado actualmente.
+   */
   selectedPrimaryColor = computed(() => {
     return this.layoutService.layoutConfig().primary;
   });
 
+  /**
+   * @description Color de superficie seleccionado actualmente.
+   */
   selectedSurfaceColor = computed(
     () => this.layoutService.layoutConfig().surface,
   );
 
+  /**
+   * @description Preset de tema seleccionado actualmente.
+   */
   selectedPreset = computed(() => this.layoutService.layoutConfig().preset);
 
+  /**
+   * @description Modo de menú seleccionado actualmente.
+   */
   menuMode = computed(() => this.layoutService.layoutConfig().menuMode);
 
+  /**
+   * @description Colores primarios disponibles basados en el preset actual.
+   */
   primaryColors = computed<SurfacesType[]>(() => {
     const presetPalette =
       presets[
@@ -320,6 +377,10 @@ export class AppConfigurator {
     return palettes;
   });
 
+  /**
+   * @description Obtiene la extensión del preset de tema para aplicar los colores.
+   * @returns Un objeto con la configuración semántica del tema.
+   */
   getPresetExt() {
     const color: SurfacesType =
       this.primaryColors().find(
@@ -454,6 +515,12 @@ export class AppConfigurator {
     }
   }
 
+  /**
+   * @description Actualiza los colores primarios o de superficie de la aplicación.
+   * @param event El evento del click.
+   * @param type El tipo de color a actualizar ('primary' o 'surface').
+   * @param color El objeto de color seleccionado.
+   */
   updateColors(event: any, type: string, color: any) {
     if (type === 'primary') {
       this.layoutService.layoutConfig.update((state) => ({
@@ -471,6 +538,11 @@ export class AppConfigurator {
     event.stopPropagation();
   }
 
+  /**
+   * @description Aplica el tema seleccionado (colores primarios o de superficie).
+   * @param type El tipo de color a aplicar ('primary' o 'surface').
+   * @param color El objeto de color seleccionado.
+   */
   applyTheme(type: string, color: any) {
     if (type === 'primary') {
       updatePreset(this.getPresetExt());
@@ -479,6 +551,11 @@ export class AppConfigurator {
     }
   }
 
+  /**
+   * @description Maneja el cambio de preset de tema.
+   * Actualiza la configuración del layout y aplica el nuevo preset.
+   * @param event El nombre del preset seleccionado.
+   */
   onPresetChange(event: any) {
     this.layoutService.layoutConfig.update((state) => ({
       ...state,
@@ -495,6 +572,10 @@ export class AppConfigurator {
       .use({ useDefaultOptions: true });
   }
 
+  /**
+   * @description Maneja el cambio del modo de menú.
+   * @param event El modo de menú seleccionado ('static' o 'overlay').
+   */
   onMenuModeChange(event: string) {
     this.layoutService.layoutConfig.update((prev) => ({
       ...prev,

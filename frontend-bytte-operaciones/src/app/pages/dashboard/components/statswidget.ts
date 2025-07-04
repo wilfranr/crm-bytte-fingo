@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+/**
+ * @description Widget que muestra estadísticas clave de la aplicación, como órdenes, ingresos, clientes y comentarios.
+ */
 @Component({
     standalone: true,
     selector: 'app-stats-widget',

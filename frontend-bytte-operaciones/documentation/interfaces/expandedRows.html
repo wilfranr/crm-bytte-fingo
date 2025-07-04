@@ -1,0 +1,806 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>frontend-bytte-operaciones documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">frontend-bytte-operaciones documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content interface">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Interfaces</li>
+  <li class="breadcrumb-item"
+  >
+  expandedRows</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" 
+                class="nav-link"
+                
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/app/pages/uikit/tabledemo.ts</code>
+        </p>
+
+
+
+
+
+
+            <section data-compodoc="block-indexables">
+    <h3 id="inputs">Indexable</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <code>[key: string]:        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/pages/uikit/tabledemo.ts:22</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, ElementRef, OnInit, ViewChild } from &#x27;@angular/core&#x27;;
+import { ConfirmationService, MessageService } from &#x27;primeng/api&#x27;;
+import { InputTextModule } from &#x27;primeng/inputtext&#x27;;
+import { MultiSelectModule } from &#x27;primeng/multiselect&#x27;;
+import { SelectModule } from &#x27;primeng/select&#x27;;
+import { SliderModule } from &#x27;primeng/slider&#x27;;
+import { Table, TableModule } from &#x27;primeng/table&#x27;;
+import { ProgressBarModule } from &#x27;primeng/progressbar&#x27;;
+import { ToggleButtonModule } from &#x27;primeng/togglebutton&#x27;;
+import { ToastModule } from &#x27;primeng/toast&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { FormsModule } from &#x27;@angular/forms&#x27;;
+import { ButtonModule } from &#x27;primeng/button&#x27;;
+import { RatingModule } from &#x27;primeng/rating&#x27;;
+import { RippleModule } from &#x27;primeng/ripple&#x27;;
+import { InputIconModule } from &#x27;primeng/inputicon&#x27;;
+import { IconFieldModule } from &#x27;primeng/iconfield&#x27;;
+import { TagModule } from &#x27;primeng/tag&#x27;;
+import { Customer, CustomerService, Representative } from &#x27;../service/customer.service&#x27;;
+import { Product, ProductService } from &#x27;../service/product.service&#x27;;
+
+interface expandedRows {
+    [key: string]: boolean;
+}
+
+@Component({
+    selector: &#x27;app-table-demo&#x27;,
+    standalone: true,
+    imports: [
+        TableModule,
+        MultiSelectModule,
+        SelectModule,
+        InputIconModule,
+        TagModule,
+        InputTextModule,
+        SliderModule,
+        ProgressBarModule,
+        ToggleButtonModule,
+        ToastModule,
+        CommonModule,
+        FormsModule,
+        ButtonModule,
+        RatingModule,
+        RippleModule,
+        IconFieldModule
+    ],
+    template: &#x60; &lt;div class&#x3D;&quot;card&quot;&gt;
+            &lt;div class&#x3D;&quot;font-semibold text-xl mb-4&quot;&gt;Filtering&lt;/div&gt;
+            &lt;p-table
+                #dt1
+                [value]&#x3D;&quot;customers1&quot;
+                dataKey&#x3D;&quot;id&quot;
+                [rows]&#x3D;&quot;10&quot;
+                [loading]&#x3D;&quot;loading&quot;
+                [rowHover]&#x3D;&quot;true&quot;
+                [showGridlines]&#x3D;&quot;true&quot;
+                [paginator]&#x3D;&quot;true&quot;
+                [globalFilterFields]&#x3D;&quot;[&#x27;name&#x27;, &#x27;country.name&#x27;, &#x27;representative.name&#x27;, &#x27;status&#x27;]&quot;
+                responsiveLayout&#x3D;&quot;scroll&quot;
+            &gt;
+                &lt;ng-template #caption&gt;
+                    &lt;div class&#x3D;&quot;flex justify-between items-center flex-column sm:flex-row&quot;&gt;
+                        &lt;button pButton label&#x3D;&quot;Clear&quot; class&#x3D;&quot;p-button-outlined mb-2&quot; icon&#x3D;&quot;pi pi-filter-slash&quot; (click)&#x3D;&quot;clear(dt1)&quot;&gt;&lt;/button&gt;
+                        &lt;p-iconfield iconPosition&#x3D;&quot;left&quot; class&#x3D;&quot;ml-auto&quot;&gt;
+                            &lt;p-inputicon&gt;
+                                &lt;i class&#x3D;&quot;pi pi-search&quot;&gt;&lt;/i&gt;
+                            &lt;/p-inputicon&gt;
+                            &lt;input pInputText type&#x3D;&quot;text&quot; (input)&#x3D;&quot;onGlobalFilter(dt1, $event)&quot; placeholder&#x3D;&quot;Search keyword&quot; /&gt;
+                        &lt;/p-iconfield&gt;
+                    &lt;/div&gt;
+                &lt;/ng-template&gt;
+                &lt;ng-template #header&gt;
+                    &lt;tr&gt;
+                        &lt;th style&#x3D;&quot;min-width: 12rem&quot;&gt;
+                            &lt;div class&#x3D;&quot;flex justify-between items-center&quot;&gt;
+                                Name
+                                &lt;p-columnFilter type&#x3D;&quot;text&quot; field&#x3D;&quot;name&quot; display&#x3D;&quot;menu&quot; placeholder&#x3D;&quot;Search by name&quot;&gt;&lt;/p-columnFilter&gt;
+                            &lt;/div&gt;
+                        &lt;/th&gt;
+                        &lt;th style&#x3D;&quot;min-width: 12rem&quot;&gt;
+                            &lt;div class&#x3D;&quot;flex justify-between items-center&quot;&gt;
+                                Country
+                                &lt;p-columnFilter type&#x3D;&quot;text&quot; field&#x3D;&quot;country.name&quot; display&#x3D;&quot;menu&quot; placeholder&#x3D;&quot;Search by country&quot;&gt;&lt;/p-columnFilter&gt;
+                            &lt;/div&gt;
+                        &lt;/th&gt;
+                        &lt;th style&#x3D;&quot;min-width: 14rem&quot;&gt;
+                            &lt;div class&#x3D;&quot;flex justify-between items-center&quot;&gt;
+                                Agent
+                                &lt;p-columnFilter field&#x3D;&quot;representative&quot; matchMode&#x3D;&quot;in&quot; display&#x3D;&quot;menu&quot; [showMatchModes]&#x3D;&quot;false&quot; [showOperator]&#x3D;&quot;false&quot; [showAddButton]&#x3D;&quot;false&quot;&gt;
+                                    &lt;ng-template #header&gt;
+                                        &lt;div class&#x3D;&quot;px-3 pt-3 pb-0&quot;&gt;
+                                            &lt;span class&#x3D;&quot;font-bold&quot;&gt;Agent Picker&lt;/span&gt;
+                                        &lt;/div&gt;
+                                    &lt;/ng-template&gt;
+                                    &lt;ng-template #filter let-value let-filter&#x3D;&quot;filterCallback&quot;&gt;
+                                        &lt;p-multiselect [ngModel]&#x3D;&quot;value&quot; [options]&#x3D;&quot;representatives&quot; placeholder&#x3D;&quot;Any&quot; (onChange)&#x3D;&quot;filter($event.value)&quot; optionLabel&#x3D;&quot;name&quot; styleClass&#x3D;&quot;w-full&quot;&gt;
+                                            &lt;ng-template let-option #item&gt;
+                                                &lt;div class&#x3D;&quot;flex items-center gap-2 w-44&quot;&gt;
+                                                    &lt;img [alt]&#x3D;&quot;option.label&quot; src&#x3D;&quot;https://primefaces.org/cdn/primeng/images/demo/avatar/{{ option.image }}&quot; width&#x3D;&quot;32&quot; /&gt;
+                                                    &lt;span&gt;{{ option.name }}&lt;/span&gt;
+                                                &lt;/div&gt;
+                                            &lt;/ng-template&gt;
+                                        &lt;/p-multiselect&gt;
+                                    &lt;/ng-template&gt;
+                                &lt;/p-columnFilter&gt;
+                            &lt;/div&gt;
+                        &lt;/th&gt;
+                        &lt;th style&#x3D;&quot;min-width: 10rem&quot;&gt;
+                            &lt;div class&#x3D;&quot;flex justify-between items-center&quot;&gt;
+                                Date
+                                &lt;p-columnFilter type&#x3D;&quot;date&quot; field&#x3D;&quot;date&quot; display&#x3D;&quot;menu&quot; placeholder&#x3D;&quot;mm/dd/yyyy&quot;&gt;&lt;/p-columnFilter&gt;
+                            &lt;/div&gt;
+                        &lt;/th&gt;
+                        &lt;th style&#x3D;&quot;min-width: 10rem&quot;&gt;
+                            &lt;div class&#x3D;&quot;flex justify-between items-center&quot;&gt;
+                                Balance
+                                &lt;p-columnFilter type&#x3D;&quot;numeric&quot; field&#x3D;&quot;balance&quot; display&#x3D;&quot;menu&quot; currency&#x3D;&quot;USD&quot;&gt;&lt;/p-columnFilter&gt;
+                            &lt;/div&gt;
+                        &lt;/th&gt;
+                        &lt;th style&#x3D;&quot;min-width: 12rem&quot;&gt;
+                            &lt;div class&#x3D;&quot;flex justify-between items-center&quot;&gt;
+                                Status
+                                &lt;p-columnFilter field&#x3D;&quot;status&quot; matchMode&#x3D;&quot;equals&quot; display&#x3D;&quot;menu&quot;&gt;
+                                    &lt;ng-template #filter let-value let-filter&#x3D;&quot;filterCallback&quot;&gt;
+                                        &lt;p-select [ngModel]&#x3D;&quot;value&quot; [options]&#x3D;&quot;statuses&quot; (onChange)&#x3D;&quot;filter($event.value)&quot; placeholder&#x3D;&quot;Any&quot; [style]&#x3D;&quot;{ &#x27;min-width&#x27;: &#x27;12rem&#x27; }&quot;&gt;
+                                            &lt;ng-template let-option #item&gt;
+                                                &lt;span [class]&#x3D;&quot;&#x27;customer-badge status-&#x27; + option.value&quot;&gt;{{ option.label }}&lt;/span&gt;
+                                            &lt;/ng-template&gt;
+                                        &lt;/p-select&gt;
+                                    &lt;/ng-template&gt;
+                                &lt;/p-columnFilter&gt;
+                            &lt;/div&gt;
+                        &lt;/th&gt;
+                        &lt;th style&#x3D;&quot;min-width: 12rem&quot;&gt;
+                            &lt;div class&#x3D;&quot;flex justify-between items-center&quot;&gt;
+                                Activity
+                                &lt;p-columnFilter field&#x3D;&quot;activity&quot; matchMode&#x3D;&quot;between&quot; display&#x3D;&quot;menu&quot; [showMatchModes]&#x3D;&quot;false&quot; [showOperator]&#x3D;&quot;false&quot; [showAddButton]&#x3D;&quot;false&quot;&gt;
+                                    &lt;ng-template #filter let-filter&#x3D;&quot;filterCallback&quot;&gt;
+                                        &lt;p-slider [ngModel]&#x3D;&quot;activityValues&quot; [range]&#x3D;&quot;true&quot; (onSlideEnd)&#x3D;&quot;filter($event.values)&quot; styleClass&#x3D;&quot;m-3&quot; [style]&#x3D;&quot;{ &#x27;min-width&#x27;: &#x27;12rem&#x27; }&quot;&gt;&lt;/p-slider&gt;
+                                        &lt;div class&#x3D;&quot;flex items-center justify-between px-2&quot;&gt;
+                                            &lt;span&gt;{{ activityValues[0] }}&lt;/span&gt;
+                                            &lt;span&gt;{{ activityValues[1] }}&lt;/span&gt;
+                                        &lt;/div&gt;
+                                    &lt;/ng-template&gt;
+                                &lt;/p-columnFilter&gt;
+                            &lt;/div&gt;
+                        &lt;/th&gt;
+                        &lt;th style&#x3D;&quot;min-width: 8rem&quot;&gt;
+                            &lt;div class&#x3D;&quot;flex justify-between items-center&quot;&gt;
+                                Verified
+                                &lt;p-columnFilter type&#x3D;&quot;boolean&quot; field&#x3D;&quot;verified&quot; display&#x3D;&quot;menu&quot;&gt;&lt;/p-columnFilter&gt;
+                            &lt;/div&gt;
+                        &lt;/th&gt;
+                    &lt;/tr&gt;
+                &lt;/ng-template&gt;
+                &lt;ng-template #body let-customer&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;
+                            {{ customer.name }}
+                        &lt;/td&gt;
+                        &lt;td&gt;
+                            &lt;div class&#x3D;&quot;flex items-center gap-2&quot;&gt;
+                                &lt;img src&#x3D;&quot;https://primefaces.org/cdn/primeng/images/demo/flag/flag_placeholder.png&quot; [class]&#x3D;&quot;&#x27;flag flag-&#x27; + customer.country.code&quot; width&#x3D;&quot;30&quot; /&gt;
+                                &lt;span&gt;{{ customer.country.name }}&lt;/span&gt;
+                            &lt;/div&gt;
+                        &lt;/td&gt;
+                        &lt;td&gt;
+                            &lt;div class&#x3D;&quot;flex items-center gap-2&quot;&gt;
+                                &lt;img [alt]&#x3D;&quot;customer.representative.name&quot; src&#x3D;&quot;https://primefaces.org/cdn/primeng/images/demo/avatar/{{ customer.representative.image }}&quot; width&#x3D;&quot;32&quot; style&#x3D;&quot;vertical-align: middle&quot; /&gt;
+                                &lt;span class&#x3D;&quot;image-text&quot;&gt;{{ customer.representative.name }}&lt;/span&gt;
+                            &lt;/div&gt;
+                        &lt;/td&gt;
+                        &lt;td&gt;
+                            {{ customer.date | date: &#x27;MM/dd/yyyy&#x27; }}
+                        &lt;/td&gt;
+                        &lt;td&gt;
+                            {{ customer.balance | currency: &#x27;USD&#x27; : &#x27;symbol&#x27; }}
+                        &lt;/td&gt;
+                        &lt;td&gt;
+                            &lt;p-tag [value]&#x3D;&quot;customer.status.toLowerCase()&quot; [severity]&#x3D;&quot;getSeverity(customer.status.toLowerCase())&quot; styleClass&#x3D;&quot;dark:!bg-surface-900&quot; /&gt;
+                        &lt;/td&gt;
+                        &lt;td&gt;
+                            &lt;p-progressbar [value]&#x3D;&quot;customer.activity&quot; [showValue]&#x3D;&quot;false&quot; [style]&#x3D;&quot;{ height: &#x27;0.5rem&#x27; }&quot; /&gt;
+                        &lt;/td&gt;
+                        &lt;td class&#x3D;&quot;text-center&quot;&gt;
+                            &lt;p-tag [value]&#x3D;&quot;customer.status.toLowerCase()&quot; [severity]&#x3D;&quot;getSeverity(customer.status.toLowerCase())&quot; styleClass&#x3D;&quot;dark:!bg-surface-900&quot; /&gt;
+                        &lt;/td&gt;
+                    &lt;/tr&gt;
+                &lt;/ng-template&gt;
+                &lt;ng-template #emptymessage&gt;
+                    &lt;tr&gt;
+                        &lt;td colspan&#x3D;&quot;8&quot;&gt;No customers found.&lt;/td&gt;
+                    &lt;/tr&gt;
+                &lt;/ng-template&gt;
+                &lt;ng-template #loadingbody&gt;
+                    &lt;tr&gt;
+                        &lt;td colspan&#x3D;&quot;8&quot;&gt;Loading customers data. Please wait.&lt;/td&gt;
+                    &lt;/tr&gt;
+                &lt;/ng-template&gt;
+            &lt;/p-table&gt;
+        &lt;/div&gt;
+
+        &lt;div class&#x3D;&quot;card&quot;&gt;
+            &lt;div class&#x3D;&quot;font-semibold text-xl mb-4&quot;&gt;Frozen Columns&lt;/div&gt;
+            &lt;p-togglebutton [(ngModel)]&#x3D;&quot;balanceFrozen&quot; [onIcon]&#x3D;&quot;&#x27;pi pi-lock&#x27;&quot; offIcon&#x3D;&quot;pi pi-lock-open&quot; [onLabel]&#x3D;&quot;&#x27;Balance&#x27;&quot; offLabel&#x3D;&quot;Balance&quot; /&gt;
+
+            &lt;p-table [value]&#x3D;&quot;customers2&quot; [scrollable]&#x3D;&quot;true&quot; scrollHeight&#x3D;&quot;400px&quot; styleClass&#x3D;&quot;mt-4&quot;&gt;
+                &lt;ng-template #header&gt;
+                    &lt;tr&gt;
+                        &lt;th style&#x3D;&quot;min-width:200px&quot; pFrozenColumn class&#x3D;&quot;font-bold&quot;&gt;Name&lt;/th&gt;
+                        &lt;th style&#x3D;&quot;min-width:100px&quot;&gt;Id&lt;/th&gt;
+                        &lt;th style&#x3D;&quot;min-width:200px&quot;&gt;Country&lt;/th&gt;
+                        &lt;th style&#x3D;&quot;min-width:200px&quot;&gt;Date&lt;/th&gt;
+                        &lt;th style&#x3D;&quot;min-width:200px&quot;&gt;Company&lt;/th&gt;
+                        &lt;th style&#x3D;&quot;min-width:200px&quot;&gt;Status&lt;/th&gt;
+                        &lt;th style&#x3D;&quot;min-width:200px&quot;&gt;Activity&lt;/th&gt;
+                        &lt;th style&#x3D;&quot;min-width:200px&quot;&gt;Representative&lt;/th&gt;
+                        &lt;th style&#x3D;&quot;min-width:200px&quot; alignFrozen&#x3D;&quot;right&quot; pFrozenColumn [frozen]&#x3D;&quot;balanceFrozen&quot; [ngClass]&#x3D;&quot;{ &#x27;font-bold&#x27;: balanceFrozen }&quot;&gt;Balance&lt;/th&gt;
+                    &lt;/tr&gt;
+                &lt;/ng-template&gt;
+                &lt;ng-template #body let-customer&gt;
+                    &lt;tr&gt;
+                        &lt;td pFrozenColumn class&#x3D;&quot;font-bold&quot;&gt;{{ customer.name }}&lt;/td&gt;
+                        &lt;td style&#x3D;&quot;min-width:100px&quot;&gt;{{ customer.id }}&lt;/td&gt;
+                        &lt;td&gt;{{ customer.country.name }}&lt;/td&gt;
+                        &lt;td&gt;{{ customer.date }}&lt;/td&gt;
+                        &lt;td&gt;{{ customer.company }}&lt;/td&gt;
+                        &lt;td&gt;{{ customer.status }}&lt;/td&gt;
+                        &lt;td&gt;{{ customer.activity }}&lt;/td&gt;
+                        &lt;td&gt;{{ customer.representative.name }}&lt;/td&gt;
+                        &lt;td alignFrozen&#x3D;&quot;right&quot; pFrozenColumn [frozen]&#x3D;&quot;balanceFrozen&quot; [ngClass]&#x3D;&quot;{ &#x27;font-bold&#x27;: balanceFrozen }&quot;&gt;
+                            {{ formatCurrency(customer.balance) }}
+                        &lt;/td&gt;
+                    &lt;/tr&gt;
+                &lt;/ng-template&gt;
+            &lt;/p-table&gt;
+        &lt;/div&gt;
+
+        &lt;div class&#x3D;&quot;card&quot;&gt;
+            &lt;div class&#x3D;&quot;font-semibold text-xl mb-4&quot;&gt;Row Expansion&lt;/div&gt;
+            &lt;p-table [value]&#x3D;&quot;products&quot; dataKey&#x3D;&quot;name&quot; [expandedRowKeys]&#x3D;&quot;expandedRows&quot; responsiveLayout&#x3D;&quot;scroll&quot;&gt;
+                &lt;ng-template #caption&gt;
+                    &lt;button pButton icon&#x3D;&quot;pi pi-fw {{ isExpanded ? &#x27;pi-minus&#x27; : &#x27;pi-plus&#x27; }}&quot; label&#x3D;&quot;{{ isExpanded ? &#x27;Collapse All&#x27; : &#x27;Expand All&#x27; }}&quot; (click)&#x3D;&quot;expandAll()&quot;&gt;&lt;/button&gt;
+                    &lt;div class&#x3D;&quot;flex table-header&quot;&gt;&lt;/div&gt;
+                &lt;/ng-template&gt;
+                &lt;ng-template #header&gt;
+                    &lt;tr&gt;
+                        &lt;th style&#x3D;&quot;width: 3rem&quot;&gt;&lt;/th&gt;
+                        &lt;th pSortableColumn&#x3D;&quot;name&quot;&gt;
+                            Name
+                            &lt;p-sortIcon field&#x3D;&quot;name&quot;&gt;&lt;/p-sortIcon&gt;
+                        &lt;/th&gt;
+                        &lt;th&gt;Image&lt;/th&gt;
+                        &lt;th pSortableColumn&#x3D;&quot;price&quot;&gt;
+                            Price
+                            &lt;p-sortIcon field&#x3D;&quot;price&quot;&gt;&lt;/p-sortIcon&gt;
+                        &lt;/th&gt;
+                        &lt;th pSortableColumn&#x3D;&quot;category&quot;&gt;
+                            Category
+                            &lt;p-sortIcon field&#x3D;&quot;category&quot;&gt;&lt;/p-sortIcon&gt;
+                        &lt;/th&gt;
+                        &lt;th pSortableColumn&#x3D;&quot;rating&quot;&gt;
+                            Reviews
+                            &lt;p-sortIcon field&#x3D;&quot;rating&quot;&gt;&lt;/p-sortIcon&gt;
+                        &lt;/th&gt;
+                        &lt;th pSortableColumn&#x3D;&quot;inventoryStatus&quot;&gt;
+                            Status
+                            &lt;p-sortIcon field&#x3D;&quot;inventoryStatus&quot;&gt;&lt;/p-sortIcon&gt;
+                        &lt;/th&gt;
+                    &lt;/tr&gt;
+                &lt;/ng-template&gt;
+                &lt;ng-template #body let-product let-expanded&#x3D;&quot;expanded&quot;&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;
+                            &lt;button type&#x3D;&quot;button&quot; pButton pRipple [pRowToggler]&#x3D;&quot;product&quot; class&#x3D;&quot;p-button-text p-button-rounded p-button-plain&quot; [icon]&#x3D;&quot;expanded ? &#x27;pi pi-chevron-down&#x27; : &#x27;pi pi-chevron-right&#x27;&quot;&gt;&lt;/button&gt;
+                        &lt;/td&gt;
+                        &lt;td style&#x3D;&quot;min-width: 12rem;&quot;&gt;{{ product.name }}&lt;/td&gt;
+                        &lt;td&gt;&lt;img [src]&#x3D;&quot;&#x27;https://primefaces.org/cdn/primeng/images/demo/product/&#x27; + product.image&quot; [alt]&#x3D;&quot;product.name&quot; width&#x3D;&quot;50&quot; class&#x3D;&quot;shadow-lg&quot; /&gt;&lt;/td&gt;
+                        &lt;td style&#x3D;&quot;min-width: 8rem;&quot;&gt;{{ product.price | currency: &#x27;USD&#x27; }}&lt;/td&gt;
+                        &lt;td style&#x3D;&quot;min-width: 10rem;&quot;&gt;{{ product.category }}&lt;/td&gt;
+                        &lt;td style&#x3D;&quot;min-width: 10rem;&quot;&gt;
+                            &lt;p-rating [ngModel]&#x3D;&quot;product.rating&quot; [readonly]&#x3D;&quot;true&quot;&gt;&lt;/p-rating&gt;
+                        &lt;/td&gt;
+                        &lt;td&gt;
+                            &lt;p-tag [value]&#x3D;&quot;product.inventoryStatus.toLowerCase()&quot; [severity]&#x3D;&quot;getSeverity(product.inventoryStatus)&quot; styleClass&#x3D;&quot;dark:!bg-surface-900&quot; /&gt;
+                        &lt;/td&gt;
+                    &lt;/tr&gt;
+                &lt;/ng-template&gt;
+                &lt;ng-template #rowexpansion let-product&gt;
+                    &lt;tr&gt;
+                        &lt;td colspan&#x3D;&quot;7&quot;&gt;
+                            &lt;div class&#x3D;&quot;p-3&quot;&gt;
+                                &lt;p-table [value]&#x3D;&quot;product.orders&quot; dataKey&#x3D;&quot;id&quot; responsiveLayout&#x3D;&quot;scroll&quot;&gt;
+                                    &lt;ng-template #header&gt;
+                                        &lt;tr&gt;
+                                            &lt;th pSortableColumn&#x3D;&quot;id&quot;&gt;
+                                                Id
+                                                &lt;p-sortIcon field&#x3D;&quot;price&quot;&gt;&lt;/p-sortIcon&gt;
+                                            &lt;/th&gt;
+                                            &lt;th pSortableColumn&#x3D;&quot;customer&quot;&gt;
+                                                Customer
+                                                &lt;p-sortIcon field&#x3D;&quot;customer&quot;&gt;&lt;/p-sortIcon&gt;
+                                            &lt;/th&gt;
+                                            &lt;th pSortableColumn&#x3D;&quot;date&quot;&gt;
+                                                Date
+                                                &lt;p-sortIcon field&#x3D;&quot;date&quot;&gt;&lt;/p-sortIcon&gt;
+                                            &lt;/th&gt;
+                                            &lt;th pSortableColumn&#x3D;&quot;amount&quot;&gt;
+                                                Amount
+                                                &lt;p-sortIcon field&#x3D;&quot;amount&quot;&gt;&lt;/p-sortIcon&gt;
+                                            &lt;/th&gt;
+                                            &lt;th pSortableColumn&#x3D;&quot;stats&quot;&gt;
+                                                Status
+                                                &lt;p-sortIcon field&#x3D;&quot;status&quot;&gt;&lt;/p-sortIcon&gt;
+                                            &lt;/th&gt;
+                                            &lt;th style&#x3D;&quot;width: 4rem&quot;&gt;&lt;/th&gt;
+                                        &lt;/tr&gt;
+                                    &lt;/ng-template&gt;
+                                    &lt;ng-template #body let-order&gt;
+                                        &lt;tr&gt;
+                                            &lt;td&gt;{{ order.id }}&lt;/td&gt;
+                                            &lt;td&gt;{{ order.customer }}&lt;/td&gt;
+                                            &lt;td&gt;{{ order.date }}&lt;/td&gt;
+                                            &lt;td&gt;{{ order.amount | currency: &#x27;USD&#x27; }}&lt;/td&gt;
+                                            &lt;td&gt;
+                                                &lt;span [class]&#x3D;&quot;&#x27;order-badge order-&#x27; + order.status.toLowerCase()&quot;&gt;{{ order.status }}&lt;/span&gt;
+                                            &lt;/td&gt;
+                                            &lt;td&gt;
+                                                &lt;p-button type&#x3D;&quot;button&quot; icon&#x3D;&quot;pi pi-search&quot;&gt;&lt;/p-button&gt;
+                                            &lt;/td&gt;
+                                        &lt;/tr&gt;
+                                    &lt;/ng-template&gt;
+                                    &lt;ng-template #emptymessage&gt;
+                                        &lt;tr&gt;
+                                            &lt;td colspan&#x3D;&quot;6&quot;&gt;There are no order for this product yet.&lt;/td&gt;
+                                        &lt;/tr&gt;
+                                    &lt;/ng-template&gt;
+                                &lt;/p-table&gt;
+                            &lt;/div&gt;
+                        &lt;/td&gt;
+                    &lt;/tr&gt;
+                &lt;/ng-template&gt;
+            &lt;/p-table&gt;
+        &lt;/div&gt;
+
+        &lt;div class&#x3D;&quot;card&quot;&gt;
+            &lt;div class&#x3D;&quot;font-semibold text-xl mb-4&quot;&gt;Grouping&lt;/div&gt;
+            &lt;p-table [value]&#x3D;&quot;customers3&quot; sortField&#x3D;&quot;representative.name&quot; sortMode&#x3D;&quot;single&quot; [scrollable]&#x3D;&quot;true&quot; scrollHeight&#x3D;&quot;400px&quot; rowGroupMode&#x3D;&quot;subheader&quot; groupRowsBy&#x3D;&quot;representative.name&quot; [tableStyle]&#x3D;&quot;{ &#x27;min-width&#x27;: &#x27;60rem&#x27; }&quot;&gt;
+                &lt;ng-template #header&gt;
+                    &lt;tr&gt;
+                        &lt;th&gt;Name&lt;/th&gt;
+                        &lt;th&gt;Country&lt;/th&gt;
+                        &lt;th&gt;Company&lt;/th&gt;
+                        &lt;th&gt;Status&lt;/th&gt;
+                        &lt;th&gt;Date&lt;/th&gt;
+                    &lt;/tr&gt;
+                &lt;/ng-template&gt;
+                &lt;ng-template #groupheader let-customer&gt;
+                    &lt;tr pRowGroupHeader&gt;
+                        &lt;td colspan&#x3D;&quot;5&quot;&gt;
+                            &lt;div class&#x3D;&quot;flex items-center gap-2&quot;&gt;
+                                &lt;img [alt]&#x3D;&quot;customer.representative.name&quot; src&#x3D;&quot;https://primefaces.org/cdn/primeng/images/demo/avatar/{{ customer.representative.image }}&quot; width&#x3D;&quot;32&quot; style&#x3D;&quot;vertical-align: middle&quot; /&gt;
+                                &lt;span class&#x3D;&quot;font-bold&quot;&gt;{{ customer.representative.name }}&lt;/span&gt;
+                            &lt;/div&gt;
+                        &lt;/td&gt;
+                    &lt;/tr&gt;
+                &lt;/ng-template&gt;
+                &lt;ng-template #groupfooter let-customer&gt;
+                    &lt;tr&gt;
+                        &lt;td colspan&#x3D;&quot;5&quot; class&#x3D;&quot;text-right font-bold pr-12&quot;&gt;Total Customers: {{ calculateCustomerTotal(customer.representative.name) }}&lt;/td&gt;
+                    &lt;/tr&gt;
+                &lt;/ng-template&gt;
+                &lt;ng-template #body let-customer let-rowIndex&#x3D;&quot;rowIndex&quot;&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;
+                            {{ customer.name }}
+                        &lt;/td&gt;
+                        &lt;td&gt;
+                            &lt;div class&#x3D;&quot;flex items-center gap-2&quot;&gt;
+                                &lt;img src&#x3D;&quot;https://primefaces.org/cdn/primeng/images/demo/flag/flag_placeholder.png&quot; [class]&#x3D;&quot;&#x27;flag flag-&#x27; + customer.country.code&quot; style&#x3D;&quot;width: 20px&quot; /&gt;
+                                &lt;span&gt;{{ customer.country.name }}&lt;/span&gt;
+                            &lt;/div&gt;
+                        &lt;/td&gt;
+                        &lt;td&gt;
+                            {{ customer.company }}
+                        &lt;/td&gt;
+                        &lt;td&gt;
+                            &lt;p-tag [value]&#x3D;&quot;customer.status&quot; [severity]&#x3D;&quot;getSeverity(customer.status)&quot; /&gt;
+                        &lt;/td&gt;
+                        &lt;td&gt;
+                            {{ customer.date }}
+                        &lt;/td&gt;
+                    &lt;/tr&gt;
+                &lt;/ng-template&gt;
+            &lt;/p-table&gt;
+        &lt;/div&gt;&#x60;,
+    styles: &#x60;
+        .p-datatable-frozen-tbody {
+            font-weight: bold;
+        }
+
+        .p-datatable-scrollable .p-frozen-column {
+            font-weight: bold;
+        }
+    &#x60;,
+    providers: [ConfirmationService, MessageService, CustomerService, ProductService]
+})
+export class TableDemo implements OnInit {
+    customers1: Customer[] &#x3D; [];
+
+    customers2: Customer[] &#x3D; [];
+
+    customers3: Customer[] &#x3D; [];
+
+    selectedCustomers1: Customer[] &#x3D; [];
+
+    selectedCustomer: Customer &#x3D; {};
+
+    representatives: Representative[] &#x3D; [];
+
+    statuses: any[] &#x3D; [];
+
+    products: Product[] &#x3D; [];
+
+    rowGroupMetadata: any;
+
+    expandedRows: expandedRows &#x3D; {};
+
+    activityValues: number[] &#x3D; [0, 100];
+
+    isExpanded: boolean &#x3D; false;
+
+    balanceFrozen: boolean &#x3D; false;
+
+    loading: boolean &#x3D; true;
+
+    @ViewChild(&#x27;filter&#x27;) filter!: ElementRef;
+
+    constructor(
+        private customerService: CustomerService,
+        private productService: ProductService
+    ) {}
+
+    ngOnInit() {
+        this.customerService.getCustomersLarge().then((customers) &#x3D;&gt; {
+            this.customers1 &#x3D; customers;
+            this.loading &#x3D; false;
+
+            // @ts-ignore
+            this.customers1.forEach((customer) &#x3D;&gt; (customer.date &#x3D; new Date(customer.date)));
+        });
+        this.customerService.getCustomersMedium().then((customers) &#x3D;&gt; (this.customers2 &#x3D; customers));
+        this.customerService.getCustomersLarge().then((customers) &#x3D;&gt; (this.customers3 &#x3D; customers));
+        this.productService.getProductsWithOrdersSmall().then((data) &#x3D;&gt; (this.products &#x3D; data));
+
+        this.representatives &#x3D; [
+            { name: &#x27;Amy Elsner&#x27;, image: &#x27;amyelsner.png&#x27; },
+            { name: &#x27;Anna Fali&#x27;, image: &#x27;annafali.png&#x27; },
+            { name: &#x27;Asiya Javayant&#x27;, image: &#x27;asiyajavayant.png&#x27; },
+            { name: &#x27;Bernardo Dominic&#x27;, image: &#x27;bernardodominic.png&#x27; },
+            { name: &#x27;Elwin Sharvill&#x27;, image: &#x27;elwinsharvill.png&#x27; },
+            { name: &#x27;Ioni Bowcher&#x27;, image: &#x27;ionibowcher.png&#x27; },
+            { name: &#x27;Ivan Magalhaes&#x27;, image: &#x27;ivanmagalhaes.png&#x27; },
+            { name: &#x27;Onyama Limba&#x27;, image: &#x27;onyamalimba.png&#x27; },
+            { name: &#x27;Stephen Shaw&#x27;, image: &#x27;stephenshaw.png&#x27; },
+            { name: &#x27;XuXue Feng&#x27;, image: &#x27;xuxuefeng.png&#x27; }
+        ];
+
+        this.statuses &#x3D; [
+            { label: &#x27;Unqualified&#x27;, value: &#x27;unqualified&#x27; },
+            { label: &#x27;Qualified&#x27;, value: &#x27;qualified&#x27; },
+            { label: &#x27;New&#x27;, value: &#x27;new&#x27; },
+            { label: &#x27;Negotiation&#x27;, value: &#x27;negotiation&#x27; },
+            { label: &#x27;Renewal&#x27;, value: &#x27;renewal&#x27; },
+            { label: &#x27;Proposal&#x27;, value: &#x27;proposal&#x27; }
+        ];
+    }
+
+    onSort() {
+        this.updateRowGroupMetaData();
+    }
+
+    updateRowGroupMetaData() {
+        this.rowGroupMetadata &#x3D; {};
+
+        if (this.customers3) {
+            for (let i &#x3D; 0; i &lt; this.customers3.length; i++) {
+                const rowData &#x3D; this.customers3[i];
+                const representativeName &#x3D; rowData?.representative?.name || &#x27;&#x27;;
+
+                if (i &#x3D;&#x3D;&#x3D; 0) {
+                    this.rowGroupMetadata[representativeName] &#x3D; { index: 0, size: 1 };
+                } else {
+                    const previousRowData &#x3D; this.customers3[i - 1];
+                    const previousRowGroup &#x3D; previousRowData?.representative?.name;
+                    if (representativeName &#x3D;&#x3D;&#x3D; previousRowGroup) {
+                        this.rowGroupMetadata[representativeName].size++;
+                    } else {
+                        this.rowGroupMetadata[representativeName] &#x3D; { index: i, size: 1 };
+                    }
+                }
+            }
+        }
+    }
+
+    expandAll() {
+        if (!this.isExpanded) {
+            this.products.forEach((product) &#x3D;&gt; (product &amp;&amp; product.name ? (this.expandedRows[product.name] &#x3D; true) : &#x27;&#x27;));
+        } else {
+            this.expandedRows &#x3D; {};
+        }
+        this.isExpanded &#x3D; !this.isExpanded;
+    }
+
+    formatCurrency(value: number) {
+        return value.toLocaleString(&#x27;en-US&#x27;, { style: &#x27;currency&#x27;, currency: &#x27;USD&#x27; });
+    }
+
+    onGlobalFilter(table: Table, event: Event) {
+        table.filterGlobal((event.target as HTMLInputElement).value, &#x27;contains&#x27;);
+    }
+
+    clear(table: Table) {
+        table.clear();
+        this.filter.nativeElement.value &#x3D; &#x27;&#x27;;
+    }
+
+    getSeverity(status: string) {
+        switch (status) {
+            case &#x27;qualified&#x27;:
+            case &#x27;instock&#x27;:
+            case &#x27;INSTOCK&#x27;:
+            case &#x27;DELIVERED&#x27;:
+            case &#x27;delivered&#x27;:
+                return &#x27;success&#x27;;
+
+            case &#x27;negotiation&#x27;:
+            case &#x27;lowstock&#x27;:
+            case &#x27;LOWSTOCK&#x27;:
+            case &#x27;PENDING&#x27;:
+            case &#x27;pending&#x27;:
+                return &#x27;warn&#x27;;
+
+            case &#x27;unqualified&#x27;:
+            case &#x27;outofstock&#x27;:
+            case &#x27;OUTOFSTOCK&#x27;:
+            case &#x27;CANCELLED&#x27;:
+            case &#x27;cancelled&#x27;:
+                return &#x27;danger&#x27;;
+
+            default:
+                return &#x27;info&#x27;;
+        }
+    }
+
+    calculateCustomerTotal(name: string) {
+        let total &#x3D; 0;
+
+        if (this.customers2) {
+            for (let customer of this.customers2) {
+                if (customer.representative?.name &#x3D;&#x3D;&#x3D; name) {
+                    total++;
+                }
+            }
+        }
+
+        return total;
+    }
+}
+</code></pre>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
+            var COMPODOC_CURRENT_PAGE_URL = 'expandedRows.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

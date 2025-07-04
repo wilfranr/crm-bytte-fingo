@@ -1,0 +1,28 @@
+<p-toast></p-toast>
+<div class="card">
+    <h5>Procesamiento de Facturación MIID</h5>
+    <p>Seleccione el archivo Excel con el reporte de transacciones para procesar.</p>
+    
+    <input type="file" (change)="onFileSelected($event)" accept=".xlsx, .xls" #fileUpload>
+
+    <button (click)="onUpload()" [disabled]="!selectedFile" class="p-button-primary">Procesar Archivo</button>
+
+    <div *ngIf="message" class="p-mt-4">
+        <p-message [severity]="message.severity" [text]="message.text"></p-message>
+    </div>
+
+    <div *ngIf="isLoading" class="p-mt-4">
+        <p-progressSpinner></p-progressSpinner>
+        <p>Procesando archivo, por favor espere...</p>
+    </div>
+
+    <div *ngIf="results" class="p-mt-4">
+        <h6>Resultados del Procesamiento</h6>
+        <div class="p-grid">
+            <div class="p-col-6">Enrolados Facturables:</div>
+            <div class="p-col-6"><strong>{{ results.enrolados }}</strong></div>
+            <div class="p-col-6">No Enrolados Facturables:</div>
+            <div class="p-col-6"><strong>{{ results.noEnrolados }}</strong></div>
+        </div>
+    </div>
+</div>

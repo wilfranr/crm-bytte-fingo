@@ -3,6 +3,10 @@ import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
 import { MenuModule } from 'primeng/menu';
 
+/**
+ * @description Widget que muestra los productos más vendidos.
+ * Incluye una lista de productos con su progreso de venta y un menú de opciones.
+ */
 @Component({
     standalone: true,
     selector: 'app-best-selling-widget',
@@ -92,8 +96,14 @@ import { MenuModule } from 'primeng/menu';
     </div>`
 })
 export class BestSellingWidget {
+    /**
+     * @description Referencia al componente de menú.
+     */
     menu = null;
 
+    /**
+     * @description Elementos del menú de opciones.
+     */
     items = [
         { label: 'Add New', icon: 'pi pi-fw pi-plus' },
         { label: 'Remove', icon: 'pi pi-fw pi-trash' }

@@ -4,6 +4,10 @@ import { ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
 import { AppFloatingConfigurator } from '../../layout/component/app.floatingconfigurator';
 
+/**
+ * @description Componente para la página de Error.
+ * Se muestra cuando ocurre un error inesperado o un recurso no está disponible.
+ */
 @Component({
     selector: 'app-error',
     imports: [ButtonModule, RippleModule, RouterModule, AppFloatingConfigurator, ButtonModule],
