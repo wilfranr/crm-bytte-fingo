@@ -116,6 +116,13 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Permite subir archivos para su procesamiento y muestra el estado de la operación.</p>
+
+    </p>
 
 
 
@@ -298,7 +305,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="78" class="link-to-prism">src/app/pages/antel/logs.ts:78</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="88" class="link-to-prism">src/app/pages/antel/logs.ts:88</a></div>
                             </td>
                         </tr>
 
@@ -312,6 +319,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -326,6 +334,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Servicio para mostrar mensajes de notificación.</p>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -365,14 +377,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="82"
-                                    class="link-to-prism">src/app/pages/antel/logs.ts:82</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="101"
+                                    class="link-to-prism">src/app/pages/antel/logs.ts:101</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Simula un procesamiento y muestra mensajes de éxito o error.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -383,6 +397,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -397,6 +412,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>Objeto de evento que contiene los archivos seleccionados.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -432,8 +451,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="104"
-                                    class="link-to-prism">src/app/pages/antel/logs.ts:104</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="126"
+                                    class="link-to-prism">src/app/pages/antel/logs.ts:126</a></div>
                         </td>
                     </tr>
 
@@ -479,7 +498,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="77" class="link-to-prism">src/app/pages/antel/logs.ts:77</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="84" class="link-to-prism">src/app/pages/antel/logs.ts:84</a></div>
                         </td>
                     </tr>
 
@@ -510,7 +529,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="78" class="link-to-prism">src/app/pages/antel/logs.ts:78</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="88" class="link-to-prism">src/app/pages/antel/logs.ts:88</a></div>
                         </td>
                     </tr>
 
@@ -533,6 +552,10 @@ import { ToolbarModule } from &#x27;primeng/toolbar&#x27;;
 import { MessageModule } from &#x27;primeng/message&#x27;;
 
 
+/**
+ * @description Componente para la revisión y procesamiento de logs de Antel.
+ * Permite subir archivos para su procesamiento y muestra el estado de la operación.
+ */
 @Component({
   selector: &#x27;app-logs&#x27;,
   standalone: true,
@@ -599,11 +622,26 @@ import { MessageModule } from &#x27;primeng/message&#x27;;
 })
 
 export class LogsComponent {
-  isLoading: boolean &#x3D; false; // Indicador de carga
-  mailtoLink: string &#x3D; &#x27;&#x27;; // Link mailto
+  /**
+   * @description Indicador de carga para mostrar el estado de procesamiento.
+   */
+  isLoading: boolean &#x3D; false; 
+  /**
+   * @description Enlace mailto para enviar correos.
+   */
+  mailtoLink: string &#x3D; &#x27;&#x27;; 
 
+  /**
+   * @description Constructor del componente LogsComponent.
+   * @param messageService Servicio para mostrar mensajes de notificación.
+   */
   constructor(private messageService: MessageService) {}
 
+  /**
+   * @description Maneja la subida personalizada de archivos.
+   * Simula un procesamiento y muestra mensajes de éxito o error.
+   * @param event Objeto de evento que contiene los archivos seleccionados.
+   */
   customUpload(event: { files: File[] }): void {
     if (!event.files || event.files.length &#x3D;&#x3D;&#x3D; 0) {
       this.messageService.add({
@@ -626,6 +664,9 @@ export class LogsComponent {
     }, 2000); // Simular tiempo de procesamiento
   }
 
+  /**
+   * @description Abre un enlace mailto en el navegador.
+   */
   openMailto(): void {
     window.location.href &#x3D; this.mailtoLink;
   }
@@ -660,7 +701,7 @@ export class LogsComponent {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><div class="col-12">  <h5>Acá se van a procesar los logs de Antel</h5>  <p-toolbar>    <div class="p-toolbar-group-left flex flex-wrap">      <ul>        <li>Seleccionar archivo:</li>        <li>          <p-fileUpload            name="file"            customUpload="true"            chooseLabel="Seleccionar archivo"            uploadLabel="Subir archivo"            cancelLabel="Cancelar"            accept=".xlsx, .xls"          >          </p-fileUpload>        </li>      </ul>    </div>    <div class="p-toolbar-group-right">      <button pButton type="button" class="p-button-success p-component" icon="pi pi-upload" iconPos="right">        Procesar archivo      </button>      <button pButton type="button" class="p-button-danger p-component" icon="pi pi-times" iconPos="right">        Cancelar      </button>      <div *ngIf="isLoading" class="loading-spinner">        Procesando archivo, por favor espera...        <i class="pi pi-spin pi-spinner"></i>        <p-toast></p-toast>        <p-message          severity="info"          summary="Información"          detail="El archivo se ha procesado correctamente"          [life]="3000"        ></p-message>        <p-message          severity="error"          summary="Error"          detail="Error al procesar el archivo"          [life]="3000"        ></p-message>        <p-message          severity="success"          summary="Éxito"          detail="El archivo se ha procesado correctamente"          [life]="3000"        ></p-message>      </div></div></div>'
-    var COMPONENTS = [{'name': 'AccesosComponent', 'selector': 'app-accesos'},{'name': 'Access', 'selector': 'app-access'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AppConfigurator', 'selector': 'app-configurator'},{'name': 'AppFloatingConfigurator', 'selector': 'app-floating-configurator'},{'name': 'AppFooter', 'selector': 'app-footer'},{'name': 'AppLayout', 'selector': 'app-layout'},{'name': 'AppMenu', 'selector': 'app-menu'},{'name': 'AppMenuitem', 'selector': '[app-menuitem]'},{'name': 'AppSidebar', 'selector': 'app-sidebar'},{'name': 'AppTopbar', 'selector': 'app-topbar'},{'name': 'BestSellingWidget', 'selector': 'app-best-selling-widget'},{'name': 'ButtonDemo', 'selector': 'app-button-demo'},{'name': 'ChartDemo', 'selector': 'app-chart-demo'},{'name': 'Cortes', 'selector': 'app-cortes'},{'name': 'Crud', 'selector': 'app-crud'},{'name': 'Dashboard', 'selector': 'app-dashboard'},{'name': 'Documentation', 'selector': 'app-documentation'},{'name': 'Empty', 'selector': 'app-empty'},{'name': 'Error', 'selector': 'app-error'},{'name': 'Facturacion', 'selector': 'app.facturacion-itau'},{'name': 'FeaturesWidget', 'selector': 'features-widget'},{'name': 'FileDemo', 'selector': 'app-file-demo'},{'name': 'FooterWidget', 'selector': 'footer-widget'},{'name': 'FormLayoutDemo', 'selector': 'app-formlayout-demo'},{'name': 'HeroWidget', 'selector': 'hero-widget'},{'name': 'HighlightsWidget', 'selector': 'highlights-widget'},{'name': 'InputDemo', 'selector': 'app-input-demo'},{'name': 'Landing', 'selector': 'app-landing'},{'name': 'ListDemo', 'selector': 'app-list-demo'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'LogsComponent', 'selector': 'app-logs'},{'name': 'MediaDemo', 'selector': 'app-media-demo'},{'name': 'MenuDemo', 'selector': 'app-menu-demo'},{'name': 'MessagesDemo', 'selector': 'app-messages-demo'},{'name': 'MiscDemo', 'selector': 'app-misc-demo'},{'name': 'Notfound', 'selector': 'app-notfound'},{'name': 'NotificationsWidget', 'selector': 'app-notifications-widget'},{'name': 'OverlayDemo', 'selector': 'app-overlay-demo'},{'name': 'PanelsDemo', 'selector': 'app-panels-demo'},{'name': 'PricingWidget', 'selector': 'pricing-widget'},{'name': 'RecentSalesWidget', 'selector': 'app-recent-sales-widget'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'ReporteInformacionComponent', 'selector': 'app-reporte-informacion'},{'name': 'RevenueStreamWidget', 'selector': 'app-revenue-stream-widget'},{'name': 'StatsWidget', 'selector': 'app-stats-widget'},{'name': 'TableDemo', 'selector': 'app-table-demo'},{'name': 'TimelineDemo', 'selector': 'app-timeline-demo'},{'name': 'TopbarWidget', 'selector': 'topbar-widget'},{'name': 'TreeDemo', 'selector': 'app-tree-demo'},{'name': 'UserFormComponent', 'selector': 'app-user-form'},{'name': 'UserListComponent', 'selector': 'app-user-list'}];
+    var COMPONENTS = [{'name': 'AccesosComponent', 'selector': 'app-accesos'},{'name': 'Access', 'selector': 'app-access'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AppConfigurator', 'selector': 'app-configurator'},{'name': 'AppFloatingConfigurator', 'selector': 'app-floating-configurator'},{'name': 'AppFooter', 'selector': 'app-footer'},{'name': 'AppLayout', 'selector': 'app-layout'},{'name': 'AppMenu', 'selector': 'app-menu'},{'name': 'AppMenuitem', 'selector': '[app-menuitem]'},{'name': 'AppSidebar', 'selector': 'app-sidebar'},{'name': 'AppTopbar', 'selector': 'app-topbar'},{'name': 'BestSellingWidget', 'selector': 'app-best-selling-widget'},{'name': 'ButtonDemo', 'selector': 'app-button-demo'},{'name': 'ChartDemo', 'selector': 'app-chart-demo'},{'name': 'Cortes', 'selector': 'app-cortes'},{'name': 'Crud', 'selector': 'app-crud'},{'name': 'Dashboard', 'selector': 'app-dashboard'},{'name': 'Documentation', 'selector': 'app-documentation'},{'name': 'Empty', 'selector': 'app-empty'},{'name': 'Error', 'selector': 'app-error'},{'name': 'Facturacion', 'selector': 'app.facturacion-itau'},{'name': 'FacturacionMiidComponent', 'selector': 'app-facturacion-miid'},{'name': 'FeaturesWidget', 'selector': 'features-widget'},{'name': 'FileDemo', 'selector': 'app-file-demo'},{'name': 'FooterWidget', 'selector': 'footer-widget'},{'name': 'FormLayoutDemo', 'selector': 'app-formlayout-demo'},{'name': 'HeroWidget', 'selector': 'hero-widget'},{'name': 'HighlightsWidget', 'selector': 'highlights-widget'},{'name': 'InputDemo', 'selector': 'app-input-demo'},{'name': 'Landing', 'selector': 'app-landing'},{'name': 'ListDemo', 'selector': 'app-list-demo'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'LogsComponent', 'selector': 'app-logs'},{'name': 'MediaDemo', 'selector': 'app-media-demo'},{'name': 'MenuDemo', 'selector': 'app-menu-demo'},{'name': 'MessagesDemo', 'selector': 'app-messages-demo'},{'name': 'MiscDemo', 'selector': 'app-misc-demo'},{'name': 'Notfound', 'selector': 'app-notfound'},{'name': 'NotificationsWidget', 'selector': 'app-notifications-widget'},{'name': 'OverlayDemo', 'selector': 'app-overlay-demo'},{'name': 'PanelsDemo', 'selector': 'app-panels-demo'},{'name': 'PricingWidget', 'selector': 'pricing-widget'},{'name': 'RecentSalesWidget', 'selector': 'app-recent-sales-widget'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'ReporteInformacionComponent', 'selector': 'app-reporte-informacion'},{'name': 'RevenueStreamWidget', 'selector': 'app-revenue-stream-widget'},{'name': 'StatsWidget', 'selector': 'app-stats-widget'},{'name': 'TableDemo', 'selector': 'app-table-demo'},{'name': 'TimelineDemo', 'selector': 'app-timeline-demo'},{'name': 'TopbarWidget', 'selector': 'topbar-widget'},{'name': 'TreeDemo', 'selector': 'app-tree-demo'},{'name': 'UserFormComponent', 'selector': 'app-user-form'},{'name': 'UserListComponent', 'selector': 'app-user-list'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'LogsComponent'};
 </script>

@@ -132,6 +132,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="components/Facturacion.html" data-type="entity-link" >Facturacion</a>
                             </li>
                             <li class="link">
+                                <a href="components/FacturacionMiidComponent.html" data-type="entity-link" >FacturacionMiidComponent</a>
+                            </li>
+                            <li class="link">
                                 <a href="components/FeaturesWidget.html" data-type="entity-link" >FeaturesWidget</a>
                             </li>
                             <li class="link">
@@ -245,6 +248,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 </li>
                                 <li class="link">
                                     <a href="injectables/CustomerService.html" data-type="entity-link" >CustomerService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="injectables/FacturacionService.html" data-type="entity-link" >FacturacionService</a>
                                 </li>
                                 <li class="link">
                                     <a href="injectables/IconService.html" data-type="entity-link" >IconService</a>

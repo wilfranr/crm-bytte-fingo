@@ -120,6 +120,13 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Permite a los usuarios registrarse utilizando un token de invitación.</p>
+
+    </p>
 
 
 
@@ -246,7 +253,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/pages/auth/register/register.component.ts:44</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/app/pages/auth/register/register.component.ts:54</a></div>
                             </td>
                         </tr>
 
@@ -260,6 +267,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -274,6 +282,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Cliente HTTP para realizar peticiones al backend.</p>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>router</td>
@@ -286,6 +298,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Servicio de enrutamiento de Angular para la navegación.</p>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>route</td>
@@ -298,6 +314,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Servicio para acceder a los parámetros de la ruta activada.</p>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -337,14 +357,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="59"
-                                    class="link-to-prism">src/app/pages/auth/register/register.component.ts:59</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="79"
+                                    class="link-to-prism">src/app/pages/auth/register/register.component.ts:79</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Envía los datos del usuario al backend para su registro.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -384,7 +406,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/pages/auth/register/register.component.ts:43</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/app/pages/auth/register/register.component.ts:50</a></div>
                         </td>
                     </tr>
 
@@ -420,7 +442,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/pages/auth/register/register.component.ts:36</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/pages/auth/register/register.component.ts:37</a></div>
                         </td>
                     </tr>
 
@@ -445,7 +467,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/app/pages/auth/register/register.component.ts:42</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/app/pages/auth/register/register.component.ts:46</a></div>
                         </td>
                     </tr>
 
@@ -476,7 +498,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/pages/auth/register/register.component.ts:44</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/app/pages/auth/register/register.component.ts:54</a></div>
                         </td>
                     </tr>
 
@@ -492,13 +514,7 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { CommonModule } from &#x27;@angular/common&#x27;;
 import { HttpClient } from &#x27;@angular/common/http&#x27;;
 import { Component } from &#x27;@angular/core&#x27;;
-import {
-  FormBuilder,
-  FormGroup,
-  FormsModule,
-  ReactiveFormsModule,
-  Validators,
-} from &#x27;@angular/forms&#x27;;
+import { FormsModule, ReactiveFormsModule } from &#x27;@angular/forms&#x27;;
 import { ActivatedRoute, Router, RouterModule } from &#x27;@angular/router&#x27;;
 import { ButtonModule } from &#x27;primeng/button&#x27;;
 import { InputTextModule } from &#x27;primeng/inputtext&#x27;;
@@ -507,6 +523,10 @@ import { PasswordModule } from &#x27;primeng/password&#x27;;
 import { ToastModule } from &#x27;primeng/toast&#x27;;
 import { environment } from &#x27;../../../../environments/environment&#x27;;
 
+/**
+ * @description Componente para el registro de nuevos usuarios.
+ * Permite a los usuarios registrarse utilizando un token de invitación.
+ */
 @Component({
   selector: &#x27;app-register&#x27;,
   imports: [
@@ -524,16 +544,34 @@ import { environment } from &#x27;../../../../environments/environment&#x27;;
   styleUrl: &#x27;./register.component.scss&#x27;,
 })
 export class RegisterComponent {
+  /**
+   * @description Modelo de datos para el formulario de registro.
+   */
   model &#x3D; {
     token: &#x27;&#x27;,
     name: &#x27;&#x27;,
     email: &#x27;&#x27;,
     password: &#x27;&#x27;,
   };
+  /**
+   * @description Indicador de estado de registro en curso.
+   */
   registering &#x3D; false;
+  /**
+   * @description Mensaje de error a mostrar en caso de fallo en el registro.
+   */
   errorMsg &#x3D; &#x27;&#x27;;
+  /**
+   * @description Mensaje de éxito a mostrar después de un registro exitoso.
+   */
   successMsg &#x3D; &#x27;&#x27;;
 
+  /**
+   * @description Constructor del componente RegisterComponent.
+   * @param http Cliente HTTP para realizar peticiones al backend.
+   * @param router Servicio de enrutamiento de Angular para la navegación.
+   * @param route Servicio para acceder a los parámetros de la ruta activada.
+   */
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -547,6 +585,10 @@ export class RegisterComponent {
     });
   }
 
+  /**
+   * @description Maneja el envío del formulario de registro.
+   * Envía los datos del usuario al backend para su registro.
+   */
   onSubmit() {
     this.errorMsg &#x3D; &#x27;&#x27;;
     this.successMsg &#x3D; &#x27;&#x27;;
@@ -728,7 +770,7 @@ export class RegisterComponent {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><div  class="bg-surface-50 dark:bg-surface-950 flex items-center justify-center min-h-screen min-w-[100vw] overflow-hidden">  <div class="flex flex-col items-center justify-center">    <img      src="assets/layout/images/logo-bytte2x.png"      alt="Logo"      class="logo-image"      width="100px"    />    <div      style="        border-radius: 56px;        padding: 0.3rem;        background: linear-gradient(          180deg,          var(--primary-color) 10%,          rgba(33, 150, 243, 0) 30%        );      "    >      <div        class="w-full bg-surface-0 dark:bg-surface-900 py-20 px-8 sm:px-20"        style="border-radius: 53px"      >        <div class="text-center mb-8">          <div            class="text-surface-900 dark:text-surface-0 text-3xl font-medium mb-4"          >            Registro de usuario          </div>        </div>        <form (ngSubmit)="onSubmit()" #registerForm="ngForm" autocomplete="off">          <label            for="token1"            class="block text-surface-900 dark:text-surface-0 text-xl font-medium mb-2"            >Token de invitación</label          >          <input            pInputText            id="token1"            name="token"            type="text"            placeholder="Pega aquí tu token de invitación"            class="w-full md:w-[30rem] mb-6"            required            [(ngModel)]="model.token"          />          <label            for="name1"            class="block text-surface-900 dark:text-surface-0 text-xl font-medium mb-2"            >Nombre</label          >          <input            pInputText            id="name1"            name="name"            type="text"            placeholder="Ingrese su nombre"            class="w-full md:w-[30rem] mb-6"            required            [(ngModel)]="model.name"          />          <label            for="email1"            class="block text-surface-900 dark:text-surface-0 text-xl font-medium mb-2"            >Email</label          >          <input            pInputText            id="email1"            name="email"            type="email"            placeholder="Ingrese su correo"            class="w-full md:w-[30rem] mb-6"            required            [(ngModel)]="model.email"          />          <label            for="password1"            class="block text-surface-900 dark:text-surface-0 font-medium text-xl mb-2"            >Contraseña</label          >          <p-password            id="password1"            name="password"            [(ngModel)]="model.password"            placeholder="Ingrese su contraseña"            [toggleMask]="true"            styleClass="mb-8"            [fluid]="true"            [feedback]="false"            required          ></p-password>          <div>            <p-button              label="Registrarse"              styleClass="w-full"              type="submit"              [disabled]="registering"            ></p-button>          </div>          <div>            <p-button              label="¿Ya se encuentra registrado? Iniciar sesión"              styleClass="w-full mt-4"              outlined              [routerLink]="[\'/auth/login\']"            ></p-button>          </div>          <div *ngIf="errorMsg" class="text-red-600 mt-2 text-center">            {{ errorMsg }}          </div>          <div *ngIf="successMsg" class="text-green-600 mt-2 text-center">            {{ successMsg }}          </div>        </form>      </div>    </div>  </div></div></div>'
-    var COMPONENTS = [{'name': 'AccesosComponent', 'selector': 'app-accesos'},{'name': 'Access', 'selector': 'app-access'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AppConfigurator', 'selector': 'app-configurator'},{'name': 'AppFloatingConfigurator', 'selector': 'app-floating-configurator'},{'name': 'AppFooter', 'selector': 'app-footer'},{'name': 'AppLayout', 'selector': 'app-layout'},{'name': 'AppMenu', 'selector': 'app-menu'},{'name': 'AppMenuitem', 'selector': '[app-menuitem]'},{'name': 'AppSidebar', 'selector': 'app-sidebar'},{'name': 'AppTopbar', 'selector': 'app-topbar'},{'name': 'BestSellingWidget', 'selector': 'app-best-selling-widget'},{'name': 'ButtonDemo', 'selector': 'app-button-demo'},{'name': 'ChartDemo', 'selector': 'app-chart-demo'},{'name': 'Cortes', 'selector': 'app-cortes'},{'name': 'Crud', 'selector': 'app-crud'},{'name': 'Dashboard', 'selector': 'app-dashboard'},{'name': 'Documentation', 'selector': 'app-documentation'},{'name': 'Empty', 'selector': 'app-empty'},{'name': 'Error', 'selector': 'app-error'},{'name': 'Facturacion', 'selector': 'app.facturacion-itau'},{'name': 'FeaturesWidget', 'selector': 'features-widget'},{'name': 'FileDemo', 'selector': 'app-file-demo'},{'name': 'FooterWidget', 'selector': 'footer-widget'},{'name': 'FormLayoutDemo', 'selector': 'app-formlayout-demo'},{'name': 'HeroWidget', 'selector': 'hero-widget'},{'name': 'HighlightsWidget', 'selector': 'highlights-widget'},{'name': 'InputDemo', 'selector': 'app-input-demo'},{'name': 'Landing', 'selector': 'app-landing'},{'name': 'ListDemo', 'selector': 'app-list-demo'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'LogsComponent', 'selector': 'app-logs'},{'name': 'MediaDemo', 'selector': 'app-media-demo'},{'name': 'MenuDemo', 'selector': 'app-menu-demo'},{'name': 'MessagesDemo', 'selector': 'app-messages-demo'},{'name': 'MiscDemo', 'selector': 'app-misc-demo'},{'name': 'Notfound', 'selector': 'app-notfound'},{'name': 'NotificationsWidget', 'selector': 'app-notifications-widget'},{'name': 'OverlayDemo', 'selector': 'app-overlay-demo'},{'name': 'PanelsDemo', 'selector': 'app-panels-demo'},{'name': 'PricingWidget', 'selector': 'pricing-widget'},{'name': 'RecentSalesWidget', 'selector': 'app-recent-sales-widget'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'ReporteInformacionComponent', 'selector': 'app-reporte-informacion'},{'name': 'RevenueStreamWidget', 'selector': 'app-revenue-stream-widget'},{'name': 'StatsWidget', 'selector': 'app-stats-widget'},{'name': 'TableDemo', 'selector': 'app-table-demo'},{'name': 'TimelineDemo', 'selector': 'app-timeline-demo'},{'name': 'TopbarWidget', 'selector': 'topbar-widget'},{'name': 'TreeDemo', 'selector': 'app-tree-demo'},{'name': 'UserFormComponent', 'selector': 'app-user-form'},{'name': 'UserListComponent', 'selector': 'app-user-list'}];
+    var COMPONENTS = [{'name': 'AccesosComponent', 'selector': 'app-accesos'},{'name': 'Access', 'selector': 'app-access'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AppConfigurator', 'selector': 'app-configurator'},{'name': 'AppFloatingConfigurator', 'selector': 'app-floating-configurator'},{'name': 'AppFooter', 'selector': 'app-footer'},{'name': 'AppLayout', 'selector': 'app-layout'},{'name': 'AppMenu', 'selector': 'app-menu'},{'name': 'AppMenuitem', 'selector': '[app-menuitem]'},{'name': 'AppSidebar', 'selector': 'app-sidebar'},{'name': 'AppTopbar', 'selector': 'app-topbar'},{'name': 'BestSellingWidget', 'selector': 'app-best-selling-widget'},{'name': 'ButtonDemo', 'selector': 'app-button-demo'},{'name': 'ChartDemo', 'selector': 'app-chart-demo'},{'name': 'Cortes', 'selector': 'app-cortes'},{'name': 'Crud', 'selector': 'app-crud'},{'name': 'Dashboard', 'selector': 'app-dashboard'},{'name': 'Documentation', 'selector': 'app-documentation'},{'name': 'Empty', 'selector': 'app-empty'},{'name': 'Error', 'selector': 'app-error'},{'name': 'Facturacion', 'selector': 'app.facturacion-itau'},{'name': 'FacturacionMiidComponent', 'selector': 'app-facturacion-miid'},{'name': 'FeaturesWidget', 'selector': 'features-widget'},{'name': 'FileDemo', 'selector': 'app-file-demo'},{'name': 'FooterWidget', 'selector': 'footer-widget'},{'name': 'FormLayoutDemo', 'selector': 'app-formlayout-demo'},{'name': 'HeroWidget', 'selector': 'hero-widget'},{'name': 'HighlightsWidget', 'selector': 'highlights-widget'},{'name': 'InputDemo', 'selector': 'app-input-demo'},{'name': 'Landing', 'selector': 'app-landing'},{'name': 'ListDemo', 'selector': 'app-list-demo'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'LogsComponent', 'selector': 'app-logs'},{'name': 'MediaDemo', 'selector': 'app-media-demo'},{'name': 'MenuDemo', 'selector': 'app-menu-demo'},{'name': 'MessagesDemo', 'selector': 'app-messages-demo'},{'name': 'MiscDemo', 'selector': 'app-misc-demo'},{'name': 'Notfound', 'selector': 'app-notfound'},{'name': 'NotificationsWidget', 'selector': 'app-notifications-widget'},{'name': 'OverlayDemo', 'selector': 'app-overlay-demo'},{'name': 'PanelsDemo', 'selector': 'app-panels-demo'},{'name': 'PricingWidget', 'selector': 'pricing-widget'},{'name': 'RecentSalesWidget', 'selector': 'app-recent-sales-widget'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'ReporteInformacionComponent', 'selector': 'app-reporte-informacion'},{'name': 'RevenueStreamWidget', 'selector': 'app-revenue-stream-widget'},{'name': 'StatsWidget', 'selector': 'app-stats-widget'},{'name': 'TableDemo', 'selector': 'app-table-demo'},{'name': 'TimelineDemo', 'selector': 'app-timeline-demo'},{'name': 'TopbarWidget', 'selector': 'topbar-widget'},{'name': 'TreeDemo', 'selector': 'app-tree-demo'},{'name': 'UserFormComponent', 'selector': 'app-user-form'},{'name': 'UserListComponent', 'selector': 'app-user-list'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'RegisterComponent'};
 </script>

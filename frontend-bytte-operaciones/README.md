@@ -61,3 +61,12 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+## Mejoras en la Interfaz de Usuario y Funcionalidades
+
+Se han implementado mejoras significativas en la interfaz de usuario y se han añadido nuevas funcionalidades:
+
+- **Componente de Carga de Archivos (p-fileupload):** Se ha integrado el componente `p-fileupload` de PrimeNG para una experiencia de carga de archivos más robusta y visualmente atractiva. Permite seleccionar archivos Excel (`.xlsx`, `.xls`) para su procesamiento.
+- **Indicador de Progreso:** Durante el procesamiento del archivo, se muestra una barra de progreso (`p-progressbar`) para indicar el estado de la operación.
+- **Botón de Descarga de Reporte MIID:** Se ha añadido un botón que permite descargar directamente un reporte desde la plataforma MIID. La URL de este reporte se construye dinámicamente con las fechas del primer día del mes anterior al primer día del mes actual, facilitando la obtención de datos relevantes.
+- **Diseño y Distribución:** Se ha mejorado la distribución general de los elementos en la interfaz, utilizando clases de PrimeFlex para un diseño más limpio y organizado.

@@ -116,6 +116,13 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Permite abrir enlaces a portales y reportes de Power BI, así como generar reportes con fechas dinámicas.</p>
+
+    </p>
 
 
 
@@ -288,8 +295,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="194"
-                                    class="link-to-prism">src/app/pages/dashboard/cortes.ts:194</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="225"
+                                    class="link-to-prism">src/app/pages/dashboard/cortes.ts:225</a></div>
                         </td>
                     </tr>
 
@@ -306,6 +313,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -320,6 +328,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>La fecha original.</p>
+
+                                            </td>
                                         </tr>
                                         <tr>
                                                 <td>days</td>
@@ -332,6 +344,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>El número de días a añadir (positivo) o restar (negativo).</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -341,7 +357,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>Una nueva instancia de Date con los días ajustados.</p>
+
                             </div>
                 </td>
             </tr>
@@ -369,8 +386,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="180"
-                                    class="link-to-prism">src/app/pages/dashboard/cortes.ts:180</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="205"
+                                    class="link-to-prism">src/app/pages/dashboard/cortes.ts:205</a></div>
                         </td>
                     </tr>
 
@@ -387,6 +404,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -401,6 +419,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>La fecha a formatear.</p>
+
+                                            </td>
                                         </tr>
                                         <tr>
                                                 <td>format</td>
@@ -413,6 +435,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>El formato deseado (&#39;dd/mm/yyyy&#39; o &#39;yyyy-mm-dd&#39;).</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -422,7 +448,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>La fecha formateada como cadena de texto.</p>
+
                             </div>
                 </td>
             </tr>
@@ -448,8 +475,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="48"
-                                    class="link-to-prism">src/app/pages/dashboard/cortes.ts:48</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="55"
+                                    class="link-to-prism">src/app/pages/dashboard/cortes.ts:55</a></div>
                         </td>
                     </tr>
 
@@ -485,8 +512,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="131"
-                                    class="link-to-prism">src/app/pages/dashboard/cortes.ts:131</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="147"
+                                    class="link-to-prism">src/app/pages/dashboard/cortes.ts:147</a></div>
                         </td>
                     </tr>
 
@@ -522,8 +549,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="151"
-                                    class="link-to-prism">src/app/pages/dashboard/cortes.ts:151</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="170"
+                                    class="link-to-prism">src/app/pages/dashboard/cortes.ts:170</a></div>
                         </td>
                     </tr>
 
@@ -559,8 +586,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="65"
-                                    class="link-to-prism">src/app/pages/dashboard/cortes.ts:65</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="75"
+                                    class="link-to-prism">src/app/pages/dashboard/cortes.ts:75</a></div>
                         </td>
                     </tr>
 
@@ -596,8 +623,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="99"
-                                    class="link-to-prism">src/app/pages/dashboard/cortes.ts:99</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="112"
+                                    class="link-to-prism">src/app/pages/dashboard/cortes.ts:112</a></div>
                         </td>
                     </tr>
 
@@ -623,6 +650,10 @@
 import { ButtonModule } from &#x27;primeng/button&#x27;;
 import { FluidModule } from &#x27;primeng/fluid&#x27;;
 
+/**
+ * @description Componente para la generación y visualización de cortes y reportes.
+ * Permite abrir enlaces a portales y reportes de Power BI, así como generar reportes con fechas dinámicas.
+ */
 @Component({
   selector: &#x27;app-cortes&#x27;,
   standalone: true,
@@ -666,6 +697,9 @@ import { FluidModule } from &#x27;primeng/fluid&#x27;;
   &#x60;,
 })
 export class Cortes {
+  /**
+   * @description Abre una serie de enlaces a portales en nuevas pestañas.
+   */
   openPortals(): void {
     const links &#x3D; [
       &#x27;https://itau.bytte.com.co/casb/web/(S(cehgeaouu2p45ic4h1tjj0s4))/Reportes/ReporteConsultaLogANI&#x27;,
@@ -683,6 +717,9 @@ export class Cortes {
     });
   }
 
+  /**
+   * @description Abre una serie de enlaces a reportes con fechas dinámicas (hoy y 8 días atrás) en nuevas pestañas.
+   */
   openReports(): void {
     const eightDaysAgo &#x3D; new Date();
     eightDaysAgo.setDate(eightDaysAgo.getDate() - 8); // 8 días atrás
@@ -717,6 +754,9 @@ export class Cortes {
       window.open(link, &#x27;_blank&#x27;);
     });
   }
+  /**
+   * @description Abre una serie de enlaces a reportes con fechas dinámicas (ayer) en nuevas pestañas.
+   */
   openReportsYestarday(): void {
     const todayDMY &#x3D; this.getFormattedDate(new Date(), &#x27;dd/mm/yyyy&#x27;);
     const tomorrowDMY &#x3D; this.getFormattedDate(
@@ -749,6 +789,9 @@ export class Cortes {
       window.open(link, &#x27;_blank&#x27;);
     });
   }
+  /**
+   * @description Abre un enlace a un reporte de oficina con fecha de hoy en una nueva pestaña.
+   */
   openReportOficina(): void {
     const todayDMY &#x3D; this.getFormattedDate(new Date(), &#x27;dd/mm/yyyy&#x27;);
     const tomorrowDMY &#x3D; this.getFormattedDate(
@@ -769,6 +812,9 @@ export class Cortes {
       window.open(link, &#x27;_blank&#x27;);
     });
   }
+  /**
+   * @description Abre un enlace a un reporte de oficina con fecha de ayer en una nueva pestaña.
+   */
   openReportOficinaYesterday(): void {
     const todayDMY &#x3D; this.getFormattedDate(new Date(), &#x27;dd/mm/yyyy&#x27;);
     const tomorrowDMY &#x3D; this.getFormattedDate(
@@ -798,6 +844,12 @@ export class Cortes {
     });
   }
 
+  /**
+   * @description Formatea una fecha según el formato especificado.
+   * @param date La fecha a formatear.
+   * @param format El formato deseado (&#x27;dd/mm/yyyy&#x27; o &#x27;yyyy-mm-dd&#x27;).
+   * @returns La fecha formateada como cadena de texto.
+   */
   private getFormattedDate(
     date: Date,
     format: &#x27;dd/mm/yyyy&#x27; | &#x27;yyyy-mm-dd&#x27;,
@@ -812,6 +864,12 @@ export class Cortes {
     return &#x60;${day}/${month}/${year}&#x60;;
   }
 
+  /**
+   * @description Añade o resta días a una fecha dada.
+   * @param date La fecha original.
+   * @param days El número de días a añadir (positivo) o restar (negativo).
+   * @returns Una nueva instancia de Date con los días ajustados.
+   */
   private addDays(date: Date, days: number): Date {
     const newDate &#x3D; new Date(date);
     newDate.setDate(newDate.getDate() + days);
@@ -849,7 +907,7 @@ export class Cortes {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><p-fluid>  <div>    <h1>Generación de cortes</h1>  </div>  <div class="card flex">    <!-- Iframe ocupa la mayor parte del espacio -->    <iframe      title="Cortes_Comparativas v5.0"      width="1140"      height="800.25"      src="https://app.powerbi.com/reportEmbed?reportId=348b1de7-d2a8-41bc-8200-849d2d522746&autoAuth=true&ctid=83eb77c9-5785-466f-8b7d-3a8165e1ef5a"      frameborder="0"      allowFullScreen="true"    ></iframe>    <!-- Contenedor para los botones -->    <div class="flex flex-col items-start gap-4 ml-4">      <div class="font-semibold text-xl">Portales</div>      <p-button (click)="openPortals()">Abrir Portales</p-button>      <div class="font-semibold text-xl">Reportes</div>      <p-button (click)="openReports()" severity="info"        >Reportes Hoy</p-button      >      <p-button (click)="openReportOficina()" severity="warn"        >Reporte Oficina Hoy</p-button      >      <p-button (click)="openReportsYestarday()" severity="info"        >Reportes Ayer</p-button      >      <p-button (click)="openReportOficinaYesterday()" severity="warn"        >Reporte Oficina Ayer</p-button      >    </div>  </div></p-fluid></div>'
-    var COMPONENTS = [{'name': 'AccesosComponent', 'selector': 'app-accesos'},{'name': 'Access', 'selector': 'app-access'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AppConfigurator', 'selector': 'app-configurator'},{'name': 'AppFloatingConfigurator', 'selector': 'app-floating-configurator'},{'name': 'AppFooter', 'selector': 'app-footer'},{'name': 'AppLayout', 'selector': 'app-layout'},{'name': 'AppMenu', 'selector': 'app-menu'},{'name': 'AppMenuitem', 'selector': '[app-menuitem]'},{'name': 'AppSidebar', 'selector': 'app-sidebar'},{'name': 'AppTopbar', 'selector': 'app-topbar'},{'name': 'BestSellingWidget', 'selector': 'app-best-selling-widget'},{'name': 'ButtonDemo', 'selector': 'app-button-demo'},{'name': 'ChartDemo', 'selector': 'app-chart-demo'},{'name': 'Cortes', 'selector': 'app-cortes'},{'name': 'Crud', 'selector': 'app-crud'},{'name': 'Dashboard', 'selector': 'app-dashboard'},{'name': 'Documentation', 'selector': 'app-documentation'},{'name': 'Empty', 'selector': 'app-empty'},{'name': 'Error', 'selector': 'app-error'},{'name': 'Facturacion', 'selector': 'app.facturacion-itau'},{'name': 'FeaturesWidget', 'selector': 'features-widget'},{'name': 'FileDemo', 'selector': 'app-file-demo'},{'name': 'FooterWidget', 'selector': 'footer-widget'},{'name': 'FormLayoutDemo', 'selector': 'app-formlayout-demo'},{'name': 'HeroWidget', 'selector': 'hero-widget'},{'name': 'HighlightsWidget', 'selector': 'highlights-widget'},{'name': 'InputDemo', 'selector': 'app-input-demo'},{'name': 'Landing', 'selector': 'app-landing'},{'name': 'ListDemo', 'selector': 'app-list-demo'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'LogsComponent', 'selector': 'app-logs'},{'name': 'MediaDemo', 'selector': 'app-media-demo'},{'name': 'MenuDemo', 'selector': 'app-menu-demo'},{'name': 'MessagesDemo', 'selector': 'app-messages-demo'},{'name': 'MiscDemo', 'selector': 'app-misc-demo'},{'name': 'Notfound', 'selector': 'app-notfound'},{'name': 'NotificationsWidget', 'selector': 'app-notifications-widget'},{'name': 'OverlayDemo', 'selector': 'app-overlay-demo'},{'name': 'PanelsDemo', 'selector': 'app-panels-demo'},{'name': 'PricingWidget', 'selector': 'pricing-widget'},{'name': 'RecentSalesWidget', 'selector': 'app-recent-sales-widget'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'ReporteInformacionComponent', 'selector': 'app-reporte-informacion'},{'name': 'RevenueStreamWidget', 'selector': 'app-revenue-stream-widget'},{'name': 'StatsWidget', 'selector': 'app-stats-widget'},{'name': 'TableDemo', 'selector': 'app-table-demo'},{'name': 'TimelineDemo', 'selector': 'app-timeline-demo'},{'name': 'TopbarWidget', 'selector': 'topbar-widget'},{'name': 'TreeDemo', 'selector': 'app-tree-demo'},{'name': 'UserFormComponent', 'selector': 'app-user-form'},{'name': 'UserListComponent', 'selector': 'app-user-list'}];
+    var COMPONENTS = [{'name': 'AccesosComponent', 'selector': 'app-accesos'},{'name': 'Access', 'selector': 'app-access'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AppConfigurator', 'selector': 'app-configurator'},{'name': 'AppFloatingConfigurator', 'selector': 'app-floating-configurator'},{'name': 'AppFooter', 'selector': 'app-footer'},{'name': 'AppLayout', 'selector': 'app-layout'},{'name': 'AppMenu', 'selector': 'app-menu'},{'name': 'AppMenuitem', 'selector': '[app-menuitem]'},{'name': 'AppSidebar', 'selector': 'app-sidebar'},{'name': 'AppTopbar', 'selector': 'app-topbar'},{'name': 'BestSellingWidget', 'selector': 'app-best-selling-widget'},{'name': 'ButtonDemo', 'selector': 'app-button-demo'},{'name': 'ChartDemo', 'selector': 'app-chart-demo'},{'name': 'Cortes', 'selector': 'app-cortes'},{'name': 'Crud', 'selector': 'app-crud'},{'name': 'Dashboard', 'selector': 'app-dashboard'},{'name': 'Documentation', 'selector': 'app-documentation'},{'name': 'Empty', 'selector': 'app-empty'},{'name': 'Error', 'selector': 'app-error'},{'name': 'Facturacion', 'selector': 'app.facturacion-itau'},{'name': 'FacturacionMiidComponent', 'selector': 'app-facturacion-miid'},{'name': 'FeaturesWidget', 'selector': 'features-widget'},{'name': 'FileDemo', 'selector': 'app-file-demo'},{'name': 'FooterWidget', 'selector': 'footer-widget'},{'name': 'FormLayoutDemo', 'selector': 'app-formlayout-demo'},{'name': 'HeroWidget', 'selector': 'hero-widget'},{'name': 'HighlightsWidget', 'selector': 'highlights-widget'},{'name': 'InputDemo', 'selector': 'app-input-demo'},{'name': 'Landing', 'selector': 'app-landing'},{'name': 'ListDemo', 'selector': 'app-list-demo'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'LogsComponent', 'selector': 'app-logs'},{'name': 'MediaDemo', 'selector': 'app-media-demo'},{'name': 'MenuDemo', 'selector': 'app-menu-demo'},{'name': 'MessagesDemo', 'selector': 'app-messages-demo'},{'name': 'MiscDemo', 'selector': 'app-misc-demo'},{'name': 'Notfound', 'selector': 'app-notfound'},{'name': 'NotificationsWidget', 'selector': 'app-notifications-widget'},{'name': 'OverlayDemo', 'selector': 'app-overlay-demo'},{'name': 'PanelsDemo', 'selector': 'app-panels-demo'},{'name': 'PricingWidget', 'selector': 'pricing-widget'},{'name': 'RecentSalesWidget', 'selector': 'app-recent-sales-widget'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'ReporteInformacionComponent', 'selector': 'app-reporte-informacion'},{'name': 'RevenueStreamWidget', 'selector': 'app-revenue-stream-widget'},{'name': 'StatsWidget', 'selector': 'app-stats-widget'},{'name': 'TableDemo', 'selector': 'app-table-demo'},{'name': 'TimelineDemo', 'selector': 'app-timeline-demo'},{'name': 'TopbarWidget', 'selector': 'topbar-widget'},{'name': 'TreeDemo', 'selector': 'app-tree-demo'},{'name': 'UserFormComponent', 'selector': 'app-user-form'},{'name': 'UserListComponent', 'selector': 'app-user-list'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'Cortes'};
 </script>

@@ -57,3 +57,19 @@ Ambas cookies se crean con los atributos `HttpOnly` y `SameSite=Strict`, por lo 
 El frontend implementa un `HttpInterceptor` que se encarga de la renovación automática de la sesión. Cuando el `accessToken` expira y el backend devuelve un error `401 Unauthorized`, el interceptor utiliza el `refreshToken` para solicitar un nuevo `accessToken` de forma silenciosa a través de la ruta `POST /api/auth/refresh`.
 
 Si el refresco es exitoso, la petición original se reintenta sin que el usuario lo note. Si el `refreshToken` también ha expirado, el interceptor redirigirá automáticamente al usuario a la página de inicio de sesión.
+
+## Módulo de Facturación MIID
+
+Este módulo permite procesar archivos de transacciones de MIID y generar un reporte consolidado.
+
+### Funcionalidades:
+
+- **Carga de Archivos Excel:** Utiliza el componente `p-fileupload` de PrimeNG para una carga de archivos intuitiva. Se espera un archivo Excel (`.xlsx` o `.xls`) con el reporte de transacciones.
+- **Procesamiento y Consolidación:** El backend procesa el archivo subido, consolida los datos y actualiza un archivo Excel maestro (`Consolidado_miid.xlsx`).
+- **Descarga Automática:** Una vez finalizado el procesamiento, el archivo Excel consolidado se descarga automáticamente en el navegador.
+- **Generación de Reporte MIID:** Incluye un botón para descargar un reporte directamente desde la plataforma MIID. La URL del reporte se genera dinámicamente con las fechas del primer día del mes anterior al primer día del mes actual.
+
+### Mejoras de Interfaz de Usuario:
+
+- Se ha mejorado la distribución y el estilo de los elementos en la interfaz de usuario para una mejor experiencia visual.
+- Se utiliza una barra de progreso (`p-progressbar`) para indicar el estado del procesamiento del archivo.

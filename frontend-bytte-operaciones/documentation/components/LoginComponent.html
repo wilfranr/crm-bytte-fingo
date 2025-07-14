@@ -116,6 +116,13 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Permite a los usuarios autenticarse en la aplicación.</p>
+
+    </p>
 
 
 
@@ -350,7 +357,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="139" class="link-to-prism">src/app/pages/auth/login/login.ts:139</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="155" class="link-to-prism">src/app/pages/auth/login/login.ts:155</a></div>
                             </td>
                         </tr>
 
@@ -364,6 +371,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -378,6 +386,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Servicio de autenticación para manejar el login.</p>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>router</td>
@@ -390,6 +402,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Servicio de enrutamiento de Angular para la navegación.</p>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -429,14 +445,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="146"
-                                    class="link-to-prism">src/app/pages/auth/login/login.ts:146</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="171"
+                                    class="link-to-prism">src/app/pages/auth/login/login.ts:171</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Intenta autenticar al usuario y redirige a la página principal si es exitoso, o muestra un mensaje de error.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -466,8 +484,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="159"
-                                    class="link-to-prism">src/app/pages/auth/login/login.ts:159</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="187"
+                                    class="link-to-prism">src/app/pages/auth/login/login.ts:187</a></div>
                         </td>
                     </tr>
 
@@ -513,7 +531,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="138" class="link-to-prism">src/app/pages/auth/login/login.ts:138</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="151" class="link-to-prism">src/app/pages/auth/login/login.ts:151</a></div>
                         </td>
                     </tr>
 
@@ -544,7 +562,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="136" class="link-to-prism">src/app/pages/auth/login/login.ts:136</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="143" class="link-to-prism">src/app/pages/auth/login/login.ts:143</a></div>
                         </td>
                     </tr>
 
@@ -575,7 +593,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="139" class="link-to-prism">src/app/pages/auth/login/login.ts:139</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="155" class="link-to-prism">src/app/pages/auth/login/login.ts:155</a></div>
                         </td>
                     </tr>
 
@@ -606,7 +624,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="137" class="link-to-prism">src/app/pages/auth/login/login.ts:137</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="147" class="link-to-prism">src/app/pages/auth/login/login.ts:147</a></div>
                         </td>
                     </tr>
 
@@ -631,6 +649,10 @@ import { AuthService } from &#x27;../../../core/services/auth.service&#x27;;
 import { CommonModule } from &#x27;@angular/common&#x27;;
 import { AppFloatingConfigurator } from &#x27;../../../layout/component/app.floatingconfigurator&#x27;;
 
+/**
+ * @description Componente para la página de inicio de sesión.
+ * Permite a los usuarios autenticarse en la aplicación.
+ */
 @Component({
   selector: &#x27;app-login&#x27;,
   standalone: true,
@@ -754,16 +776,37 @@ import { AppFloatingConfigurator } from &#x27;../../../layout/component/app.floa
   &#x60;,
 })
 export class LoginComponent {
+  /**
+   * @description Modelo para el campo de correo electrónico del formulario de login.
+   */
   email: string &#x3D; &#x27;&#x27;;
+  /**
+   * @description Modelo para el campo de contraseña del formulario de login.
+   */
   password: string &#x3D; &#x27;&#x27;;
+  /**
+   * @description Modelo para el checkbox &quot;Recordar&quot;.
+   */
   checked: boolean &#x3D; false;
+  /**
+   * @description Mensaje de error a mostrar en caso de fallo en el login.
+   */
   errorMessage: string &#x3D; &#x27;&#x27;;
 
+  /**
+   * @description Constructor del componente LoginComponent.
+   * @param authService Servicio de autenticación para manejar el login.
+   * @param router Servicio de enrutamiento de Angular para la navegación.
+   */
   constructor(
     private authService: AuthService,
     private router: Router,
   ) {}
 
+  /**
+   * @description Maneja el envío del formulario de login.
+   * Intenta autenticar al usuario y redirige a la página principal si es exitoso, o muestra un mensaje de error.
+   */
   login() {
     this.authService.login(this.email, this.password).subscribe({
       next: () &#x3D;&gt; {
@@ -777,6 +820,9 @@ export class LoginComponent {
     });
   }
 
+  /**
+   * @description Método para la funcionalidad de registro (actualmente vacío).
+   */
   register() {}
 }
 </code></pre>
@@ -810,7 +856,7 @@ export class LoginComponent {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><app-floating-configurator /><div  class="bg-surface-50 dark:bg-surface-950 flex items-center justify-center min-h-screen min-w-[100vw] overflow-hidden">  <div class="flex flex-col items-center justify-center">    <img      src="assets/layout/images/logo-bytte2x.png"      alt="Logo"      class="logo-image"      width="100px"    />    <div      style="border-radius: 56px; padding: 0.3rem; background: linear-gradient(180deg, var(--primary-color) 10%, rgba(33, 150, 243, 0) 30%)"    >      <div        class="w-full bg-surface-0 dark:bg-surface-900 py-20 px-8 sm:px-20"        style="border-radius: 53px"      >        <div class="text-center mb-8">          <div            class="text-surface-900 dark:text-surface-0 text-3xl font-medium mb-4"          >            CRM Bytte - Operaciones          </div>        </div>        <div>          <form (ngSubmit)="login()" #loginForm="ngForm">            <label              for="email1"              class="block text-surface-900 dark:text-surface-0 text-xl font-medium mb-2"              >Email</label            >            <input              pInputText              id="email1"              name="email"              type="text"              placeholder="Ingrese su Correo"              class="w-full md:w-[30rem] mb-8"              [(ngModel)]="email"              required            />            <label              for="password1"              class="block text-surface-900 dark:text-surface-0 font-medium text-xl mb-2"              >Contraseña</label            >            <p-password              id="password1"              name="password"              [(ngModel)]="password"              placeholder="Ingrese su contraseña"              [toggleMask]="true"              styleClass="mb-4"              [fluid]="true"              [feedback]="false"              required            ></p-password>            <div class="flex items-center justify-between mt-2 mb-8 gap-8">              <div class="flex items-center">                <p-checkbox                  [(ngModel)]="checked"                  name="rememberme"                  id="rememberme1"                  binary                  class="mr-2"                ></p-checkbox>                <label for="rememberme1">Recordar</label>              </div>              <span                class="font-medium no-underline ml-2 text-right cursor-pointer text-primary"                >Olvidó Contraseña?</span              >            </div>            <div>              <p-button                type="submit"                label="Iniciar Sesión"                styleClass="w-full"              ></p-button>            </div>            <div>              <p-button                label="Registrarse"                styleClass="w-full mt-4"                outlined                [routerLink]="[\'/auth/register\']"              ></p-button>            </div>            <div *ngIf="errorMessage" class="text-red-600 mt-2 text-center">              {{ errorMessage }}            </div>          </form>        </div>      </div>    </div>  </div></div></div>'
-    var COMPONENTS = [{'name': 'AccesosComponent', 'selector': 'app-accesos'},{'name': 'Access', 'selector': 'app-access'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AppConfigurator', 'selector': 'app-configurator'},{'name': 'AppFloatingConfigurator', 'selector': 'app-floating-configurator'},{'name': 'AppFooter', 'selector': 'app-footer'},{'name': 'AppLayout', 'selector': 'app-layout'},{'name': 'AppMenu', 'selector': 'app-menu'},{'name': 'AppMenuitem', 'selector': '[app-menuitem]'},{'name': 'AppSidebar', 'selector': 'app-sidebar'},{'name': 'AppTopbar', 'selector': 'app-topbar'},{'name': 'BestSellingWidget', 'selector': 'app-best-selling-widget'},{'name': 'ButtonDemo', 'selector': 'app-button-demo'},{'name': 'ChartDemo', 'selector': 'app-chart-demo'},{'name': 'Cortes', 'selector': 'app-cortes'},{'name': 'Crud', 'selector': 'app-crud'},{'name': 'Dashboard', 'selector': 'app-dashboard'},{'name': 'Documentation', 'selector': 'app-documentation'},{'name': 'Empty', 'selector': 'app-empty'},{'name': 'Error', 'selector': 'app-error'},{'name': 'Facturacion', 'selector': 'app.facturacion-itau'},{'name': 'FeaturesWidget', 'selector': 'features-widget'},{'name': 'FileDemo', 'selector': 'app-file-demo'},{'name': 'FooterWidget', 'selector': 'footer-widget'},{'name': 'FormLayoutDemo', 'selector': 'app-formlayout-demo'},{'name': 'HeroWidget', 'selector': 'hero-widget'},{'name': 'HighlightsWidget', 'selector': 'highlights-widget'},{'name': 'InputDemo', 'selector': 'app-input-demo'},{'name': 'Landing', 'selector': 'app-landing'},{'name': 'ListDemo', 'selector': 'app-list-demo'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'LogsComponent', 'selector': 'app-logs'},{'name': 'MediaDemo', 'selector': 'app-media-demo'},{'name': 'MenuDemo', 'selector': 'app-menu-demo'},{'name': 'MessagesDemo', 'selector': 'app-messages-demo'},{'name': 'MiscDemo', 'selector': 'app-misc-demo'},{'name': 'Notfound', 'selector': 'app-notfound'},{'name': 'NotificationsWidget', 'selector': 'app-notifications-widget'},{'name': 'OverlayDemo', 'selector': 'app-overlay-demo'},{'name': 'PanelsDemo', 'selector': 'app-panels-demo'},{'name': 'PricingWidget', 'selector': 'pricing-widget'},{'name': 'RecentSalesWidget', 'selector': 'app-recent-sales-widget'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'ReporteInformacionComponent', 'selector': 'app-reporte-informacion'},{'name': 'RevenueStreamWidget', 'selector': 'app-revenue-stream-widget'},{'name': 'StatsWidget', 'selector': 'app-stats-widget'},{'name': 'TableDemo', 'selector': 'app-table-demo'},{'name': 'TimelineDemo', 'selector': 'app-timeline-demo'},{'name': 'TopbarWidget', 'selector': 'topbar-widget'},{'name': 'TreeDemo', 'selector': 'app-tree-demo'},{'name': 'UserFormComponent', 'selector': 'app-user-form'},{'name': 'UserListComponent', 'selector': 'app-user-list'}];
+    var COMPONENTS = [{'name': 'AccesosComponent', 'selector': 'app-accesos'},{'name': 'Access', 'selector': 'app-access'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AppConfigurator', 'selector': 'app-configurator'},{'name': 'AppFloatingConfigurator', 'selector': 'app-floating-configurator'},{'name': 'AppFooter', 'selector': 'app-footer'},{'name': 'AppLayout', 'selector': 'app-layout'},{'name': 'AppMenu', 'selector': 'app-menu'},{'name': 'AppMenuitem', 'selector': '[app-menuitem]'},{'name': 'AppSidebar', 'selector': 'app-sidebar'},{'name': 'AppTopbar', 'selector': 'app-topbar'},{'name': 'BestSellingWidget', 'selector': 'app-best-selling-widget'},{'name': 'ButtonDemo', 'selector': 'app-button-demo'},{'name': 'ChartDemo', 'selector': 'app-chart-demo'},{'name': 'Cortes', 'selector': 'app-cortes'},{'name': 'Crud', 'selector': 'app-crud'},{'name': 'Dashboard', 'selector': 'app-dashboard'},{'name': 'Documentation', 'selector': 'app-documentation'},{'name': 'Empty', 'selector': 'app-empty'},{'name': 'Error', 'selector': 'app-error'},{'name': 'Facturacion', 'selector': 'app.facturacion-itau'},{'name': 'FacturacionMiidComponent', 'selector': 'app-facturacion-miid'},{'name': 'FeaturesWidget', 'selector': 'features-widget'},{'name': 'FileDemo', 'selector': 'app-file-demo'},{'name': 'FooterWidget', 'selector': 'footer-widget'},{'name': 'FormLayoutDemo', 'selector': 'app-formlayout-demo'},{'name': 'HeroWidget', 'selector': 'hero-widget'},{'name': 'HighlightsWidget', 'selector': 'highlights-widget'},{'name': 'InputDemo', 'selector': 'app-input-demo'},{'name': 'Landing', 'selector': 'app-landing'},{'name': 'ListDemo', 'selector': 'app-list-demo'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'LogsComponent', 'selector': 'app-logs'},{'name': 'MediaDemo', 'selector': 'app-media-demo'},{'name': 'MenuDemo', 'selector': 'app-menu-demo'},{'name': 'MessagesDemo', 'selector': 'app-messages-demo'},{'name': 'MiscDemo', 'selector': 'app-misc-demo'},{'name': 'Notfound', 'selector': 'app-notfound'},{'name': 'NotificationsWidget', 'selector': 'app-notifications-widget'},{'name': 'OverlayDemo', 'selector': 'app-overlay-demo'},{'name': 'PanelsDemo', 'selector': 'app-panels-demo'},{'name': 'PricingWidget', 'selector': 'pricing-widget'},{'name': 'RecentSalesWidget', 'selector': 'app-recent-sales-widget'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'ReporteInformacionComponent', 'selector': 'app-reporte-informacion'},{'name': 'RevenueStreamWidget', 'selector': 'app-revenue-stream-widget'},{'name': 'StatsWidget', 'selector': 'app-stats-widget'},{'name': 'TableDemo', 'selector': 'app-table-demo'},{'name': 'TimelineDemo', 'selector': 'app-timeline-demo'},{'name': 'TopbarWidget', 'selector': 'topbar-widget'},{'name': 'TreeDemo', 'selector': 'app-tree-demo'},{'name': 'UserFormComponent', 'selector': 'app-user-form'},{'name': 'UserListComponent', 'selector': 'app-user-list'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'LoginComponent'};
 </script>
