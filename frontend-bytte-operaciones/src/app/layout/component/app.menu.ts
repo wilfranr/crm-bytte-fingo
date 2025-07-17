@@ -54,6 +54,16 @@ export class AppMenu {
         ],
       },
       {
+        label: 'Fingo',
+        items: [
+          {
+            label: 'Clientes',
+            icon: 'pi pi-fw pi-users',
+            routerLink: ['/clientes'],
+          },
+        ],
+      },
+      {
         label: 'Itaú',
         items: [
           {
@@ -112,6 +122,11 @@ export class AppMenu {
             label: 'Usuarios',
             icon: 'pi pi-fw pi-users',
             routerLink: ['/users'],
+          },
+          {
+            label: 'Clientes',
+            icon: 'pi pi-fw pi-users',
+            routerLink: ['/clientes'],
           },
         ],
       },

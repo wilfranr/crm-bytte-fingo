@@ -208,8 +208,7 @@ export class AppMenuitem {
     get activeClass() {
         return this.active && !this.root;
     }
-
-    /**
+/**
      * @description Hook del ciclo de vida de Angular que se ejecuta cuando el componente es destruido.
      * Limpia las suscripciones para evitar fugas de memoria.
      */

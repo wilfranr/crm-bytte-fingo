@@ -12,6 +12,7 @@ import UserRoutes from "./routes/user.routes.js";
 import authMiddleware from "./middlewares/auth.middleware.js";
 import InviteRoutes from "./routes/invite.routes.js";
 import FacturacionRoutes from "./routes/facturacion.routes.js";
+import ClienteRoutes from "./routes/cliente.routes.js";
 import { setupSwaggerDocs } from "./utils/swagger.js";
 
 const app = express();
@@ -24,6 +25,7 @@ const mongoUri = process.env.MONGODB_URI;
 mongoose.connect(mongoUri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
+  retryWrites: true
 });
 
 const corsOptions = {
@@ -52,6 +54,7 @@ app.use("/api/access", AccessRoutes);
 app.use("/api/users", UserRoutes);
 app.use("/api/invite", InviteRoutes);
 app.use("/api/facturacion", FacturacionRoutes);
+app.use("/api/clientes", ClienteRoutes);
 
 app.use("/docs", express.static(path.resolve(__dirname, "../docs")));
 

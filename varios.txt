@@ -1,0 +1,211 @@
+Consulta contactos Freshdesk por query
+URL: https://byttesas.freshdesk.com/api/v2/search/contacts?query="tag:Fingo"
+Método HTTP: GET
+Autenticación: API Key ne Encabezados
+Sin parametros
+Estructua de respuesta:
+{
+    "results": [
+        {
+            "active": false,
+            "address": "AV CL 26 69 D 91 TO 1 OF 407",
+            "custom_fields": {
+                "direccion": null,
+                "fecha_de_expedicion": null,
+                "id_formulario": "9BF-3F65",
+                "numero_de_identificacion": null,
+                "nit": 830115762
+            },
+            "description": null,
+            "email": "gonzalo.hurtado@bytte.com.co",
+            "other_emails": [],
+            "id": 73056210038,
+            "job_title": null,
+            "language": "es-LA",
+            "mobile": "3166948211",
+            "name": "Gonzalo Hurtado Mayorga",
+            "phone": null,
+            "time_zone": "Bogota",
+            "twitter_id": null,
+            "facebook_id": null,
+            "external_id": null,
+            "created_at": "2024-09-09T14:18:21Z",
+            "updated_at": "2024-10-23T16:31:18Z",
+            "company_id": 73001208428,
+            "unique_external_id": "11383155",
+            "company": {
+                "id": 73001208428,
+                "view_all_tickets": false,
+                "name": "Bytte SAS",
+                "avatar": null
+            },
+            "other_companies": []
+        },
+        {
+            "active": false,
+            "address": "Cll 77 13 47",
+            "custom_fields": {
+                "direccion": null,
+                "fecha_de_expedicion": null,
+                "id_formulario": "991-2FC2",
+                "numero_de_identificacion": null,
+                "nit": null
+            },
+            "description": null,
+            "email": "ivanbaracaldo@gmail.com",
+            "other_emails": [],
+            "id": 73054150951,
+            "job_title": null,
+            "language": "es-LA",
+            "mobile": "+573214533157",
+            "name": "Ivan Dario Baracaldo Garcia",
+            "phone": null,
+            "time_zone": "Bogota",
+            "twitter_id": null,
+            "facebook_id": null,
+            "external_id": null,
+            "created_at": "2024-07-02T19:00:26Z",
+            "updated_at": "2024-07-02T19:09:05Z",
+            "company_id": 73001223780,
+            "unique_external_id": "80812989",
+            "company": {
+                "id": 73001223780,
+                "view_all_tickets": false,
+                "name": "GET Global Enterprise Technologies SAS",
+                "avatar": null
+            },
+            "other_companies": []
+        },
+        {
+            "active": false,
+            "address": "AV CL 26 69 D 91 TO 1 OF 407",
+            "custom_fields": {
+                "direccion": null,
+                "fecha_de_expedicion": null,
+                "id_formulario": "991-278FE",
+                "numero_de_identificacion": null,
+                "nit": 830115764
+            },
+            "description": null,
+            "email": "muller.pedrozo@bytte.com.co",
+            "other_emails": [],
+            "id": 73051950306,
+            "job_title": null,
+            "language": "es-LA",
+            "mobile": "3164660327",
+            "name": "Muller Jose Pedrozo Boada",
+            "phone": null,
+            "time_zone": "Bogota",
+            "twitter_id": null,
+            "facebook_id": null,
+            "external_id": null,
+            "created_at": "2024-05-09T21:55:09Z",
+            "updated_at": "2024-10-23T16:30:20Z",
+            "company_id": 73001208428,
+            "unique_external_id": "79631989",
+            "company": {
+                "id": 73001208428,
+                "view_all_tickets": false,
+                "name": "Bytte SAS",
+                "avatar": null
+            },
+            "other_companies": []
+        },
+        {
+            "active": false,
+            "address": "Av Cll 26 No 69 D - 91 Of 407",
+            "custom_fields": {
+                "direccion": null,
+                "fecha_de_expedicion": null,
+                "id_formulario": "5F5C-1EB72",
+                "numero_de_identificacion": null,
+                "nit": 830115769
+            },
+            "description": null,
+            "email": "sebasbtorres@gmail.com",
+            "other_emails": [],
+            "id": 73051809242,
+            "job_title": null,
+            "language": "es-LA",
+            "mobile": "3103057981",
+            "name": "Juan Sebastian Buitrago Torres",
+            "phone": null,
+            "time_zone": "Bogota",
+            "twitter_id": null,
+            "facebook_id": null,
+            "external_id": null,
+            "created_at": "2024-05-03T23:09:49Z",
+            "updated_at": "2025-01-17T12:30:23Z",
+            "company_id": 73001208428,
+            "unique_external_id": "1032455771",
+            "company": {
+                "id": 73001208428,
+                "view_all_tickets": false,
+                "name": "Bytte SAS",
+                "avatar": null
+            },
+            "other_companies": [
+                {
+                    "id": 73000899260,
+                    "view_all_tickets": false,
+                    "name": "Bytte",
+                    "avatar": {
+                        "id": 73021811791,
+                        "name": "bytte.png",
+                        "content_type": "image/png",
+                        "size": 8551,
+                        "created_at": "2022-08-25T19:04:21Z",
+                        "updated_at": "2022-08-25T19:05:21Z",
+                        "attachment_url": "https://s3.amazonaws.com/cdn.freshdesk.com/data/helpdesk/attachments/production/73021811791/original/bytte.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAS6FNSMY2XLZULJPI%2F20250717%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250717T123332Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=36d6ebe6ef531ad0a868af3f2ff961159083f209bbe0456dafe8a4fb6f00cb54",
+                        "thumb_url": "https://s3.amazonaws.com/cdn.freshdesk.com/data/helpdesk/attachments/production/73021811791/thumb/bytte.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAS6FNSMY2XLZULJPI%2F20250717%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250717T123332Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=089ec59d7268a04e7db8d9cb85a057119d44989a1d8af53d9a067f06e5a9ca33"
+                    }
+                }
+            ]
+        },
+        {
+            "active": true,
+            "address": null,
+            "custom_fields": {
+                "direccion": null,
+                "fecha_de_expedicion": "2003-11-28",
+                "id_formulario": "5F5C-1EB72",
+                "numero_de_identificacion": 80896995,
+                "nit": 830115763
+            },
+            "description": null,
+            "email": "wilfranr@gmail.com",
+            "other_emails": [],
+            "id": 73042963853,
+            "job_title": null,
+            "language": "en",
+            "mobile": "+573174266407",
+            "name": "Yoseth Rivera",
+            "phone": "+573137038949",
+            "time_zone": "Bogota",
+            "twitter_id": null,
+            "facebook_id": null,
+            "external_id": null,
+            "created_at": "2023-09-12T16:12:04Z",
+            "updated_at": "2025-02-13T18:46:17Z",
+            "company_id": 73000899260,
+            "unique_external_id": "80896995",
+            "company": {
+                "id": 73000899260,
+                "view_all_tickets": false,
+                "name": "Bytte",
+                "avatar": {
+                    "id": 73021811791,
+                    "name": "bytte.png",
+                    "content_type": "image/png",
+                    "size": 8551,
+                    "created_at": "2022-08-25T19:04:21Z",
+                    "updated_at": "2022-08-25T19:05:21Z",
+                    "attachment_url": "https://s3.amazonaws.com/cdn.freshdesk.com/data/helpdesk/attachments/production/73021811791/original/bytte.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAS6FNSMY2XLZULJPI%2F20250717%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250717T123332Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=36d6ebe6ef531ad0a868af3f2ff961159083f209bbe0456dafe8a4fb6f00cb54",
+                    "thumb_url": "https://s3.amazonaws.com/cdn.freshdesk.com/data/helpdesk/attachments/production/73021811791/thumb/bytte.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAS6FNSMY2XLZULJPI%2F20250717%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250717T123332Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=089ec59d7268a04e7db8d9cb85a057119d44989a1d8af53d9a067f06e5a9ca33"
+                }
+            },
+            "other_companies": []
+        }
+    ],
+    "total": 5
+}
