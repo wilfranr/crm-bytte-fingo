@@ -14,7 +14,16 @@ import { ButtonModule } from 'primeng/button';
 @Component({
   selector: 'app-clientes',
   standalone: true,
-  imports: [CommonModule, TableModule, ToastModule, MessageModule, InputTextModule, IconFieldModule, InputIconModule, ButtonModule],
+  imports: [
+    CommonModule,
+    TableModule,
+    ToastModule,
+    MessageModule,
+    InputTextModule,
+    IconFieldModule,
+    InputIconModule,
+    ButtonModule,
+  ],
   providers: [MessageService],
   template: `
     <p-toast></p-toast>
@@ -60,17 +69,42 @@ import { ButtonModule } from 'primeng/button';
             >Doble clic en cualquier campo para copiar al
             portapapeles.</p-message
           >
-          <p-table #dt [value]="clientes" [paginator]="true" [rows]="10" [globalFilterFields]="['name', 'email', 'mobile', 'company.name', 'custom_fields.id_formulario']">
+          <p-table
+            #dt
+            [value]="clientes"
+            [paginator]="true"
+            [rows]="10"
+            [globalFilterFields]="[
+              'name',
+              'email',
+              'mobile',
+              'company.name',
+              'custom_fields.id_formulario',
+            ]"
+          >
             <ng-template pTemplate="caption">
-                <div class="flex justify-content-between align-items-center flex-column sm:flex-row">
-                    <button pButton label="Clear" class="p-button-outlined mb-2" icon="pi pi-filter-slash" (click)="clear(dt)"></button>
-                    <p-iconfield iconPosition="left" class="ml-auto">
-                        <p-inputicon>
-                            <i class="pi pi-search"></i>
-                        </p-inputicon>
-                        <input pInputText type="text" (input)="onGlobalFilter(dt, $event)" placeholder="Search keyword" />
-                    </p-iconfield>
-                </div>
+              <div
+                class="flex justify-content-between align-items-center flex-column sm:flex-row"
+              >
+                <button
+                  pButton
+                  label="Clear"
+                  class="p-button-outlined mb-2"
+                  icon="pi pi-filter-slash"
+                  (click)="clear(dt)"
+                ></button>
+                <p-iconfield iconPosition="left" class="ml-auto">
+                  <p-inputicon>
+                    <i class="pi pi-search"></i>
+                  </p-inputicon>
+                  <input
+                    pInputText
+                    type="text"
+                    (input)="onGlobalFilter(dt, $event)"
+                    placeholder="Buscar por palabra clave"
+                  />
+                </p-iconfield>
+              </div>
             </ng-template>
             <ng-template pTemplate="header">
               <tr>

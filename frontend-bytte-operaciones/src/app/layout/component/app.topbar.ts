@@ -2,7 +2,9 @@ import { Component } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { StyleClassModule } from 'primeng/styleclass';
+import { CalendarModule } from 'primeng/calendar';
 import { LayoutService } from '../service/layout.service';
 import { jwtDecode } from 'jwt-decode';
 import { Router } from '@angular/router';
@@ -16,111 +18,9 @@ import { AuthService } from '../../core/services/auth.service';
 @Component({
   selector: 'app-topbar',
   standalone: true,
-  imports: [RouterModule, CommonModule, StyleClassModule, AppConfigurator],
-  template: ` <div class="layout-topbar">
-    <div class="layout-topbar-logo-container">
-      <button
-        class="layout-menu-button layout-topbar-action"
-        (click)="layoutService.onMenuToggle()"
-      >
-        <i class="pi pi-bars"></i>
-      </button>
-      <a class="layout-topbar-logo" routerLink="/">
-        <img
-          src="assets/layout/images/logo-bytte2x.png"
-          alt="Logo"
-          class="logo-image"
-          width="30px"
-        />
-        <span>Operaciones</span>
-      </a>
-    </div>
-
-    <div class="layout-topbar-actions">
-      <div class="layout-config-menu">
-        <button
-          type="button"
-          class="layout-topbar-action"
-          (click)="toggleDarkMode()"
-        >
-          <i
-            [ngClass]="{
-              'pi ': true,
-              'pi-moon': layoutService.isDarkTheme(),
-              'pi-sun': !layoutService.isDarkTheme(),
-            }"
-          ></i>
-        </button>
-        <div class="relative">
-          <button
-            class="layout-topbar-action layout-topbar-action-highlight"
-            pStyleClass="@next"
-            enterFromClass="hidden"
-            enterActiveClass="animate-scalein"
-            leaveToClass="hidden"
-            leaveActiveClass="animate-fadeout"
-            [hideOnOutsideClick]="true"
-          >
-            <i class="pi pi-palette"></i>
-          </button>
-          <app-configurator />
-        </div>
-      </div>
-
-      <button
-        class="layout-topbar-menu-button layout-topbar-action"
-        pStyleClass="@next"
-        enterFromClass="hidden"
-        enterActiveClass="animate-scalein"
-        leaveToClass="hidden"
-        leaveActiveClass="animate-fadeout"
-        [hideOnOutsideClick]="true"
-      >
-        <i class="pi pi-ellipsis-v"></i>
-      </button>
-
-      <div class="layout-topbar-menu hidden lg:block">
-        <div class="layout-topbar-menu-content">
-          <button type="button" class="layout-topbar-action">
-            <i class="pi pi-calendar"></i>
-            <span>Calendar</span>
-          </button>
-          <div class="relative">
-            <button
-              class="layout-topbar-action"
-              pStyleClass="@next"
-              enterFromClass="hidden"
-              enterActiveClass="animate-scalein"
-              leaveToClass="hidden"
-              leaveActiveClass="animate-fadeout"
-              [hideOnOutsideClick]="true"
-            >
-              <i class="pi pi-user"></i>
-              <span class="ml-2">Perfil</span>
-            </button>
-
-            <!-- Dropdown personalizado -->
-            <div
-              class="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded shadow z-50 hidden"
-            >
-              <div class="py-2">
-                <p class="px-4 py-2 text-gray-700 dark:text-gray-200">
-                  {{ userName }}
-                </p>
-                <hr class="border-gray-200 dark:border-gray-700" />
-              </div>
-              <button
-                class="w-full px-4 py-2 text-left hover:bg-gray-100 dark:hover:bg-gray-700"
-                (click)="logout()"
-              >
-                <i class="pi pi-sign-out mr-2"></i> Cerrar sesión
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>`,
+  imports: [RouterModule, CommonModule, StyleClassModule, AppConfigurator, CalendarModule, FormsModule],
+  templateUrl: './app.topbar.html',
+  styleUrls: ['./app.topbar.scss']
 })
 export class AppTopbar {
   /**
@@ -131,6 +31,10 @@ export class AppTopbar {
    * @description Nombre del usuario actual, mostrado en el perfil.
    */
   userName: string | null = null;
+  /**
+   * @description Fecha seleccionada en el calendario.
+   */
+  selectedDate: Date | null = null;
 
   /**
    * @description Constructor del componente AppTopbar.
