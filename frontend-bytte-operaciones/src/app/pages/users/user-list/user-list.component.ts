@@ -32,7 +32,7 @@ import { DropdownModule } from 'primeng/dropdown';
     FormsModule,
     DropdownModule,
   ],
-  providers: [ConfirmationService, MessageService, UserService, InviteService],
+  providers: [ConfirmationService, MessageService],
   templateUrl: './user-list.component.html',
 })
 export class UserListComponent implements OnInit {
