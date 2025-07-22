@@ -1,4 +1,5 @@
 export interface Cliente {
+    _id?: string; // Añadir _id para el ID de MongoDB
     active: boolean;
     address: string;
     custom_fields: {
@@ -31,5 +32,7 @@ export interface Cliente {
         name: string;
         avatar: any | null;
     };
+    companyName?: string; // Nueva propiedad para el nombre de la empresa
     other_companies: any[];
+    tarjetasCount?: number; // Nueva propiedad para el conteo de tarjetas
 }

@@ -1,5 +1,6 @@
 import dotenv from "dotenv";
 import { getFreshdeskAuthHeader } from "./utils/freshdeskAuth.js";
+import Cliente from "../models/cliente.model.js"; // Importar el modelo de Cliente
 
 dotenv.config();
 
@@ -23,9 +24,34 @@ export const getClientes = async (req, res) => {
     }
 
     const data = await response.json();
-    res.json(data);
+
+    // Procesar y guardar en la base de datos
+    if (
+      data.results &&
+      Array.isArray(data.results) &&
+      data.results.length > 0
+    ) {
+      for (const contacto of data.results) {
+        await Cliente.findOneAndUpdate(
+          { id_freshdesk: contacto.id },
+          {
+            name: contacto.name,
+            email: contacto.email,
+            mobile: contacto.mobile,
+            company_id: contacto.company_id,
+            companyName: contacto.company?.name, // Guardar el nombre de la empresa
+            custom_fields: contacto.custom_fields,
+          },
+          { upsert: true, new: true, setDefaultsOnInsert: true },
+        );
+      }
+    }
+
+    // Devolver los clientes desde la base de datos local
+    const clientesDB = await Cliente.find();
+    res.json({ results: clientesDB });
   } catch (error) {
-    console.error("Error fetching clients from Freshdesk:", error);
-    res.status(500).json({ message: "Error fetching clients from Freshdesk" });
+    console.error("Error fetching and syncing clients:", error);
+    res.status(500).json({ message: "Error fetching and syncing clients" });
   }
 };
