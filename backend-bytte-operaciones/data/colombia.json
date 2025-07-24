@@ -1,0 +1,14 @@
+[
+  {
+    "departamento": "Antioquia",
+    "ciudades": ["Medellín", "Envigado", "Bello"]
+  },
+  {
+    "departamento": "Cundinamarca",
+    "ciudades": ["Bogotá", "Soacha", "Chía"]
+  },
+  {
+    "departamento": "Valle del Cauca",
+    "ciudades": ["Cali", "Palmira", "Buenaventura"]
+  }
+]
