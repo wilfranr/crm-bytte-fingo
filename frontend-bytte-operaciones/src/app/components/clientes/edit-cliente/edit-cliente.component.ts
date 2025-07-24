@@ -63,24 +63,35 @@ export class EditClienteComponent implements OnInit {
 
   ngOnInit(): void {
     this.clienteId = this.route.snapshot.paramMap.get('id');
-    this.locationService.getLocations().subscribe((loc) => {
-      this.departamentosData = loc;
-      this.departamentos = loc.map(d => ({ label: d.departamento, value: d.departamento }));
 
-      if (this.clienteId) {
-        this.clienteService.getClienteById(this.clienteId).subscribe({
-          next: (cliente) => {
-            this.editForm.patchValue({ ...cliente, pais: 'Colombia' });
-            if (cliente.departamento) {
-              this.onDepartamentoChange({ value: cliente.departamento });
-            }
-          },
-          error: () => {
-            this.messageService.add({ severity: 'error', summary: 'Error', detail: 'No se pudo cargar el cliente.' });
-          }
-        });
+    this.locationService.getLocations().subscribe({
+      next: (loc) => {
+        this.departamentosData = loc;
+        this.departamentos = loc.map(d => ({ label: d.departamento, value: d.departamento }));
+
+        const depto = this.editForm.get('departamento')?.value;
+        if (depto) {
+          this.onDepartamentoChange({ value: depto });
+        }
+      },
+      error: () => {
+        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'No se pudo cargar ubicaciones.' });
       }
     });
+
+    if (this.clienteId) {
+      this.clienteService.getClienteById(this.clienteId).subscribe({
+        next: (cliente: Cliente) => {
+          this.editForm.patchValue(cliente);
+          if (cliente.departamento) {
+            this.onDepartamentoChange({ value: cliente.departamento });
+          }
+        },
+        error: () => {
+          this.messageService.add({ severity: 'error', summary: 'Error', detail: 'No se pudo cargar el cliente.' });
+        }
+      });
+    }
   }
 
   onDepartamentoChange(event: any): void {
