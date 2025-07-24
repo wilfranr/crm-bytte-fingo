@@ -15,7 +15,6 @@ import FacturacionRoutes from "./routes/facturacion.routes.js";
 import FacturacionCasbRoutes from "./routes/facturacionCasb.routes.js";
 import ClienteRoutes from "./routes/cliente.routes.js";
 import TarjetaRoutes from "./routes/tarjeta.routes.js"; // Importar las rutas de Tarjeta
-import LocationRoutes from "./routes/location.routes.js";
 import { setupSwaggerDocs } from "./utils/swagger.js";
 
 const app = express();
@@ -60,7 +59,6 @@ app.use("/api/facturacion", FacturacionRoutes);
 app.use("/api/facturacionCasb", FacturacionCasbRoutes);
 app.use("/api/clientes", ClienteRoutes);
 app.use("/api/tarjetas", TarjetaRoutes); // Usar las rutas de Tarjeta
-app.use("/api/locations", LocationRoutes);
 
 app.use("/docs", express.static(path.resolve(__dirname, "../docs")));
 
