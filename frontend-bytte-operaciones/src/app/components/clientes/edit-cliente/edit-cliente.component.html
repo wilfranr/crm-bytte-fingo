@@ -1,8 +1,8 @@
 <p-toast></p-toast>
 <div class="flex justify-center items-center h-full ">
-  <p-card header="Editar Cliente" styleClass="p-4 w-full max-w-md" [style]="{ 'max-width': '600px' }">
+  <p-card header="Editar Cliente" styleClass="p-4 w-full max-w-2xl" [style]="{ 'max-width': '700px' }">
     <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
-      <div class="flex flex-col gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
           <label for="name" class="block font-bold mb-3">Nombre</label>
           <p-iconfield>
@@ -67,7 +67,7 @@
         </div>
       </div>
 
-      <div class="flex justify-end mt-4">
+      <div class="flex justify-end mt-4 md:col-span-2">
         <p-button label="Actualizar Cliente" type="submit" [disabled]="editForm.invalid"></p-button>
       </div>
     </form>
