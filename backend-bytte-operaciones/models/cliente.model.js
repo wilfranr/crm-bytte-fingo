@@ -18,6 +18,18 @@ const clienteSchema = new mongoose.Schema({
   mobile: {
     type: String,
   },
+  direccion: {
+    type: String,
+  },
+  ciudad: {
+    type: String,
+  },
+  pais: {
+    type: String,
+  },
+  departamento: {
+    type: String,
+  },
   company_id: {
     type: Number,
   },
