@@ -55,3 +55,25 @@ export const getClientes = async (req, res) => {
     res.status(500).json({ message: "Error fetching and syncing clients" });
   }
 };
+
+export const updateCliente = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const updateData = {};
+    Object.entries(req.body).forEach(([key, value]) => {
+      if (value !== undefined) {
+        updateData[key] = value;
+      }
+    });
+
+    const cliente = await Cliente.findByIdAndUpdate(id, updateData, {
+      new: true,
+    });
+    if (!cliente) {
+      return res.status(404).json({ message: 'Cliente no encontrado' });
+    }
+    res.json(cliente);
+  } catch (_error) {
+    res.status(500).json({ message: 'Error al actualizar el cliente' });
+  }
+};

@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { getClientes } from '../controllers/cliente.controller.js';
+import { getClientes, updateCliente } from '../controllers/cliente.controller.js';
 import authMiddleware from '../middlewares/auth.middleware.js';
 
 const router = Router();
@@ -44,5 +44,6 @@ const router = Router();
  *                   type: string
  */
 router.get('/', authMiddleware, getClientes);
+router.put('/:id', authMiddleware, updateCliente);
 
 export default router;
