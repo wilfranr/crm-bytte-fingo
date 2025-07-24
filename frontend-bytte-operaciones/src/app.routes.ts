@@ -64,6 +64,15 @@ export const appRoutes: Routes = [
         canActivate: [authGuard, roleGuard],
         data: { roles: ['admin', 'superadmin'] },
       },
+      {
+        path: 'clientes/edit/:id',
+        loadComponent: () =>
+          import(
+            './app/components/clientes/edit-cliente/edit-cliente.component'
+          ).then((m) => m.EditClienteComponent),
+        canActivate: [authGuard, roleGuard],
+        data: { roles: ['admin', 'superadmin'] },
+      },
     ],
   },
   { path: 'access', component: Access },
