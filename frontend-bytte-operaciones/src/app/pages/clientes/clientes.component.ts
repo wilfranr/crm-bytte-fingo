@@ -15,6 +15,7 @@ import { TarjetaService, Tarjeta } from '../../services/tarjeta.service'; // Imp
 import { FormsModule } from '@angular/forms'; // Importar FormsModule
 import { CalendarModule } from 'primeng/calendar'; // Importar CalendarModule
 import { DividerModule } from 'primeng/divider'; // Importar DividerModule
+import { Router } from '@angular/router'; // Importar Router
 
 @Component({
   selector: 'app-clientes',
@@ -144,8 +145,10 @@ import { DividerModule } from 'primeng/divider'; // Importar DividerModule
                 <th>Teléfono</th>
                 <th>Empresa</th>
                 <th>Id Formulario</th>
-                <th>Tarjetas</th> <!-- Nueva columna para tarjetas -->
-                <th>Acciones</th> <!-- Nueva columna para acciones -->
+                <th>Tarjetas</th>
+                <!-- Nueva columna para tarjetas -->
+                <th>Acciones</th>
+                <!-- Nueva columna para acciones -->
               </tr>
             </ng-template>
             <ng-template pTemplate="body" let-cliente>
@@ -169,10 +172,27 @@ import { DividerModule } from 'primeng/divider'; // Importar DividerModule
                 >
                   {{ cliente.custom_fields.id_formulario }}
                 </td>
-                <td>{{ cliente.tarjetasCount || 0 }}</td> <!-- Mostrar cantidad de tarjetas -->
+                <td>{{ cliente.tarjetasCount || 0 }}</td>
+                <!-- Mostrar cantidad de tarjetas -->
                 <td>
-                  <button pButton icon="pi pi-eye" class="p-button-rounded p-button-outlined p-button-info p-button-sm mr-2" (click)="showTarjetas(cliente)"></button>
-                  <button pButton icon="pi pi-plus" class="p-button-rounded p-button-outlined p-button-success p-button-sm" (click)="addTarjetaDialog(cliente)"></button>
+                  <button
+                    pButton
+                    icon="pi pi-eye"
+                    class="p-button-rounded p-button-outlined p-button-info p-button-sm mr-2"
+                    (click)="showTarjetas(cliente)"
+                  ></button>
+                  <button
+                    pButton
+                    icon="pi pi-plus"
+                    class="p-button-rounded p-button-outlined p-button-success p-button-sm mr-2"
+                    (click)="addTarjetaDialog(cliente)"
+                  ></button>
+                  <button
+                    pButton
+                    icon="pi pi-pencil"
+                    class="p-button-rounded p-button-outlined p-button-warning p-button-sm"
+                    (click)="editCliente(cliente)"
+                  ></button>
                 </td>
               </tr>
             </ng-template>
@@ -182,13 +202,23 @@ import { DividerModule } from 'primeng/divider'; // Importar DividerModule
     </div>
 
     <!-- Diálogo para mostrar y agregar tarjetas -->
-    <p-dialog header="Tarjetas de {{ selectedCliente?.name }}" [(visible)]="displayTarjetasDialog" [modal]="true" [style]="{width: '50vw', 'max-height': '90vh'}" [draggable]="false" [resizable]="false">
+    <p-dialog
+      header="Tarjetas de {{ selectedCliente?.name }}"
+      [(visible)]="displayTarjetasDialog"
+      [modal]="true"
+      [style]="{ width: '50vw', 'max-height': '90vh' }"
+      [draggable]="false"
+      [resizable]="false"
+    >
       <div *ngIf="displayTarjetasDialog" class="p-fluid">
         <h3>Tarjetas Entregadas</h3>
-        <p *ngIf="tarjetasCliente.length === 0">No hay tarjetas registradas para este cliente.</p>
+        <p *ngIf="tarjetasCliente.length === 0">
+          No hay tarjetas registradas para este cliente.
+        </p>
         <ul *ngIf="tarjetasCliente.length > 0">
           <li *ngFor="let tarjeta of tarjetasCliente">
-            Fecha de Entrega: {{ tarjeta.deliveryDate | date: 'dd/MM/yyyy' }} - Número: {{ tarjeta.cardNumber || 'N/A' }}
+            Fecha de Entrega: {{ tarjeta.deliveryDate | date: 'dd/MM/yyyy' }} -
+            Número: {{ tarjeta.cardNumber || 'N/A' }}
           </li>
         </ul>
 
@@ -198,14 +228,34 @@ import { DividerModule } from 'primeng/divider'; // Importar DividerModule
         <form (ngSubmit)="saveNewTarjeta()">
           <div class="field">
             <label for="deliveryDate">Fecha de Entrega</label>
-            <p-calendar *ngIf="renderCalendar" id="deliveryDate" [(ngModel)]="newTarjeta.deliveryDate" name="deliveryDate" dateFormat="yy-mm-dd" [showIcon]="true" inputId="icon" appendTo="body"></p-calendar>
+            <p-calendar
+              *ngIf="renderCalendar"
+              id="deliveryDate"
+              [(ngModel)]="newTarjeta.deliveryDate"
+              name="deliveryDate"
+              dateFormat="yy-mm-dd"
+              [showIcon]="true"
+              inputId="icon"
+              appendTo="body"
+            ></p-calendar>
           </div>
           <div class="field">
             <label for="cardNumber">Número de Tarjeta (Opcional)</label>
-            <input pInputText id="cardNumber" type="text" [(ngModel)]="newTarjeta.cardNumber" name="cardNumber" />
+            <input
+              pInputText
+              id="cardNumber"
+              type="text"
+              [(ngModel)]="newTarjeta.cardNumber"
+              name="cardNumber"
+            />
           </div>
           <div class="flex justify-content-end mt-3">
-            <button pButton type="submit" label="Guardar Tarjeta" icon="pi pi-save"></button>
+            <button
+              pButton
+              type="submit"
+              label="Guardar Tarjeta"
+              icon="pi pi-save"
+            ></button>
           </div>
         </form>
       </div>
@@ -221,13 +271,17 @@ export class ClientesComponent implements OnInit {
   displayTarjetasDialog: boolean = false;
   selectedCliente: Cliente | null = null;
   tarjetasCliente: Tarjeta[] = [];
-  newTarjeta: Tarjeta = { clientId: '', deliveryDate: new Date().toISOString().split('T')[0] }; // Inicializar con string
+  newTarjeta: Tarjeta = {
+    clientId: '',
+    deliveryDate: new Date().toISOString().split('T')[0],
+  }; // Inicializar con string
   renderCalendar: boolean = false; // Nueva propiedad para controlar la renderización del calendario
 
   constructor(
     private clienteService: ClienteService,
     private messageService: MessageService,
     private tarjetaService: TarjetaService, // Inyectar TarjetaService
+    private router: Router, // Inyectar Router
   ) {}
 
   ngOnInit(): void {
@@ -240,17 +294,19 @@ export class ClientesComponent implements OnInit {
   }
 
   loadTotalTarjetasCount(): void {
-    this.tarjetaService.getTotalTarjetasCount().subscribe(response => {
+    this.tarjetaService.getTotalTarjetasCount().subscribe((response) => {
       this.totalTarjetasCount = response.count;
     });
   }
 
   loadTarjetasCount(): void {
-    this.clientes.forEach(cliente => {
+    this.clientes.forEach((cliente) => {
       if (cliente._id) {
-        this.tarjetaService.getTarjetasByCliente(cliente._id).subscribe(tarjetas => {
-          cliente.tarjetasCount = tarjetas.length;
-        });
+        this.tarjetaService
+          .getTarjetasByCliente(cliente._id)
+          .subscribe((tarjetas) => {
+            cliente.tarjetasCount = tarjetas.length;
+          });
       }
     });
   }
@@ -258,23 +314,27 @@ export class ClientesComponent implements OnInit {
   showTarjetas(cliente: Cliente): void {
     this.selectedCliente = cliente;
     if (cliente._id) {
-      this.tarjetaService.getTarjetasByCliente(cliente._id).subscribe(tarjetas => {
-        this.tarjetasCliente = tarjetas;
-        this.displayTarjetasDialog = true;
-      });
+      this.tarjetaService
+        .getTarjetasByCliente(cliente._id)
+        .subscribe((tarjetas) => {
+          this.tarjetasCliente = tarjetas;
+          this.displayTarjetasDialog = true;
+        });
     }
   }
 
   addTarjetaDialog(cliente: Cliente): void {
     this.selectedCliente = cliente;
-    this.newTarjeta = { clientId: cliente._id || '', deliveryDate: new Date().toISOString().split('T')[0] }; // Inicializar con string
+    this.newTarjeta = {
+      clientId: '',
+      deliveryDate: new Date().toISOString().split('T')[0],
+    }; // Inicializar con string
     this.tarjetasCliente = []; // Limpiar las tarjetas mostradas si se abre para agregar
     this.renderCalendar = false; // Ocultar el calendario antes de mostrar el diálogo
-    this.displayTarjetasDialog = true;
-    // Renderizar el calendario después de un pequeño retraso para asegurar que el DOM esté listo
     setTimeout(() => {
       this.renderCalendar = true;
     }, 0);
+    this.displayTarjetasDialog = true;
   }
 
   saveNewTarjeta(): void {
@@ -287,7 +347,11 @@ export class ClientesComponent implements OnInit {
         const dateObj = new Date(this.newTarjeta.deliveryDate);
         formattedDeliveryDate = dateObj.toISOString();
       } else {
-        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'La fecha de entrega es requerida.' });
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Error',
+          detail: 'La fecha de entrega es requerida.',
+        });
         return; // Salir de la función si la fecha no está presente
       }
 
@@ -298,7 +362,11 @@ export class ClientesComponent implements OnInit {
 
       this.tarjetaService.addTarjeta(tarjetaToSend).subscribe({
         next: (tarjeta) => {
-          this.messageService.add({ severity: 'success', summary: 'Éxito', detail: 'Tarjeta agregada exitosamente.' });
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Éxito',
+            detail: 'Tarjeta agregada exitosamente.',
+          });
           this.displayTarjetasDialog = false;
           this.loadTarjetasCount(); // Recargar el conteo de tarjetas por cliente
           this.loadTotalTarjetasCount(); // Recargar el conteo total de tarjetas
@@ -307,10 +375,21 @@ export class ClientesComponent implements OnInit {
           }
         },
         error: (err) => {
-          this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Error al agregar tarjeta.' });
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Error',
+            detail: 'Error al agregar tarjeta.',
+          });
           console.error('Error al agregar tarjeta:', err);
-        }
+        },
       });
+    }
+  }
+
+  editCliente(cliente: Cliente): void {
+    if (cliente._id) {
+      console.log(cliente._id);
+      this.router.navigate(['/clientes/edit', cliente._id]);
     }
   }
 

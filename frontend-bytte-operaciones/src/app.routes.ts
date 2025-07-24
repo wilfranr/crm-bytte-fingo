@@ -48,13 +48,19 @@ export const appRoutes: Routes = [
       },
       {
         path: 'facturacion-miid',
-        loadComponent: () => import('./app/components/facturacion-miid/facturacion-miid.component').then(m => m.FacturacionMiidComponent),
+        loadComponent: () =>
+          import(
+            './app/components/facturacion-miid/facturacion-miid.component'
+          ).then((m) => m.FacturacionMiidComponent),
         canActivate: [authGuard, roleGuard],
         data: { roles: ['admin', 'superadmin'] },
       },
       {
         path: 'clientes',
-        loadComponent: () => import('./app/pages/clientes/clientes.component').then(m => m.ClientesComponent),
+        loadComponent: () =>
+          import('./app/pages/clientes/clientes.component').then(
+            (m) => m.ClientesComponent,
+          ),
         canActivate: [authGuard, roleGuard],
         data: { roles: ['admin', 'superadmin'] },
       },
@@ -63,6 +69,6 @@ export const appRoutes: Routes = [
   { path: 'access', component: Access },
   { path: 'landing', component: Landing },
   { path: 'notfound', component: Notfound },
-  { path: 'auth', loadChildren: () => import('./app/pages/auth/auth.routes') },
-  { path: '**', redirectTo: '/notfound' },
+  { path: 'auth', loadChildren: () => import('./app/pages/auth/auth.routes').then(m => m.default) },
+  // { path: '**', redirectTo: '/notfound' },
 ];

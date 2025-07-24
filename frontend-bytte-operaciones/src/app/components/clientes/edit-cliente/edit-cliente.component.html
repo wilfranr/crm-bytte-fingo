@@ -1,0 +1,40 @@
+<p-toast></p-toast>
+<div class="p-d-flex p-jc-center p-ai-center" style="height: 100%;">
+  <p-card header="Editar Cliente" styleClass="p-l-4 p-r-4 p-b-4">
+    <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+      <div class="p-fluid">
+        <div class="p-field p-mb-3">
+          <p-floatLabel>
+            <input pInputText id="name" formControlName="name" />
+            <label for="name">Nombre</label>
+          </p-floatLabel>
+          <small *ngIf="editForm.get('name')?.invalid && editForm.get('name')?.touched" class="p-error">
+            El nombre es requerido.
+          </small>
+        </div>
+
+        <div class="p-field p-mb-3">
+          <p-floatLabel>
+            <input pInputText id="email" formControlName="email" />
+            <label for="email">Email</label>
+          </p-floatLabel>
+          <small *ngIf="editForm.get('email')?.invalid && editForm.get('email')?.touched" class="p-error">
+            <span *ngIf="editForm.get('email')?.errors?.['required']">El email es requerido.</span>
+            <span *ngIf="editForm.get('email')?.errors?.['email']">Email inválido.</span>
+          </small>
+        </div>
+
+        <div class="p-field p-mb-3">
+          <p-floatLabel>
+            <input pInputText id="mobile" formControlName="mobile" />
+            <label for="mobile">Teléfono</label>
+          </p-floatLabel>
+        </div>
+      </div>
+
+      <div class="p-d-flex p-jc-end p-mt-4">
+        <p-button label="Actualizar Cliente" type="submit" [disabled]="editForm.invalid"></p-button>
+      </div>
+    </form>
+  </p-card>
+</div>

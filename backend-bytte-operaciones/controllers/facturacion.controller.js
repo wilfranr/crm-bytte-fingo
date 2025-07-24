@@ -3,39 +3,34 @@ import * as path from "path";
 import fs from "fs";
 import { fileURLToPath } from "url";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-const PROCESSED_DIR = path.join(__dirname, "../processed");
-const CONSOLIDADO_MIID_PATH = path.join(PROCESSED_DIR, "Consolidado_miid.xlsx");
-
-// Asegurarse de que el directorio 'processed' exista
-if (!fs.existsSync(PROCESSED_DIR)) {
-  fs.mkdirSync(PROCESSED_DIR, { recursive: true });
-}
-
 // Función para obtener el nombre del mes en español
 const getSpanishMonthName = (date) => {
   const monthNames = [
-    "enero",
-    "febrero",
-    "marzo",
-    "abril",
-    "mayo",
-    "junio",
-    "julio",
-    "agosto",
-    "septiembre",
-    "octubre",
-    "noviembre",
-    "diciembre",
+    "enero", "febrero", "marzo", "abril", "mayo", "junio",
+    "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre",
   ];
   return monthNames[date.getMonth()];
+};
+
+// Función para encapsular la lógica de rutas
+export const getPaths = () => {
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = path.dirname(__filename);
+  const PROCESSED_DIR = path.join(__dirname, "../processed");
+  const CONSOLIDADO_MIID_PATH = path.join(PROCESSED_DIR, "Consolidado_miid.xlsx");
+  return { __filename, __dirname, PROCESSED_DIR, CONSOLIDADO_MIID_PATH };
 };
 
 export const procesarArchivo = (req, res) => {
   if (!req.file) {
     return res.status(400).send({ message: "No se ha subido ningún archivo." });
+  }
+
+  const { PROCESSED_DIR, CONSOLIDADO_MIID_PATH } = getPaths();
+
+  // Asegurarse de que el directorio 'processed' exista
+  if (!fs.existsSync(PROCESSED_DIR)) {
+    fs.mkdirSync(PROCESSED_DIR, { recursive: true });
   }
 
   const currentDate = new Date();

@@ -12,6 +12,7 @@ import UserRoutes from "./routes/user.routes.js";
 import authMiddleware from "./middlewares/auth.middleware.js";
 import InviteRoutes from "./routes/invite.routes.js";
 import FacturacionRoutes from "./routes/facturacion.routes.js";
+import FacturacionCasbRoutes from "./routes/facturacionCasb.routes.js";
 import ClienteRoutes from "./routes/cliente.routes.js";
 import TarjetaRoutes from "./routes/tarjeta.routes.js"; // Importar las rutas de Tarjeta
 import { setupSwaggerDocs } from "./utils/swagger.js";
@@ -55,6 +56,7 @@ app.use("/api/access", AccessRoutes);
 app.use("/api/users", UserRoutes);
 app.use("/api/invite", InviteRoutes);
 app.use("/api/facturacion", FacturacionRoutes);
+app.use("/api/facturacionCasb", FacturacionCasbRoutes);
 app.use("/api/clientes", ClienteRoutes);
 app.use("/api/tarjetas", TarjetaRoutes); // Usar las rutas de Tarjeta
 

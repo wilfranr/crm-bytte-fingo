@@ -69,7 +69,7 @@ export class AppMenu {
           {
             label: 'Facturación-CASB',
             icon: 'pi pi-fw pi-dollar',
-            routerLink: ['/itau/facturacion'],
+            routerLink: ['/facturacion-casb'],
           },
 
           {

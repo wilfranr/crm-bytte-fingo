@@ -173,7 +173,7 @@ export class UserListComponent implements OnInit {
 
   generateToken(): void {
     this.inviteService.generateToken().subscribe({
-      next: (res) => {
+      next: (res: { token: string }) => {
         this.inviteToken = res.token;
         this.messageService.add({
           severity: 'info',

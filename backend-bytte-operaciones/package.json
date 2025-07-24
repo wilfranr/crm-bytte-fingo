@@ -4,7 +4,15 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
+  },
+  "jest": {
+    "setupFilesAfterEnv": [
+      "./jest.setup.js"
+    ],
+    "transform": {
+      "^.+\\.js$": "babel-jest"
+    }
   },
   "keywords": [],
   "author": "",
@@ -27,5 +35,14 @@
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.1",
     "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.28.0",
+    "@babel/preset-env": "^7.28.0",
+    "babel-jest": "^30.0.5",
+    "babel-plugin-transform-import-meta": "^2.3.3",
+    "jest": "^30.0.5",
+    "jest-fetch-mock": "^3.0.3",
+    "supertest": "^7.1.4"
   }
 }

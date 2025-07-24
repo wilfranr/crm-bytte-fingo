@@ -56,6 +56,19 @@ export const getClientes = async (req, res) => {
   }
 };
 
+export const getClienteById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const cliente = await Cliente.findById(id);
+    if (!cliente) {
+      return res.status(404).json({ message: 'Cliente no encontrado' });
+    }
+    res.json(cliente);
+  } catch (error) {
+    res.status(500).json({ message: 'Error al obtener el cliente' });
+  }
+};
+
 export const updateCliente = async (req, res) => {
   try {
     const { id } = req.params;
@@ -77,3 +90,4 @@ export const updateCliente = async (req, res) => {
     res.status(500).json({ message: 'Error al actualizar el cliente' });
   }
 };
+
