@@ -1,0 +1,224 @@
+    <p-toast></p-toast>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-4">
+      <div class="col-span-12 lg:col-span-6">
+        <div class="card mb-0">
+          <div class="flex justify-between mb-4">
+            <div>
+              <span class="block text-muted-color font-medium mb-4"
+                >Clientes</span
+              >
+              <div
+                class="text-surface-900 dark:text-surface-0 font-medium text-xl"
+              >
+                {{ clientCount }}
+              </div>
+            </div>
+            <div
+              class="flex items-center justify-center bg-cyan-100 dark:bg-cyan-400/10 rounded-border"
+              style="width: 2.5rem; height: 2.5rem"
+            >
+              <i class="pi pi-users text-cyan-500 !text-xl"></i>
+            </div>
+          </div>
+          <!--<span class="text-primary font-medium">520 </span> //
+          <span class="text-muted-color">newly registered</span> -->
+        </div>
+      </div>
+      <div class="col-span-12 lg:col-span-6">
+        <div class="card mb-0">
+          <div class="flex justify-between mb-4">
+            <div>
+              <span class="block text-muted-color font-medium mb-4"
+                >Tarjetas Entregadas</span
+              >
+              <div
+                class="text-surface-900 dark:text-surface-0 font-medium text-xl"
+              >
+                {{ totalTarjetasCount }}
+              </div>
+            </div>
+            <div
+              class="flex items-center justify-center bg-purple-100 dark:bg-purple-400/10 rounded-border"
+              style="width: 2.5rem; height: 2.5rem"
+            >
+              <i class="pi pi-credit-card text-purple-500 !text-xl"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-span-12">
+        <div class="card">
+          <div
+            style="display: flex; justify-content: space-between; align-items: center;"
+          >
+            <h2>CLIENTES CON TARJETA ACTIVA</h2>
+            <img
+              src="assets/layout/images/logo_fingo.png"
+              alt="Fingo Logo"
+              style="height: 40px;"
+            />
+          </div>
+          <p-message severity="info"
+            >Doble clic en cualquier campo para copiar al
+            portapapeles.</p-message
+          >
+          <p-table
+            #dt
+            [value]="clientes"
+            [paginator]="true"
+            [rows]="10"
+            [globalFilterFields]="[
+              'name',
+              'email',
+              'mobile',
+              'company.name',
+              'custom_fields.id_formulario',
+            ]"
+          >
+            <ng-template pTemplate="caption">
+              <div
+                class="flex justify-content-between align-items-center flex-column sm:flex-row"
+              >
+                <button
+                  pButton
+                  label="Clear"
+                  class="p-button-outlined mb-2"
+                  icon="pi pi-filter-slash"
+                  (click)="clear(dt)"
+                ></button>
+                <p-iconfield iconPosition="left" class="ml-auto">
+                  <p-inputicon>
+                    <i class="pi pi-search"></i>
+                  </p-inputicon>
+                  <input
+                    pInputText
+                    type="text"
+                    (input)="onGlobalFilter(dt, $event)"
+                    placeholder="Buscar por palabra clave"
+                  />
+                </p-iconfield>
+              </div>
+            </ng-template>
+            <ng-template pTemplate="header">
+              <tr>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Teléfono</th>
+                <th>Empresa</th>
+                <th>Id Formulario</th>
+                <th>Tarjetas</th>
+                <!-- Nueva columna para tarjetas -->
+                <th>Acciones</th>
+                <!-- Nueva columna para acciones -->
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-cliente>
+              <tr>
+                <td (dblclick)="copyToClipboard(cliente.name)">
+                  {{ cliente.name }}
+                </td>
+                <td (dblclick)="copyToClipboard(cliente.email)">
+                  {{ cliente.email }}
+                </td>
+                <td (dblclick)="copyToClipboard(cliente.mobile)">
+                  {{ cliente.mobile }}
+                </td>
+                <td (dblclick)="copyToClipboard(cliente.companyName)">
+                  {{ cliente.companyName }}
+                </td>
+                <td
+                  (dblclick)="
+                    copyToClipboard(cliente.custom_fields.id_formulario)
+                  "
+                >
+                  {{ cliente.custom_fields.id_formulario }}
+                </td>
+                <td>{{ cliente.tarjetasCount || 0 }}</td>
+                <!-- Mostrar cantidad de tarjetas -->
+                <td>
+                  <button
+                    pButton
+                    icon="pi pi-eye"
+                    class="p-button-rounded p-button-outlined p-button-info p-button-sm mr-2"
+                    (click)="showTarjetas(cliente)"
+                  ></button>
+                  <button
+                    pButton
+                    icon="pi pi-plus"
+                    class="p-button-rounded p-button-outlined p-button-success p-button-sm mr-2"
+                    (click)="addTarjetaDialog(cliente)"
+                  ></button>
+                  <button
+                    pButton
+                    icon="pi pi-pencil"
+                    class="p-button-rounded p-button-outlined p-button-warning p-button-sm"
+                    (click)="editCliente(cliente)"
+                  ></button>
+                </td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Diálogo para mostrar y agregar tarjetas -->
+    <p-dialog
+      header="Tarjetas de {{ selectedCliente?.name }}"
+      [(visible)]="displayTarjetasDialog"
+      [modal]="true"
+      [style]="{ width: '50vw', 'max-height': '90vh' }"
+      [draggable]="false"
+      [resizable]="false"
+    >
+      <div *ngIf="displayTarjetasDialog" class="p-fluid">
+        <h3>Tarjetas Entregadas</h3>
+        <p *ngIf="tarjetasCliente.length === 0">
+          No hay tarjetas registradas para este cliente.
+        </p>
+        <ul *ngIf="tarjetasCliente.length > 0">
+          <li *ngFor="let tarjeta of tarjetasCliente">
+            Fecha de Entrega: {{ tarjeta.deliveryDate | date: 'dd/MM/yyyy' }} -
+            Número: {{ tarjeta.cardNumber || 'N/A' }}
+          </li>
+        </ul>
+
+        <p-divider></p-divider>
+
+        <h3>Agregar Nueva Tarjeta</h3>
+        <form (ngSubmit)="saveNewTarjeta()">
+          <div class="field">
+            <label for="deliveryDate">Fecha de Entrega</label>
+            <p-calendar
+              *ngIf="renderCalendar"
+              id="deliveryDate"
+              [(ngModel)]="newTarjeta.deliveryDate"
+              name="deliveryDate"
+              dateFormat="yy-mm-dd"
+              [showIcon]="true"
+              inputId="icon"
+              appendTo="body"
+            ></p-calendar>
+          </div>
+          <div class="field">
+            <label for="cardNumber">Número de Tarjeta (Opcional)</label>
+            <input
+              pInputText
+              id="cardNumber"
+              type="text"
+              [(ngModel)]="newTarjeta.cardNumber"
+              name="cardNumber"
+            />
+          </div>
+          <div class="flex justify-content-end mt-3">
+            <button
+              pButton
+              type="submit"
+              label="Guardar Tarjeta"
+              icon="pi pi-save"
+            ></button>
+          </div>
+        </form>
+      </div>
+    </p-dialog>
