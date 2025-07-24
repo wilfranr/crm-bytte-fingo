@@ -8,6 +8,8 @@ import { CardModule } from 'primeng/card';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { FloatLabelModule } from 'primeng/floatlabel';
+import { IconFieldModule } from 'primeng/iconfield';
+import { InputIconModule } from 'primeng/inputicon';
 
 import { ClienteService } from '../../../services/cliente.service';
 import { Cliente } from '../../../core/models/cliente.model';
@@ -22,7 +24,9 @@ import { Cliente } from '../../../core/models/cliente.model';
     CardModule,
     InputTextModule,
     ButtonModule,
-    FloatLabelModule
+    FloatLabelModule,
+    IconFieldModule,
+    InputIconModule
   ],
   providers: [MessageService],
   templateUrl: './edit-cliente.component.html',
@@ -52,9 +56,8 @@ export class EditClienteComponent implements OnInit {
         next: (cliente) => {
           this.editForm.patchValue(cliente);
         },
-        error: (err) => {
+        error: () => {
           this.messageService.add({ severity: 'error', summary: 'Error', detail: 'No se pudo cargar el cliente.' });
-          console.error(err);
         }
       });
     }
@@ -71,9 +74,8 @@ export class EditClienteComponent implements OnInit {
       next: (clienteActualizado) => {
         this.messageService.add({ severity: 'success', summary: 'Éxito', detail: `Cliente "${clienteActualizado.name}" actualizado.` });
       },
-      error: (err) => {
+      error: () => {
         this.messageService.add({ severity: 'error', summary: 'Error', detail: 'No se pudo actualizar el cliente.' });
-        console.error(err);
       }
     });
   }
