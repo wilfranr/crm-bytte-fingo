@@ -45,7 +45,11 @@ export class EditClienteComponent implements OnInit {
     this.editForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      mobile: ['']
+      mobile: [''],
+      direccion: [''],
+      ciudad: [''],
+      pais: [''],
+      departamento: ['']
     });
   }
 

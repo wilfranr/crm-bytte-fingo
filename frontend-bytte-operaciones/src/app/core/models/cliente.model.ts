@@ -16,6 +16,10 @@ export interface Cliente {
     job_title: string | null;
     language: string;
     mobile: string;
+    direccion?: string;
+    ciudad?: string;
+    pais?: string;
+    departamento?: string;
     name: string;
     phone: string | null;
     time_zone: string;
