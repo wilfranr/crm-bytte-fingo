@@ -43,27 +43,35 @@
         </div>
 
         <div>
+          <label for="departamento" class="block font-bold mb-3">Departamento</label>
+          <p-dropdown
+            id="departamento"
+            formControlName="departamento"
+            [options]="departamentos"
+            optionLabel="label"
+            optionValue="value"
+            placeholder="Seleccione un departamento"
+            (onChange)="onDepartamentoChange($event)"
+            class="w-full"
+          ></p-dropdown>
+        </div>
+
+        <div>
           <label for="ciudad" class="block font-bold mb-3">Ciudad</label>
-          <p-iconfield>
-            <p-inputicon class="pi pi-building" />
-            <input pInputText id="ciudad" formControlName="ciudad" />
-          </p-iconfield>
+          <p-dropdown
+            id="ciudad"
+            formControlName="ciudad"
+            [options]="ciudades"
+            optionLabel="label"
+            optionValue="value"
+            placeholder="Seleccione una ciudad"
+            class="w-full"
+          ></p-dropdown>
         </div>
 
         <div>
           <label for="pais" class="block font-bold mb-3">País</label>
-          <p-iconfield>
-            <p-inputicon class="pi pi-globe" />
-            <input pInputText id="pais" formControlName="pais" />
-          </p-iconfield>
-        </div>
-
-        <div>
-          <label for="departamento" class="block font-bold mb-3">Departamento</label>
-          <p-iconfield>
-            <p-inputicon class="pi pi-compass" />
-            <input pInputText id="departamento" formControlName="departamento" />
-          </p-iconfield>
+          <input pInputText id="pais" formControlName="pais" disabled />
         </div>
       </div>
 
