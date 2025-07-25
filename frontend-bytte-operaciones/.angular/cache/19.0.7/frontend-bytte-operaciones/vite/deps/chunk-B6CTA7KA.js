@@ -134,6 +134,7 @@ var AutoFocusModule = class _AutoFocusModule {
 })();
 
 export {
-  AutoFocus
+  AutoFocus,
+  AutoFocusModule
 };
-//# sourceMappingURL=chunk-VGEPWANS.js.map
+//# sourceMappingURL=chunk-B6CTA7KA.js.map

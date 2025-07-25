@@ -1,4 +1,3 @@
-
 import mongoose from 'mongoose';
 
 const clienteSchema = new mongoose.Schema({
@@ -24,11 +23,12 @@ const clienteSchema = new mongoose.Schema({
   ciudad: {
     type: String,
   },
-  pais: {
-    type: String,
-  },
   departamento: {
     type: String,
+  },
+  pais: {
+    type: String,
+    default: 'Colombia',
   },
   company_id: {
     type: Number,

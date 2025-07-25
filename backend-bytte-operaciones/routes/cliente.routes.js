@@ -44,7 +44,67 @@ const router = Router();
  *                   type: string
  */
 router.get('/', authMiddleware, getClientes);
+
+/**
+ * @swagger
+ * /api/clientes/{id}:
+ *   get:
+ *     summary: Obtiene un cliente por ID.
+ *     tags: [Clientes]
+ *     description: Recupera un cliente individual de la base de datos utilizando su ID único.
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: ID único del cliente a recuperar.
+ *     responses:
+ *       200:
+ *         description: Cliente encontrado exitosamente.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Cliente'
+ *       404:
+ *         description: Cliente no encontrado.
+ *       500:
+ *         description: Error del servidor al obtener el cliente.
+ */
 router.get('/:id', authMiddleware, getClienteById);
+
+/**
+ * @swagger
+ * /api/clientes/{id}:
+ *   put:
+ *     summary: Actualiza un cliente por ID.
+ *     tags: [Clientes]
+ *     description: Actualiza la información de un cliente existente en la base de datos.
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: ID único del cliente a actualizar.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/Cliente'
+ *     responses:
+ *       200:
+ *         description: Cliente actualizado exitosamente.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Cliente'
+ *       404:
+ *         description: Cliente no encontrado.
+ *       500:
+ *         description: Error del servidor al actualizar el cliente.
+ */
 router.put('/:id', authMiddleware, updateCliente);
 
 export default router;

@@ -1,6 +1,6 @@
 <p-toast></p-toast>
 <div class="flex justify-center items-center h-full ">
-  <p-card header="Editar Cliente" styleClass="p-4 w-full max-w-2xl" [style]="{ 'max-width': '700px' }">
+  <p-card header="Editar Cliente" styleClass="p-4 w-full max-w-4xl" [style]="{ 'max-width': '900px' }">
     <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
@@ -43,14 +43,6 @@
         </div>
 
         <div>
-          <label for="ciudad" class="block font-bold mb-3">Ciudad</label>
-          <p-iconfield>
-            <p-inputicon class="pi pi-building" />
-            <input pInputText id="ciudad" formControlName="ciudad" />
-          </p-iconfield>
-        </div>
-
-        <div>
           <label for="pais" class="block font-bold mb-3">País</label>
           <p-iconfield>
             <p-inputicon class="pi pi-globe" />
@@ -60,10 +52,22 @@
 
         <div>
           <label for="departamento" class="block font-bold mb-3">Departamento</label>
-          <p-iconfield>
-            <p-inputicon class="pi pi-compass" />
-            <input pInputText id="departamento" formControlName="departamento" />
-          </p-iconfield>
+          <p-dropdown 
+            [options]="departments" 
+            formControlName="departamento" 
+            optionLabel="departamento" 
+            optionValue="id" 
+            placeholder="Seleccione un departamento">
+          </p-dropdown>
+        </div>
+
+        <div>
+          <label for="ciudad" class="block font-bold mb-3">Ciudad</label>
+          <p-dropdown 
+            [options]="cities" 
+            formControlName="ciudad" 
+            placeholder="Seleccione una ciudad">
+          </p-dropdown>
         </div>
       </div>
 

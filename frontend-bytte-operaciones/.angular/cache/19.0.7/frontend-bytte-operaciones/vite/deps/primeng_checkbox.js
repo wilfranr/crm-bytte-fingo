@@ -1,11 +1,11 @@
 import {
-  SELECTBUTTON_VALUE_ACCESSOR,
-  SelectButton,
-  SelectButtonClasses,
-  SelectButtonModule,
-  SelectButtonStyle
-} from "./chunk-IUS5344M.js";
-import "./chunk-FRSOQMFF.js";
+  CHECKBOX_VALUE_ACCESSOR,
+  Checkbox,
+  CheckboxClasses,
+  CheckboxModule,
+  CheckboxStyle
+} from "./chunk-AXUU2GZ7.js";
+import "./chunk-MXQRDGPO.js";
 import "./chunk-A32IJGVK.js";
 import "./chunk-ALYB7BCL.js";
 import "./chunk-TZIJKBMI.js";
@@ -20,10 +20,10 @@ import "./chunk-5OPE3T2R.js";
 import "./chunk-FHTVLBLO.js";
 import "./chunk-WDMUDEB6.js";
 export {
-  SELECTBUTTON_VALUE_ACCESSOR,
-  SelectButton,
-  SelectButtonClasses,
-  SelectButtonModule,
-  SelectButtonStyle
+  CHECKBOX_VALUE_ACCESSOR,
+  Checkbox,
+  CheckboxClasses,
+  CheckboxModule,
+  CheckboxStyle
 };
-//# sourceMappingURL=primeng_selectbutton.js.map
+//# sourceMappingURL=primeng_checkbox.js.map

@@ -1,14 +1,11 @@
 import {
   AutoFocus
-} from "./chunk-VGEPWANS.js";
+} from "./chunk-B6CTA7KA.js";
+import "./chunk-5G7WYC4N.js";
 import {
   StarFillIcon,
   StarIcon
-} from "./chunk-USX34B3U.js";
-import "./chunk-5G7WYC4N.js";
-import {
-  NG_VALUE_ACCESSOR
-} from "./chunk-NXUEYVGX.js";
+} from "./chunk-MXQRDGPO.js";
 import {
   BaseComponent
 } from "./chunk-A32IJGVK.js";
@@ -16,6 +13,9 @@ import {
   BaseStyle
 } from "./chunk-ALYB7BCL.js";
 import "./chunk-TZIJKBMI.js";
+import {
+  NG_VALUE_ACCESSOR
+} from "./chunk-NXUEYVGX.js";
 import {
   PrimeTemplate,
   SharedModule

@@ -1,7 +1,4 @@
 import {
-  TimesIcon
-} from "./chunk-USX34B3U.js";
-import {
   animate,
   style,
   transition,
@@ -10,6 +7,9 @@ import {
 import {
   Ripple
 } from "./chunk-FRSOQMFF.js";
+import {
+  TimesIcon
+} from "./chunk-MXQRDGPO.js";
 import {
   BaseComponent
 } from "./chunk-A32IJGVK.js";
@@ -1004,4 +1004,4 @@ export {
   Message,
   MessageModule
 };
-//# sourceMappingURL=chunk-SI4EG3SX.js.map
+//# sourceMappingURL=chunk-YUPH5JP6.js.map

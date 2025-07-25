@@ -2,17 +2,17 @@ import {
   Ripple
 } from "./chunk-FRSOQMFF.js";
 import {
-  FormsModule,
-  NG_VALUE_ACCESSOR,
-  NgControlStatus,
-  NgModel
-} from "./chunk-NXUEYVGX.js";
-import {
   BaseComponent
 } from "./chunk-A32IJGVK.js";
 import {
   BaseStyle
 } from "./chunk-ALYB7BCL.js";
+import {
+  FormsModule,
+  NG_VALUE_ACCESSOR,
+  NgControlStatus,
+  NgModel
+} from "./chunk-NXUEYVGX.js";
 import {
   PrimeTemplate,
   SharedModule
@@ -1292,4 +1292,4 @@ export {
   SelectButton,
   SelectButtonModule
 };
-//# sourceMappingURL=chunk-UZUUN3FF.js.map
+//# sourceMappingURL=chunk-IUS5344M.js.map

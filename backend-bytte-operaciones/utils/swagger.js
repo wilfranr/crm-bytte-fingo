@@ -46,6 +46,18 @@ const swaggerOptions = {
             type: 'string',
             description: 'Número de teléfono móvil del cliente.',
           },
+          direccion: {
+            type: 'string',
+            description: 'Dirección del cliente.',
+          },
+          ciudad: {
+            type: 'string',
+            description: 'Ciudad de residencia del cliente.',
+          },
+          departamento: {
+            type: 'string',
+            description: 'Departamento de residencia del cliente.',
+          },
           company_id: {
             type: 'integer',
             description: 'ID de la compañía asociada al cliente en Freshdesk.',

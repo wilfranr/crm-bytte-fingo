@@ -1,14 +1,14 @@
 import {
-  NgControl,
-  NgModel
-} from "./chunk-NXUEYVGX.js";
-import {
   BaseComponent
 } from "./chunk-A32IJGVK.js";
 import {
   BaseStyle
 } from "./chunk-ALYB7BCL.js";
 import "./chunk-TZIJKBMI.js";
+import {
+  NgControl,
+  NgModel
+} from "./chunk-NXUEYVGX.js";
 import "./chunk-5PVVLYSI.js";
 import "./chunk-WBS44QWF.js";
 import "./chunk-YAPJLE7E.js";
