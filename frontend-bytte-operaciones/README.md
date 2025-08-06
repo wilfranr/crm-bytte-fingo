@@ -74,6 +74,7 @@ El componente `ClientesComponent` (`src/app/pages/clientes/clientes.component.ts
 -   **Conteo de Clientes:** Una tarjeta en la parte superior de la página muestra el número total de clientes activos.
 -   **Copiar al Portapapeles:** Al hacer doble clic en cualquier celda de la tabla, su contenido se copia automáticamente al portapapeles, con una notificación visual de éxito o error.
 -   **Búsqueda y Filtrado Global:** Se ha añadido un campo de búsqueda global en el encabezado de la tabla que permite filtrar los clientes por nombre, email, teléfono, nombre de la empresa e ID de formulario. También se incluye un botón para limpiar el filtro.
+-   **Edición de Clientes:** Se ha añadido un botón de "Editar" en cada fila de la tabla de clientes, que redirige a un formulario para actualizar la información del cliente, como nombre, email, teléfono y dirección.
 -   **Logo de Fingo:** El logo de Fingo se muestra en el encabezado de la tabla de clientes para una mejor identificación visual.
 
 ### Componente de Carga de Archivos (p-fileupload):** Se ha integrado el componente `p-fileupload` de PrimeNG para una experiencia de carga de archivos más robusta y visualmente atractiva. Permite seleccionar archivos Excel (`.xlsx`, `.xls`) para su procesamiento.

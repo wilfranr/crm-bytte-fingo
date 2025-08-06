@@ -63,7 +63,7 @@ export class EditClienteComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.clienteId = this.route.snapshot.paramMap.get('id'); // Get clienteId first
+    this.clienteId = this.route.snapshot.paramMap.get('id');
 
     this.locationService.getDepartments().subscribe((departments) => {
       this.departments = departments;
@@ -71,12 +71,11 @@ export class EditClienteComponent implements OnInit {
       if (this.clienteId) {
         this.clienteService.getClienteById(this.clienteId).subscribe({
           next: (cliente) => {
-            console.log("Cliente ID:", this.clienteId); // Debugging line
-            console.log("Cliente data from service:", cliente); // Debugging line
+            console.log('Cliente data from service:', cliente); // Debugging line
 
             // Encuentra el ID del departamento basado en el nombre
             const foundDepartment = this.departments.find(
-              (dep) => dep.departamento === cliente.departamento
+              (dep) => dep.departamento === cliente.departamento,
             );
             if (foundDepartment) {
               cliente.departamento = foundDepartment.id; // Asigna el ID para el patch

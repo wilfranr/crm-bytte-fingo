@@ -1,8 +1,8 @@
 <p-toast></p-toast>
-<div class="flex justify-center items-center h-full ">
-  <p-card header="Editar Cliente" styleClass="p-4 w-full max-w-4xl" [style]="{ 'max-width': '900px' }">
+<div class="flex justify-center items-center h-full p-4">
+  <p-card header="Editar Cliente" styleClass="p-4 w-full max-w-6xl" [style]="{ 'max-width': '1200px' }">
     <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
         <div>
           <label for="name" class="block font-bold mb-3">Nombre</label>
           <p-iconfield>
@@ -34,38 +34,38 @@
           </p-iconfield>
         </div>
 
-        <div>
-          <label for="direccion" class="block font-bold mb-3">Dirección</label>
-          <p-iconfield>
-            <p-inputicon class="pi pi-map-marker" />
-            <input pInputText id="direccion" formControlName="direccion" />
-          </p-iconfield>
-        </div>
+<div class="md:col-span-3">
+  <label for="direccion" class="block font-bold mb-3">Dirección</label>
+  <p-iconfield>
+    <p-inputicon class="pi pi-map-marker" />
+    <input pInputText id="direccion" formControlName="direccion" class="w-full h-12 text-lg" />
+  </p-iconfield>
+</div>
 
-        <div>
-          <label for="pais" class="block font-bold mb-3">País</label>
-          <p-iconfield>
-            <p-inputicon class="pi pi-globe" />
-            <input pInputText id="pais" formControlName="pais" />
-          </p-iconfield>
-        </div>
+        <!-- <div> -->
+        <!--   <label for="pais" class="block font-bold mb-3">País</label> -->
+        <!--   <p-iconfield> -->
+        <!--     <p-inputicon class="pi pi-globe" /> -->
+        <!--     <input pInputText id="pais" formControlName="pais" /> -->
+        <!--   </p-iconfield> -->
+        <!-- </div> -->
 
         <div>
           <label for="departamento" class="block font-bold mb-3">Departamento</label>
-          <p-dropdown 
-            [options]="departments" 
-            formControlName="departamento" 
-            optionLabel="departamento" 
-            optionValue="id" 
+          <p-dropdown
+            [options]="departments"
+            formControlName="departamento"
+            optionLabel="departamento"
+            optionValue="id"
             placeholder="Seleccione un departamento">
           </p-dropdown>
         </div>
 
         <div>
           <label for="ciudad" class="block font-bold mb-3">Ciudad</label>
-          <p-dropdown 
-            [options]="cities" 
-            formControlName="ciudad" 
+          <p-dropdown
+            [options]="cities"
+            formControlName="ciudad"
             placeholder="Seleccione una ciudad">
           </p-dropdown>
         </div>

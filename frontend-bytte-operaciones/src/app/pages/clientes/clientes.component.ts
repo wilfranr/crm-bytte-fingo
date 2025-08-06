@@ -16,6 +16,7 @@ import { FormsModule } from '@angular/forms'; // Importar FormsModule
 import { CalendarModule } from 'primeng/calendar'; // Importar CalendarModule
 import { DividerModule } from 'primeng/divider'; // Importar DividerModule
 import { Router } from '@angular/router'; // Importar Router
+import { TagModule } from 'primeng/tag';
 
 @Component({
   selector: 'app-clientes',
@@ -33,6 +34,7 @@ import { Router } from '@angular/router'; // Importar Router
     FormsModule, // Añadir FormsModule
     CalendarModule, // Añadir CalendarModule
     DividerModule, // Añadir DividerModule
+    TagModule,
   ],
   providers: [MessageService],
   templateUrl: './clientes.component.html',
