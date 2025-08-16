@@ -36,53 +36,86 @@ export const getDashboardData = async () => {
 
     // Consultas en paralelo para obtener los datos
     const [
+      [totalTransacciones],
+      [transaccionesExitosas],
       [totalClientes],
-      [ventasHoy],
-      [ticketsPendientes],
-      [ingresosMensuales],
-      [ultimasTransacciones]
+      [clientesExitosos]
     ] = await Promise.all([
-      // Total de clientes
-      connection.execute('SELECT COUNT(*) as total FROM clientes'),
-      
-      // Ventas de hoy
-      connection.execute(
-        `SELECT IFNULL(SUM(monto), 0) as total 
-         FROM ventas 
-         WHERE DATE(fecha_venta) = CURDATE()`
-      ),
-      
-      // Tickets pendientes
-      connection.execute(
-        `SELECT COUNT(*) as total 
-         FROM tickets 
-         WHERE estado = 'pendiente'`
-      ),
-      
-      // Ingresos mensuales
-      connection.execute(
-        `SELECT IFNULL(SUM(monto), 0) as total 
-         FROM ventas 
-         WHERE MONTH(fecha_venta) = MONTH(CURRENT_DATE()) 
-         AND YEAR(fecha_venta) = YEAR(CURRENT_DATE())`
-      ),
-      
-      // Últimas transacciones
-      connection.execute(
-        `SELECT v.id, c.nombre as cliente, v.monto, v.fecha_venta as fecha
-         FROM ventas v
-         JOIN clientes c ON v.cliente_id = c.id
-         ORDER BY v.fecha_venta DESC
-         LIMIT 5`
-      )
-    ]);
+      // Total de transacciones de hoy
+      connection.execute(`
+        SELECT COUNT(*) as total 
+        FROM log_process_enroll 
+        WHERE DATE(LP_CREATION_DATE) = CURDATE()
+      `),
 
+      // Transacciones exitosas de hoy
+      connection.execute(`
+        SELECT COUNT(*) as total 
+        FROM log_process_enroll 
+        WHERE DATE(LP_CREATION_DATE) = CURDATE()
+        AND LP_STATUS_PROCESS = 1
+      `),
+      
+      // Total de clientes únicos de hoy
+      connection.execute(`
+        SELECT COUNT(DISTINCT PER_ID) as total 
+        FROM log_process_enroll 
+        WHERE DATE(LP_CREATION_DATE) = CURDATE()
+      `),
+      
+      // Clientes con al menos una transacción exitosa hoy
+      connection.execute(`
+        SELECT COUNT(DISTINCT PER_ID) as total 
+        FROM log_process_enroll 
+        WHERE DATE(LP_CREATION_DATE) = CURDATE()
+        AND LP_STATUS_PROCESS = 1
+      `),
+    ]);
+    
+    // Mostrar resultados en consola para depuración
+    // Calcular transacciones negadas (total - exitosas)
+    const totalTransaccionesCount = totalTransacciones[0]?.total || 0;
+    const transaccionesExitosasCount = transaccionesExitosas[0]?.total || 0;
+    const transaccionesNegadas = totalTransaccionesCount - transaccionesExitosasCount;
+    const totalClientesCount = totalClientes[0]?.total || 0;
+    const clientesExitososCount = clientesExitosos[0]?.total || 0;
+    const clientesNegadosCount = totalClientesCount - clientesExitososCount;
+    
+    // Calcular porcentajes
+    const porcentajeExitoTransacciones = totalTransaccionesCount > 0 
+      ? (transaccionesExitosasCount / totalTransaccionesCount) * 100 
+      : 0;
+      
+    const porcentajeExitoClientes = totalClientesCount > 0
+      ? (clientesExitososCount / totalClientesCount) * 100
+      : 0;
+      
+    // Calcular promedio de intentos por cliente
+    const promedioIntentos = totalClientesCount > 0
+      ? totalTransaccionesCount / totalClientesCount
+      : 0;
+    
+    console.log('📊 Resultados de consultas:');
+    console.log('1. Total transacciones hoy:', totalTransacciones[0]);
+    console.log('2. Transacciones exitosas hoy:', transaccionesExitosas[0]);
+    console.log('3. Transacciones negadas hoy:', transaccionesNegadas);
+    console.log('4. Total clientes únicos hoy:', totalClientesCount);
+    console.log('5. Clientes exitosos hoy:', clientesExitososCount);
+    console.log('6. Clientes negados hoy (calculado):', clientesNegadosCount);
+    console.log('7. % Éxito transacciones:', porcentajeExitoTransacciones.toFixed(2) + '%');
+    console.log('8. % Éxito clientes:', porcentajeExitoClientes.toFixed(2) + '%');
+    console.log('9. Promedio de intentos por cliente:', promedioIntentos.toFixed(2));
+    
     return {
-      totalClientes: totalClientes?.total || 0,
-      ventasHoy: parseFloat(ventasHoy?.total) || 0,
-      ticketsPendientes: ticketsPendientes?.total || 0,
-      ingresosMensuales: parseFloat(ingresosMensuales?.total) || 0,
-      ultimasTransacciones: ultimasTransacciones || []
+      totalTransacciones: totalTransaccionesCount,
+      transaccionesExitosas: transaccionesExitosasCount,
+      transaccionesNegadas: transaccionesNegadas,
+      totalClientes: totalClientesCount,
+      clientesExitosos: clientesExitososCount,
+      clientesNegados: clientesNegadosCount,
+      porcentajeExitoTransacciones: parseFloat(porcentajeExitoTransacciones.toFixed(2)),
+      porcentajeExitoClientes: parseFloat(porcentajeExitoClientes.toFixed(2)),
+      promedioIntentos: parseFloat(promedioIntentos.toFixed(2))
     };
   } catch (error) {
     console.error('Error al obtener datos del dashboard:', error);
@@ -157,6 +190,64 @@ export const testMySQLConnection = async (req, res) => {
         database: process.env.MYSQL_DATABASE,
         port: process.env.MYSQL_PORT || 3306
       }
+    });
+  } finally {
+    if (connection) {
+      try {
+        await connection.end();
+        console.log('🔌 Conexión cerrada');
+      } catch (error) {
+        console.error('Error al cerrar la conexión:', error);
+      }
+    }
+  }
+};
+
+// Controlador para explorar la estructura de la base de datos
+export const exploreDatabase = async (req, res) => {
+  let connection;
+  try {
+    console.log('🔍 Explorando estructura de la base de datos...');
+    
+    connection = await createConnection(dbConfig);
+    
+    // Obtener todas las tablas
+    const [tables] = await connection.execute('SHOW TABLES');
+    console.log('📋 Tablas encontradas:', tables);
+    
+    // Obtener información detallada de cada tabla
+    const tableDetails = {};
+    
+    for (const tableRow of tables) {
+      const tableName = Object.values(tableRow)[0];
+      console.log(`🔍 Analizando tabla: ${tableName}`);
+      
+      // Obtener estructura de la tabla
+      const [columns] = await connection.execute(`DESCRIBE ${tableName}`);
+      tableDetails[tableName] = columns;
+      
+      // Obtener conteo de registros
+      const [countResult] = await connection.execute(`SELECT COUNT(*) as total FROM ${tableName}`);
+      tableDetails[tableName].recordCount = countResult.total;
+      
+      // Obtener muestra de datos (primeros 3 registros)
+      const [sampleData] = await connection.execute(`SELECT * FROM ${tableName} LIMIT 3`);
+      tableDetails[tableName].sampleData = sampleData;
+    }
+    
+    res.json({
+      success: true,
+      message: 'Estructura de la base de datos explorada',
+      database: process.env.MYSQL_DATABASE,
+      tables: tableDetails
+    });
+    
+  } catch (error) {
+    console.error('❌ Error al explorar la base de datos:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Error al explorar la base de datos',
+      error: error.message
     });
   } finally {
     if (connection) {

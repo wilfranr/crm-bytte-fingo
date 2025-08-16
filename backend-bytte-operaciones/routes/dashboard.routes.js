@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { getDashboard, testMySQLConnection } from '../controllers/dashboard.controller.js';
+import { getDashboard, testMySQLConnection, exploreDatabase } from '../controllers/dashboard.controller.js';
 import authMiddleware from '../middlewares/auth.middleware.js';
 
 const router = Router();
@@ -86,5 +86,19 @@ router.get('/', authMiddleware, getDashboard);
  *         description: Error al conectar a MySQL
  */
 router.get('/test-mysql', testMySQLConnection);
+
+/**
+ * @swagger
+ * /api/dashboard/explore:
+ *   get:
+ *     summary: Explora la estructura de la base de datos MySQL
+ *     tags: [Dashboard]
+ *     responses:
+ *       200:
+ *         description: Estructura de la base de datos obtenida
+ *       500:
+ *         description: Error al explorar la base de datos
+ */
+router.get('/explore', exploreDatabase);
 
 export default router;

@@ -15,6 +15,7 @@ import FacturacionCasbRoutes from "./routes/facturacionCasb.routes.js";
 import ClienteRoutes from "./routes/cliente.routes.js";
 import TarjetaRoutes from "./routes/tarjeta.routes.js";
 import LocationRoutes from "./routes/location.routes.js";
+import DashboardRoutes from "./routes/dashboard.routes.js";
 import { setupSwaggerDocs } from "./utils/swagger.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -45,6 +46,19 @@ app.use(cors(corsOptions));
 app.use("/api/auth", AuthRoutes);
 app.use("/api/locations", LocationRoutes);
 
+// Endpoint de prueba para debugging
+app.get("/api/debug", (req, res) => {
+  console.log("Debug endpoint called");
+  console.log("Cookies:", req.cookies);
+  console.log("Headers:", req.headers);
+  res.json({ 
+    message: "Debug endpoint working", 
+    timestamp: new Date().toISOString(),
+    cookies: req.cookies,
+    headers: req.headers
+  });
+});
+
 // Configuración de Swagger
 setupSwaggerDocs(app, PORT);
 
@@ -60,6 +74,7 @@ app.use("/api/facturacion", FacturacionRoutes);
 app.use("/api/facturacionCasb", FacturacionCasbRoutes);
 app.use("/api/clientes", ClienteRoutes);
 app.use("/api/tarjetas", TarjetaRoutes);
+app.use("/api/dashboard", DashboardRoutes);
 
 app.use("/docs", express.static(path.resolve(__dirname, "../docs")));
 

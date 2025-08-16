@@ -1,0 +1,25 @@
+<!-- Loading State -->
+<div class="flex justify-content-center align-items-center" *ngIf="loading && !error" style="min-height: 400px">
+  <p-progressSpinner styleClass="w-2rem h-2rem" strokeWidth="4" animationDuration=".5s"></p-progressSpinner>
+</div>
+
+<!-- Error State -->
+<p-message *ngIf="error && !loading" severity="error" [text]="error" styleClass="mb-4"></p-message>
+
+<!-- Dashboard Content -->
+<div class="dashboard-container" *ngIf="!loading && !error && dashboardData">
+  <app-metric-cards-widget [dashboardData]="dashboardData"></app-metric-cards-widget>
+</div>
+
+<div class="col-span-6 xl:col-span-6">
+    <app-comportamiento-transaccional-widget [dashboardData]="dashboardData" />
+</div>
+<!-- Botón de actualización manual -->
+<button pButton pRipple
+        icon="pi pi-sync"
+        class="p-button-rounded p-button-info refresh-button"
+        [disabled]="loading"
+        (click)="loadDashboardData(true)"
+        pTooltip="Actualizar datos"
+        tooltipPosition="left">
+</button>

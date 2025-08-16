@@ -3,12 +3,35 @@ import authMiddleware from "../middlewares/auth.middleware.js";
 import Access from "../models/access.model.js";
 const router = express.Router();
 
+// Middleware de logging para debugging
+router.use((req, res, next) => {
+  console.log(`[ACCESS ROUTES] ${req.method} ${req.path}`);
+  console.log('[ACCESS ROUTES] Cookies:', req.cookies);
+  console.log('[ACCESS ROUTES] Headers:', req.headers);
+  next();
+});
+
+// Endpoint de prueba sin autenticación
+router.get("/test", (req, res) => {
+  console.log('[ACCESS ROUTES] Test endpoint called');
+  res.json({ message: "Test endpoint working", timestamp: new Date().toISOString() });
+});
+
 router.use(authMiddleware);
+
 router.get("/", async (req, res) => {
+  console.log('[ACCESS ROUTES] GET / called');
+  console.log('[ACCESS ROUTES] User from middleware:', req.user);
+  
   try {
     const accesses = await Access.find({ user: req.user.userId });
+    console.log('[ACCESS ROUTES] Found accesses:', accesses);
+    
+    // Asegurar que la respuesta sea JSON válido
+    res.setHeader('Content-Type', 'application/json');
     res.json(accesses);
   } catch (error) {
+    console.error('[ACCESS ROUTES] Error:', error);
     res.status(500).json({ error: "Error al obtener los accesos." });
   }
 });

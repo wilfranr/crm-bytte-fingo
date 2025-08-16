@@ -68,6 +68,9 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "proxyConfig": "proxy.conf.json"
+          },
           "configurations": {
             "production": {
               "buildTarget": "frontend-bytte-operaciones:build:production"
@@ -147,4 +150,55 @@
 },
 "cli": {
   "analytics": "8774916c-7eeb-4556-b83a-535736214f61"
+},
+"cli": {
+  "analytics": "9c176fbb-62d4-423e-8518-2262458e7166"
+},
+"cli": {
+  "analytics": "4e8097a8-9750-4269-a593-b79acbda7fb7"
+},
+"cli": {
+  "analytics": "00d69c5e-2b09-4830-a5ea-8e4d8e5b1f32"
+},
+"cli": {
+  "analytics": "ab76e884-a085-4b46-8de1-50e00a05e0e2"
+},
+"cli": {
+  "analytics": "d57ce313-9ebd-4100-8d05-744a357a65c2"
+},
+"cli": {
+  "analytics": "d522cb59-28b4-43e9-a01c-97bbd642d403"
+},
+"cli": {
+  "analytics": "205a2cb7-e5c2-4478-8327-c34f45cedd58"
+},
+"cli": {
+  "analytics": "53c826be-374e-46fc-9203-d99c35379d18"
+},
+"cli": {
+  "analytics": "bbf4e864-727a-4a2b-936e-2c58567990b9"
+},
+"cli": {
+  "analytics": false
+},
+"cli": {
+  "analytics": false
+},
+"cli": {
+  "analytics": "18bf6086-8717-4952-b3c6-141c2cc5df83"
+},
+"cli": {
+  "analytics": false
+},
+"cli": {
+  "analytics": "e52981fb-0253-461b-b4de-ca3ebcfd627a"
+},
+"cli": {
+  "analytics": "3ca2ba0b-c0d4-428d-a243-d9f0c01acefe"
+},
+"cli": {
+  "analytics": false
+},
+"cli": {
+  "analytics": "59bb66e5-e54c-4d11-a6c7-deca22011d7b"
 }

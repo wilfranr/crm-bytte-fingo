@@ -5,6 +5,7 @@ import { Empty } from './empty/empty';
 import { FacturacionCasbComponent } from '../components/facturacion-casb/facturacion-casb.component';
 import { ClientesComponent } from './clientes/clientes.component'; // Importar ClientesComponent
 import { EditClienteComponent } from '../components/clientes/edit-cliente/edit-cliente.component'; // Importar EditClienteComponent
+import { DashboardMiidComponent } from './miid/dashboard-miid'; // Importar DashboardMiidComponent
 
 /**
  * @description Rutas para las páginas generales de la aplicación.
@@ -17,4 +18,5 @@ export default [
     { path: 'facturacion-casb', component: FacturacionCasbComponent },
     { path: 'clientes', component: ClientesComponent }, // Ruta para el listado de clientes
     { path: 'clientes/edit/:id', component: EditClienteComponent }, // Ruta para editar un cliente
-    ] as Routes;
+    { path: 'miid/dashboard', component: DashboardMiidComponent }, // Ruta para el dashboard MIID
+] as Routes;

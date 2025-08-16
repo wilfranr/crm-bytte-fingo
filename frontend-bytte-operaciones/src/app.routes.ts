@@ -17,6 +17,10 @@ export const appRoutes: Routes = [
     children: [
       { path: '', component: Cortes },
       { path: 'cortes', component: Cortes },
+      { 
+        path: 'miid/dashboard',
+        loadComponent: () => import('./app/pages/miid/dashboard-miid').then(m => m.DashboardMiidComponent)
+      },
       {
         path: 'accesos',
         component: AccesosComponent,

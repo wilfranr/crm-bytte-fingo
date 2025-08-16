@@ -54,6 +54,16 @@ export class AppMenu {
         ],
       },
       {
+        label: 'MiID',
+        items: [
+          {
+            label: 'Dashboard',
+            icon: 'pi pi-fw pi-chart-line',
+            routerLink: ['/miid/dashboard'],
+          },
+        ],
+      },
+      {
         label: 'Fingo',
         items: [
           {

@@ -147,15 +147,23 @@ const COOKIE_OPTIONS = {
  *         description: Error del servidor al iniciar sesión.
  */
 router.post("/login", async (req, res) => {
+  console.log('[LOGIN] Login attempt for email:', req.body.email);
+  
   try {
     const { email, password } = req.body;
     const user = await User.findOne({ email });
-    if (!user)
+    if (!user) {
+      console.log('[LOGIN] User not found:', email);
       return res.status(400).json({ message: "Usuario no encontrado" });
+    }
 
     const validPassword = await bcrypt.compare(password, user.password);
-    if (!validPassword)
+    if (!validPassword) {
+      console.log('[LOGIN] Invalid password for user:', email);
       return res.status(400).json({ message: "Contraseña incorrecta" });
+    }
+
+    console.log('[LOGIN] User authenticated successfully:', email);
 
     const payload = {
       userId: user.id,
@@ -170,6 +178,9 @@ router.post("/login", async (req, res) => {
     const refreshToken = jwt.sign({ userId: user.id }, process.env.SECRET_KEY, {
       expiresIn: "7d",
     });
+
+    console.log('[LOGIN] Tokens generated, setting cookies...');
+    console.log('[LOGIN] COOKIE_OPTIONS:', COOKIE_OPTIONS);
 
     res
       .cookie("accessToken", accessToken, {
@@ -188,7 +199,10 @@ router.post("/login", async (req, res) => {
           role: user.role,
         },
       });
+      
+    console.log('[LOGIN] Login successful, response sent');
   } catch (error) {
+    console.error('[LOGIN] Error during login:', error);
     res.status(500).json({ message: "Error al iniciar sesión" });
   }
 });
