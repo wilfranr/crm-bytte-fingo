@@ -201,4 +201,13 @@
 },
 "cli": {
   "analytics": "59bb66e5-e54c-4d11-a6c7-deca22011d7b"
+},
+"cli": {
+  "analytics": "019dce98-cf2e-4565-a959-6c0631349766"
+},
+"cli": {
+  "analytics": false
+},
+"cli": {
+  "analytics": false
 }

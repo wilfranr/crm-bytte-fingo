@@ -15,6 +15,7 @@ import { DividerModule } from 'primeng/divider';
 import { PanelModule } from 'primeng/panel';
 import { MetricCardsWidget } from './components/metric-cards-widget';
 import { ComportamientoTransaccionalWidget } from './components/comportamientoTransaccionalWidget';
+import { TransaccionesWidget } from './components/transacciones-widget';
 
 export interface DashboardData {
   totalTransacciones: number;
@@ -26,6 +27,7 @@ export interface DashboardData {
   porcentajeExitoTransacciones: number;
   porcentajeExitoClientes: number;
   promedioIntentos: number;
+  transaccionesDetalle?: any[]; // Array de transacciones del día
 }
 
 @Component({
@@ -44,6 +46,7 @@ export interface DashboardData {
     PanelModule,
     MetricCardsWidget,
     ComportamientoTransaccionalWidget,
+    TransaccionesWidget,
   ],
   providers: [MessageService],
   templateUrl: './dashboard-miid.component.html',

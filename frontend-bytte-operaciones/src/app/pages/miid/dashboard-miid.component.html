@@ -11,9 +11,19 @@
   <app-metric-cards-widget [dashboardData]="dashboardData"></app-metric-cards-widget>
 </div>
 
-<div class="col-span-6 xl:col-span-6">
+<!-- Layout de dos columnas para gráfica y tabla -->
+<div class="grid grid-cols-1 xl:grid-cols-2 gap-6 mt-6">
+  <!-- Columna izquierda: Gráfica de comportamiento transaccional -->
+  <div class="xl:col-span-1">
     <app-comportamiento-transaccional-widget [dashboardData]="dashboardData" />
+  </div>
+  
+  <!-- Columna derecha: Widget de transacciones -->
+  <div class="xl:col-span-1">
+    <app-transacciones-widget></app-transacciones-widget>
+  </div>
 </div>
+
 <!-- Botón de actualización manual -->
 <button pButton pRipple
         icon="pi pi-sync"

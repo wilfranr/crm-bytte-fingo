@@ -1,5 +1,6 @@
 import { createConnection } from 'mysql2/promise';
 import dotenv from 'dotenv';
+import moment from 'moment-timezone';
 
 dotenv.config();
 
@@ -10,7 +11,8 @@ const dbConfig = {
   password: process.env.MYSQL_PASSWORD,
   database: process.env.MYSQL_DATABASE,
   port: process.env.MYSQL_PORT || 3306,
-  ssl: process.env.MYSQL_SSL === 'true' ? { rejectUnauthorized: true } : undefined
+  ssl: process.env.MYSQL_SSL === 'true' ? { rejectUnauthorized: true } : undefined,
+  timezone: '-05:00' // Establece la zona horaria a UTC-5 (Bogotá)
 };
 
 // Log de configuración (sin mostrar password)
@@ -19,7 +21,8 @@ console.log('🔍 Configuración MySQL:', {
   user: dbConfig.user,
   database: dbConfig.database,
   port: dbConfig.port,
-  ssl: dbConfig.ssl ? 'enabled' : 'disabled'
+  ssl: dbConfig.ssl ? 'enabled' : 'disabled',
+  timezone: dbConfig.timezone // Añade la zona horaria al log
 });
 
 /**
@@ -34,42 +37,54 @@ export const getDashboardData = async () => {
     connection = await createConnection(dbConfig);
     console.log('✅ Conexión a MySQL establecida exitosamente');
 
+    // Obtener la fecha actual en la zona horaria de Bogotá
+    const todayBogota = moment().tz('America/Bogota').format('YYYY-MM-DD');
+
     // Consultas en paralelo para obtener los datos
     const [
       [totalTransacciones],
       [transaccionesExitosas],
       [totalClientes],
-      [clientesExitosos]
+      [clientesExitosos],
+      [detalleTransacciones]
     ] = await Promise.all([
       // Total de transacciones de hoy
       connection.execute(`
         SELECT COUNT(*) as total 
         FROM log_process_enroll 
-        WHERE DATE(LP_CREATION_DATE) = CURDATE()
-      `),
+        WHERE DATE(LP_CREATION_DATE) = ?
+      `, [todayBogota]),
 
       // Transacciones exitosas de hoy
       connection.execute(`
         SELECT COUNT(*) as total 
         FROM log_process_enroll 
-        WHERE DATE(LP_CREATION_DATE) = CURDATE()
+        WHERE DATE(LP_CREATION_DATE) = ?
         AND LP_STATUS_PROCESS = 1
-      `),
+      `, [todayBogota]),
       
       // Total de clientes únicos de hoy
       connection.execute(`
         SELECT COUNT(DISTINCT PER_ID) as total 
         FROM log_process_enroll 
-        WHERE DATE(LP_CREATION_DATE) = CURDATE()
-      `),
+        WHERE DATE(LP_CREATION_DATE) = ?
+      `, [todayBogota]),
       
       // Clientes con al menos una transacción exitosa hoy
       connection.execute(`
         SELECT COUNT(DISTINCT PER_ID) as total 
         FROM log_process_enroll 
-        WHERE DATE(LP_CREATION_DATE) = CURDATE()
+        WHERE DATE(LP_CREATION_DATE) = ?
         AND LP_STATUS_PROCESS = 1
-      `),
+      `, [todayBogota]),
+
+      // Detalle de transacciones de hoy
+      connection.execute(`
+        SELECT lp_creation_date, per_id, lp_status_process 
+        FROM log_process_enroll 
+        WHERE DATE(LP_CREATION_DATE) = ?
+        ORDER BY lp_creation_date DESC
+      `, [todayBogota])
     ]);
     
     // Mostrar resultados en consola para depuración
@@ -106,6 +121,21 @@ export const getDashboardData = async () => {
     console.log('8. % Éxito clientes:', porcentajeExitoClientes.toFixed(2) + '%');
     console.log('9. Promedio de intentos por cliente:', promedioIntentos.toFixed(2));
     
+    // Mostrar detalle de transacciones de hoy
+    console.log('🔍 Detalle de transacciones de hoy:');
+    console.log('Total registros encontrados:', detalleTransacciones.length);
+    if (detalleTransacciones.length > 0) {
+      console.log('Primeros 5 registros:');
+      detalleTransacciones.slice(0, 5).forEach((transaccion, index) => {
+        console.log(`  ${index + 1}. Fecha: ${transaccion.lp_creation_date}, Cliente: ${transaccion.per_id}, Estado: ${transaccion.lp_status_process}`);
+      });
+      if (detalleTransacciones.length > 5) {
+        console.log(`  ... y ${detalleTransacciones.length - 5} registros más`);
+      }
+    } else {
+      console.log('  No se encontraron transacciones para hoy');
+    }
+    
     return {
       totalTransacciones: totalTransaccionesCount,
       transaccionesExitosas: transaccionesExitosasCount,
@@ -115,7 +145,8 @@ export const getDashboardData = async () => {
       clientesNegados: clientesNegadosCount,
       porcentajeExitoTransacciones: parseFloat(porcentajeExitoTransacciones.toFixed(2)),
       porcentajeExitoClientes: parseFloat(porcentajeExitoClientes.toFixed(2)),
-      promedioIntentos: parseFloat(promedioIntentos.toFixed(2))
+      promedioIntentos: parseFloat(promedioIntentos.toFixed(2)),
+      transaccionesDetalle: detalleTransacciones // Agregar el detalle de transacciones
     };
   } catch (error) {
     console.error('Error al obtener datos del dashboard:', error);
