@@ -78,12 +78,22 @@ export const getDashboardData = async () => {
         AND LP_STATUS_PROCESS = 1
       `, [todayBogota]),
 
-      // Detalle de transacciones de hoy
+      // Detalle de transacciones de hoy con documento del cliente
       connection.execute(`
-        SELECT lp_creation_date, per_id, lp_status_process 
-        FROM log_process_enroll 
-        WHERE DATE(LP_CREATION_DATE) = ?
-        ORDER BY lp_creation_date DESC
+        SELECT 
+          lpe.lp_creation_date,
+          lpe.per_id,
+          lpe.lp_status_process,
+          lpe.ec_id,
+          ec.EC_NAME AS ec_name,
+          p.PER_DOCUMENT_NUMBER AS per_document_number,
+          p.PER_FIRST_NAME AS per_first_name,
+          p.PER_LAST_NAME AS per_last_name
+        FROM log_process_enroll lpe
+        JOIN person p ON lpe.PER_ID = p.PER_ID
+        JOIN enterprise_client ec ON lpe.EC_ID = ec.EC_ID
+        WHERE DATE(lpe.LP_CREATION_DATE) = ?
+        ORDER BY lpe.lp_creation_date DESC
       `, [todayBogota])
     ]);
     

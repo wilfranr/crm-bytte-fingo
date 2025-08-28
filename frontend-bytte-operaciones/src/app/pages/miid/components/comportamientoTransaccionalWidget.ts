@@ -30,16 +30,13 @@ interface DashboardData {
   imports: [ChartModule],
   template: `<div class="card !mb-8">
     <div class="font-semibold text-xl mb-4">Comportamiento Transaccional</div>
-    <div class="relative h-80">
-      <p-chart
-        type="bar"
-        [data]="chartData"
-        [options]="chartOptions"
-        [style]="{ width: '100%', height: '100%' }"
-      ></p-chart>
-      <div class="absolute bottom-0 w-full text-center text-sm text-color-secondary mt-2">
-        Los valores se muestran en cantidad de transacciones/clientes
-      </div>
+    <p-chart
+      type="bar"
+      [data]="chartData"
+      [options]="chartOptions"
+    ></p-chart>
+    <div class="w-full text-center text-sm text-color-secondary mt-2">
+      Los valores se muestran en cantidad de transacciones/clientes
     </div>
   </div>`,
 })

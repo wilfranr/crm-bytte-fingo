@@ -11,17 +11,23 @@
   <app-metric-cards-widget [dashboardData]="dashboardData"></app-metric-cards-widget>
 </div>
 
-<!-- Layout de dos columnas para gráfica y tabla -->
+<!-- Fila 1: Dos columnas para las gráficas -->
 <div class="grid grid-cols-1 xl:grid-cols-2 gap-6 mt-6">
-  <!-- Columna izquierda: Gráfica de comportamiento transaccional -->
+  <!-- Fila 1 Columna izquierda: Gráfica de comportamiento transaccional -->
   <div class="xl:col-span-1">
     <app-comportamiento-transaccional-widget [dashboardData]="dashboardData" />
   </div>
   
-  <!-- Columna derecha: Widget de transacciones -->
+  <!-- Fila 1 Columna derecha: Widget de transacciones por hora -->
   <div class="xl:col-span-1">
-    <app-transacciones-widget></app-transacciones-widget>
+    <app-transacciones-por-hora-widget [transacciones]="dashboardData?.transaccionesDetalle || []"></app-transacciones-por-hora-widget>
   </div>
+</div>
+
+<!-- Fila 2: Una columna para la tabla de transacciones -->
+<div class="mt-6">
+  <!-- Fila 2 Columna única: Widget de transacciones -->
+  <app-transacciones-widget [transacciones]="dashboardData?.transaccionesDetalle || []"></app-transacciones-widget>
 </div>
 
 <!-- Botón de actualización manual -->

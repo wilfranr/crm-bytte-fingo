@@ -16,6 +16,7 @@ import { PanelModule } from 'primeng/panel';
 import { MetricCardsWidget } from './components/metric-cards-widget';
 import { ComportamientoTransaccionalWidget } from './components/comportamientoTransaccionalWidget';
 import { TransaccionesWidget } from './components/transacciones-widget';
+import { TransaccionesPorHoraWidget } from './components/transacciones-por-hora-widget';
 
 export interface DashboardData {
   totalTransacciones: number;
@@ -47,6 +48,7 @@ export interface DashboardData {
     MetricCardsWidget,
     ComportamientoTransaccionalWidget,
     TransaccionesWidget,
+    TransaccionesPorHoraWidget,
   ],
   providers: [MessageService],
   templateUrl: './dashboard-miid.component.html',
