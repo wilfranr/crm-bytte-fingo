@@ -1,0 +1,22 @@
+::ng-deep {
+  .customized-timeline {
+    .p-timeline-event-opposite {
+      flex: 0;
+      padding: 0 !important;
+    }
+
+    .p-card {
+      margin-bottom: 1rem;
+    }
+
+    .custom-marker {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+    }
+  }
+}

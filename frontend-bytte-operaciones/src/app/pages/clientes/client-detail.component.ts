@@ -2,11 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { CardModule } from 'primeng/card';
+
 import { TagModule } from 'primeng/tag';
 import { TableModule } from 'primeng/table';
 import { TabViewModule } from 'primeng/tabview';
 import { ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
+import { TimelineModule } from 'primeng/timeline';
+
 import { DividerModule } from 'primeng/divider';
 
 interface ClienteDetallado {
@@ -52,9 +55,12 @@ interface ClienteDetallado {
     TabViewModule,
     ButtonModule,
     RippleModule,
+    TimelineModule,
+    CardModule,
     DividerModule,
   ],
   templateUrl: './client-detail.component.html',
+  styleUrls: ['./client-detail.component.scss'],
 })
 export class ClientDetailComponent implements OnInit {
   cliente: ClienteDetallado | null = null;
@@ -65,6 +71,24 @@ export class ClientDetailComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id') || '';
     // Simulación de carga de datos a partir del id
     this.cliente = this.simularCargaCliente(id);
+  }
+
+  getIconForChannel(canal: string): string {
+    switch (canal) {
+      case 'App': return 'pi pi-mobile';
+      case 'Web': return 'pi pi-globe';
+      case 'Call Center': return 'pi pi-phone';
+      default: return 'pi pi-user';
+    }
+  }
+
+  getIconColor(canal: string): string {
+    switch (canal) {
+      case 'App': return '#6366F1'; // Indigo
+      case 'Web': return '#3B82F6'; // Blue
+      case 'Call Center': return '#10B981'; // Emerald
+      default: return '#64748B'; // Slate
+    }
   }
 
   private simularCargaCliente(id: string): ClienteDetallado {

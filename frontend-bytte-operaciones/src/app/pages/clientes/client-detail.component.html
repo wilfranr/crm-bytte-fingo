@@ -6,51 +6,75 @@
 -->
 <div class="flex flex-column lg:flex-row gap-4">
   <!-- COLUMNA IZQUIERDA: INFORMACIÓN DEL CLIENTE -->
-  <div class="flex-1 lg:flex-none" style="min-width: 400px; max-width: 600px;">
+  <div class="flex-1 lg:flex-none" style="min-width: 400px; max-width: 600px">
     <div class="card">
       <!-- 1. CABECERA DEL CLIENTE -->
-     
-        <div class="flex align-items-center justify-content-center gap-4 mb-4">
-          <div class="p-3 border-round bg-orange-50 dark:bg-orange-900">
-            <i class="pi pi-user text-3xl text-orange-600 dark:text-orange-400"></i>
-          </div>
-          <div class="text-2xl font-bold text-900 dark:text-0">{{ cliente?.nombreCompleto }}</div>
-          <p-tag [value]="cliente?.estadoCliente" [severity]="cliente?.estadoCliente === 'Activo' ? 'success' : 'danger'" styleClass="text-sm px-3 py-2"></p-tag>
+
+      <div class="flex align-items-center justify-content-center gap-4 mb-4">
+        <div class="p-3 border-round bg-orange-50 dark:bg-orange-900">
+          <i
+            class="pi pi-user text-3xl text-orange-600 dark:text-orange-400"
+          ></i>
         </div>
-      
+        <div class="text-2xl font-bold text-900 dark:text-0">
+          {{ cliente?.nombreCompleto }}
+        </div>
+        <p-tag
+          [value]="cliente?.estadoCliente"
+          [severity]="
+            cliente?.estadoCliente === 'Activo' ? 'success' : 'danger'
+          "
+          styleClass="text-sm px-3 py-2"
+        ></p-tag>
+      </div>
 
       <p-divider layout="horizontal" styleClass="my-4"></p-divider>
 
       <!-- 2. INFORMACIÓN BÁSICA -->
       <div class="mb-4">
-        <span class="text-xl font-semibold text-900 dark:text-0">Información Básica</span>
+        <span class="text-xl font-semibold text-900 dark:text-0"
+          >Información Básica</span
+        >
       </div>
-      <ul class="list-none p-0 m-0">
-        <li class="flex align-items-center justify-content-between mb-3">
-          <span class="text-sm text-500">Documento</span>
-          <span class="font-medium text-900 dark:text-0">{{ cliente?.documento }}</span>
-        </li>
-        <li class="flex align-items-center justify-content-between mb-3">
-          <span class="text-sm text-500">Fecha de Nacimiento</span>
-          <span class="font-medium text-900 dark:text-0">{{ cliente?.fechaNacimiento | date: "dd/MM/yyyy" }}</span>
-        </li>
-        <li class="flex align-items-center justify-content-between mb-3">
-          <span class="text-sm text-500">Teléfono</span>
-          <span class="font-medium text-900 dark:text-0">{{ cliente?.telefono }}</span>
-        </li>
-        <li class="flex align-items-center justify-content-between mb-3">
-          <span class="text-sm text-500">Email</span>
-          <span class="font-medium text-900 dark:text-0">{{ cliente?.email }}</span>
-        </li>
-        <li class="flex align-items-center justify-content-between mb-3">
-          <span class="text-sm text-500">Dirección</span>
-          <span class="font-medium text-900 dark:text-0">{{ cliente?.direccion }}</span>
-        </li>
-        <li class="flex align-items-center justify-content-between">
-          <span class="text-sm text-500">Profesión</span>
-          <span class="font-medium text-900 dark:text-0">{{ cliente?.profesion }}</span>
-        </li>
-      </ul>
+      <div class="grid">
+        <!-- Fila 1: Documento -->
+        <div class="col-12 md:col-6 lg:col-12 xl:col-6 mb-4">
+          <div class="text-500 text-sm mb-1">Documento</div>
+          <div class="font-medium text-900 dark:text-0">{{ cliente?.documento || 'No especificado' }}</div>
+        </div>
+
+        <!-- Fila 2: Fecha de Nacimiento -->
+        <div class="col-12 md:col-6 lg:col-12 xl:col-6 mb-4">
+          <div class="text-500 text-sm mb-1">Fecha de Nacimiento</div>
+          <div class="font-medium text-900 dark:text-0">
+            {{ (cliente?.fechaNacimiento | date: "dd/MM/yyyy") || 'No especificada' }}
+          </div>
+        </div>
+
+        <!-- Fila 3: Teléfono -->
+        <div class="col-12 md:col-6 lg:col-12 xl:col-6 mb-4">
+          <div class="text-500 text-sm mb-1">Teléfono</div>
+          <div class="font-medium text-900 dark:text-0">{{ cliente?.telefono || 'No especificado' }}</div>
+        </div>
+
+        <!-- Fila 4: Email -->
+        <div class="col-12 md:col-6 lg:col-12 xl:col-6 mb-4">
+          <div class="text-500 text-sm mb-1">Email</div>
+          <div class="font-medium text-900 dark:text-0">{{ cliente?.email || 'No especificado' }}</div>
+        </div>
+
+        <!-- Fila 5: Dirección -->
+        <div class="col-12 mb-4">
+          <div class="text-500 text-sm mb-1">Dirección</div>
+          <div class="font-medium text-900 dark:text-0">{{ cliente?.direccion || 'No especificada' }}</div>
+        </div>
+
+        <!-- Fila 6: Profesión -->
+        <div class="col-12">
+          <div class="text-500 text-sm mb-1">Profesión</div>
+          <div class="font-medium text-900 dark:text-0">{{ cliente?.profesion || 'No especificada' }}</div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -67,54 +91,55 @@
 
           <div class="p-4">
             <div class="grid">
-              <div class="col-12 md:col-6 lg:col-4 mb-4">
-                <div class="flex flex-column">
-                  <span class="text-sm text-500 mb-1">Tipo de Tarjeta</span>
-                  <span class="text-lg font-semibold text-900 dark:text-0">{{ cliente?.producto?.tipoTarjeta }}</span>
-                </div>
-              </div>
-              <div class="col-12 md:col-6 lg:col-4 mb-4">
-                <div class="flex flex-column">
-                  <span class="text-sm text-500 mb-1">Número</span>
-                  <span class="text-lg font-semibold text-900 dark:text-0">{{ cliente?.producto?.numeroEnmascarado }}</span>
-                </div>
-              </div>
-              <div class="col-12 md:col-6 lg:col-4 mb-4">
-                <div class="flex flex-column">
-                  <span class="text-sm text-500 mb-1">Estado</span>
-                  <div class="mt-2">
-                    <p-tag [value]="cliente?.producto?.estadoTarjeta" [severity]="cliente?.producto?.estadoTarjeta === 'Activa' ? 'success' : 'danger'"></p-tag>
+              <!-- Columna 1: Información de la Tarjeta -->
+              <div class="col-12 md:col-6 xl:col-4">
+                <div class="surface-card shadow-2 p-3 border-round">
+                  <div class="text-xl font-semibold text-900 dark:text-0 mb-3">Tarjeta</div>
+                  <div class="grid grid-nogutter">
+                    <div class="col-6 text-500 mb-3">Tipo</div>
+                    <div class="col-6 text-right font-medium text-900 dark:text-0">{{ cliente?.producto?.tipoTarjeta }}</div>
+
+                    <div class="col-6 text-500 mb-3">Número</div>
+                    <div class="col-6 text-right font-medium text-900 dark:text-0">{{ cliente?.producto?.numeroEnmascarado }}</div>
+
+                    <div class="col-6 text-500">Estado</div>
+                    <div class="col-6 text-right">
+                      <p-tag [value]="cliente?.producto?.estadoTarjeta" 
+                             [severity]="cliente?.producto?.estadoTarjeta === 'Activa' ? 'success' : 'danger'">
+                      </p-tag>
+                    </div>
                   </div>
                 </div>
               </div>
-              <div class="col-12 md:col-6 lg:col-4 mb-4">
-                <div class="flex flex-column">
-                  <span class="text-sm text-500 mb-1">Línea Aprobada</span>
-                  <span class="text-lg font-semibold text-900 dark:text-0">{{ cliente?.producto?.lineaAprobada | currency: "COP" : "symbol-narrow" : "1.0-0" }}</span>
+
+              <!-- Columna 2: Detalles Financieros -->
+              <div class="col-12 md:col-6 xl:col-4">
+                <div class="surface-card shadow-2 p-3 border-round">
+                  <div class="text-xl font-semibold text-900 dark:text-0 mb-3">Finanzas</div>
+                  <div class="grid grid-nogutter">
+                    <div class="col-6 text-500 mb-3">Línea Aprobada</div>
+                    <div class="col-6 text-right font-medium text-900 dark:text-0">{{ cliente?.producto?.lineaAprobada | currency: 'COP': 'symbol' }}</div>
+
+                    <div class="col-6 text-500 mb-3">Disponible</div>
+                    <div class="col-6 text-right font-medium text-900 dark:text-0">{{ cliente?.producto?.lineaDisponible | currency: 'COP': 'symbol' }}</div>
+
+                    <div class="col-6 text-500">Tasa E.A.</div>
+                    <div class="col-6 text-right font-medium text-900 dark:text-0">{{ cliente?.producto?.tasaInteresEA }}%</div>
+                  </div>
                 </div>
               </div>
-              <div class="col-12 md:col-6 lg:col-4 mb-4">
-                <div class="flex flex-column">
-                  <span class="text-sm text-500 mb-1">Línea Disponible</span>
-                  <span class="text-lg font-semibold text-900 dark:text-0">{{ cliente?.producto?.lineaDisponible | currency: "COP" : "symbol-narrow" : "1.0-0" }}</span>
-                </div>
-              </div>
-              <div class="col-12 md:col-6 lg:col-4 mb-4">
-                <div class="flex flex-column">
-                  <span class="text-sm text-500 mb-1">Tasa E.A.</span>
-                  <span class="text-lg font-semibold text-900 dark:text-0">{{ cliente?.producto?.tasaInteresEA }}%</span>
-                </div>
-              </div>
-              <div class="col-12 md:col-6 lg:col-4 mb-4">
-                <div class="flex flex-column">
-                  <span class="text-sm text-500 mb-1">Fecha de Corte</span>
-                  <span class="text-lg font-semibold text-900 dark:text-0">{{ cliente?.producto?.fechaCorte | date: "dd/MM/yyyy" }}</span>
-                </div>
-              </div>
-              <div class="col-12 md:col-6 lg:col-4 mb-4">
-                <div class="flex flex-column">
-                  <span class="text-sm text-500 mb-1">Fecha de Vencimiento</span>
-                  <span class="text-lg font-semibold text-900 dark:text-0">{{ cliente?.producto?.fechaVencimiento | date: "dd/MM/yyyy" }}</span>
+
+              <!-- Columna 3: Fechas Clave -->
+              <div class="col-12 md:col-6 xl:col-4">
+                <div class="surface-card shadow-2 p-3 border-round">
+                  <div class="text-xl font-semibold text-900 dark:text-0 mb-3">Fechas</div>
+                  <div class="grid grid-nogutter">
+                    <div class="col-6 text-500 mb-3">Fecha de Corte</div>
+                    <div class="col-6 text-right font-medium text-900 dark:text-0">{{ cliente?.producto?.fechaCorte | date: 'dd/MM/yyyy' }}</div>
+
+                    <div class="col-6 text-500">Vencimiento</div>
+                    <div class="col-6 text-right font-medium text-900 dark:text-0">{{ cliente?.producto?.fechaVencimiento | date: 'dd/MM/yyyy' }}</div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -129,21 +154,19 @@
           </ng-template>
 
           <div class="p-4">
-            <div class="text-lg font-semibold mb-4">Últimas Interacciones</div>
-            <div class="flex flex-column gap-3">
-              <div *ngFor="let i of cliente?.interacciones" class="p-3 border-round surface-border border-1">
-                <div class="flex align-items-center justify-content-between">
-                  <div class="flex align-items-center">
-                    <i class="pi pi-circle-fill text-primary mr-3" style="font-size: 0.5rem"></i>
-                    <div>
-                      <div class="font-medium text-900 dark:text-0">{{ i.descripcion }}</div>
-                      <div class="text-sm text-500">{{ i.canal }}</div>
-                    </div>
-                  </div>
-                  <div class="text-sm text-500">{{ i.fecha | date: "dd/MM/yyyy HH:mm" }}</div>
-                </div>
-              </div>
-            </div>
+            <div class="text-xl font-semibold text-900 dark:text-0 mb-4">Últimas Interacciones</div>
+            <p-timeline [value]="cliente?.interacciones" align="alternate" styleClass="customized-timeline">
+              <ng-template pTemplate="marker" let-interaction>
+                <span class="custom-marker shadow-2" [ngStyle]="{backgroundColor: getIconColor(interaction.canal)}">
+                  <i [class]="getIconForChannel(interaction.canal)"></i>
+                </span>
+              </ng-template>
+              <ng-template pTemplate="content" let-interaction>
+                <p-card [header]="interaction.descripcion" [subheader]="(interaction.fecha | date: 'fullDate') ?? ''">
+                  <p class="m-0">Canal: {{ interaction.canal }}</p>
+                </p-card>
+              </ng-template>
+            </p-timeline>
           </div>
         </p-tabPanel>
 
@@ -155,25 +178,39 @@
           </ng-template>
 
           <div class="p-4">
-            <p-table [value]="cliente?.casosSoporte || []" [rows]="5" [paginator]="true" styleClass="p-datatable-sm">
+            <div class="flex justify-content-between align-items-center mb-4">
+                <div class="text-xl font-semibold text-900 dark:text-0">Registro de Casos</div>
+            </div>
+            <p-table [value]="cliente?.casosSoporte || []" [rows]="5" [paginator]="true" styleClass="p-datatable-gridlines">
               <ng-template pTemplate="header">
                 <tr>
-                  <th>ID</th>
-                  <th>Fecha</th>
-                  <th>Asunto</th>
-                  <th>Estado</th>
+                  <th pSortableColumn="id">ID <p-sortIcon field="id"></p-sortIcon></th>
+                  <th pSortableColumn="fecha">Fecha <p-sortIcon field="fecha"></p-sortIcon></th>
+                  <th pSortableColumn="asunto">Asunto <p-sortIcon field="asunto"></p-sortIcon></th>
+                  <th pSortableColumn="estado">Estado <p-sortIcon field="estado"></p-sortIcon></th>
+                  <th>Acciones</th>
                 </tr>
               </ng-template>
               <ng-template pTemplate="body" let-caso>
                 <tr>
                   <td>{{ caso.id }}</td>
-                  <td>{{ caso.fecha | date: "dd/MM/yyyy" }}</td>
+                  <td>{{ caso.fecha | date: 'dd/MM/yyyy' }}</td>
                   <td>{{ caso.asunto }}</td>
                   <td>
-                    <p-tag [value]="caso.estado" [severity]="caso.estado === 'Cerrado' ? 'success' : 'warning'"></p-tag>
+                    <p-tag [value]="caso.estado" 
+                           [severity]="caso.estado === 'Cerrado' ? 'success' : (caso.estado === 'Abierto' ? 'warning' : 'info')">
+                    </p-tag>
+                  </td>
+                  <td>
+                    <p-button icon="pi pi-search" styleClass="p-button-text p-button-rounded"></p-button>
                   </td>
                 </tr>
               </ng-template>
+              <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td colspan="5" class="text-center">No se encontraron casos de soporte.</td>
+                </tr>
+            </ng-template>
             </p-table>
           </div>
         </p-tabPanel>
