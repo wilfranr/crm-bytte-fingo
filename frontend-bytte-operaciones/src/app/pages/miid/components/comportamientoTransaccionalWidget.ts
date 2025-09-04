@@ -28,15 +28,21 @@ interface DashboardData {
   standalone: true,
   selector: 'app-comportamiento-transaccional-widget',
   imports: [ChartModule],
-  template: `<div class="card !mb-8">
-    <div class="font-semibold text-xl mb-4">Comportamiento Transaccional</div>
-    <p-chart
-      type="bar"
-      [data]="chartData"
-      [options]="chartOptions"
-    ></p-chart>
-    <div class="w-full text-center text-sm text-color-secondary mt-2">
-      Los valores se muestran en cantidad de transacciones/clientes
+  template: `<div class="col-span-12 xl:col-span-6">
+    <div class="card h-full">
+      <div class="flex items-center justify-between mb-6">
+        <div>
+          <h3 class="font-semibold text-xl text-surface-900 dark:text-surface-0 mb-1">Comportamiento Transaccional</h3>
+          <p class="text-sm text-muted-color">Los valores se muestran en cantidad de transacciones/clientes</p>
+        </div>
+      </div>
+      <div class="relative" style="height: 400px;">
+        <p-chart
+          type="bar"
+          [data]="chartData"
+          [options]="chartOptions"
+        ></p-chart>
+      </div>
     </div>
   </div>`,
 })
@@ -136,7 +142,7 @@ export class ComportamientoTransaccionalWidget implements OnChanges, OnDestroy {
               this.dashboardData.clientesExitosos || 0,
               this.dashboardData.clientesNegados || 0
             ],
-            barThickness: 32,
+            barThickness: 40,
             borderRadius: 4,
           }
         ]
@@ -145,7 +151,7 @@ export class ComportamientoTransaccionalWidget implements OnChanges, OnDestroy {
       this.chartOptions = {
         responsive: true,
         maintainAspectRatio: false,
-        aspectRatio: 1.2,
+        aspectRatio: 1.5,
         plugins: {
           legend: {
             display: false
@@ -195,9 +201,13 @@ export class ComportamientoTransaccionalWidget implements OnChanges, OnDestroy {
             },
             ticks: {
               color: textColor,
-              maxRotation: 45,
-              minRotation: 45,
-              autoSkip: false
+              maxRotation: 0,
+              minRotation: 0,
+              autoSkip: false,
+              font: {
+                size: 11
+              },
+              padding: 8
             }
           },
           y: {

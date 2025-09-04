@@ -37,7 +37,7 @@ interface TransaccionPorHora {
             <span class="text-sm text-muted-color">Total Transacciones</span>
           </div>
         </div>
-        <div class="relative" style="height: 300px;">
+        <div class="relative" style="height: 400px;">
           <p-chart type="line" [data]="lineData" [options]="lineOptions"></p-chart>
         </div>
       </div>
@@ -111,7 +111,7 @@ export class TransaccionesPorHoraWidget implements OnInit, OnChanges {
 
     this.lineOptions = {
       maintainAspectRatio: false,
-      aspectRatio: 0.8,
+      aspectRatio: 1.2,
       responsive: true,
       interaction: {
         intersect: false,
@@ -144,10 +144,11 @@ export class TransaccionesPorHoraWidget implements OnInit, OnChanges {
           ticks: {
             color: '#ffffff',
             font: {
-              size: 11
+              size: 12
             },
-            maxRotation: 45,
-            minRotation: 0
+            maxRotation: 0,
+            minRotation: 0,
+            padding: 8
           },
           grid: {
             color: '#374151',
@@ -159,10 +160,10 @@ export class TransaccionesPorHoraWidget implements OnInit, OnChanges {
           ticks: {
             color: '#ffffff',
             font: {
-              size: 11
+              size: 12
             },
-            padding: 8,
-            stepSize: 5
+            padding: 12,
+            stepSize: 4
           },
           grid: {
             color: '#374151',
