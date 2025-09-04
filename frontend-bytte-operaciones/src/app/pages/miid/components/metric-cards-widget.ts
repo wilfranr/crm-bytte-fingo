@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MetricCardComponent } from '../../../shared/components/metric-card/metric-card.component';
 
 /**
  * @description Widget que muestra un conjunto de tarjetas de métricas.
@@ -9,7 +8,7 @@ import { MetricCardComponent } from '../../../shared/components/metric-card/metr
 @Component({
   standalone: true,
   selector: 'app-metric-cards-widget',
-  imports: [CommonModule, MetricCardComponent],
+  imports: [CommonModule],
   template: `
     <div class="flex flex-wrap gap-6">
       <!-- Tarjeta 1: Total de Transacciones Hoy -->
