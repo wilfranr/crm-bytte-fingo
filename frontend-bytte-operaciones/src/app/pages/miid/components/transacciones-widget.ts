@@ -37,37 +37,46 @@ interface Transaccion {
     InputTextModule
   ],
   template: `
-    <div class="card !mb-8">
-      <div class="font-semibold text-xl mb-4">Transacciones del Día</div>
-      <p-table [value]="filteredTransacciones" [paginator]="true" [rows]="8" responsiveLayout="scroll">
-        <ng-template pTemplate="caption">
-          <div class="flex justify-content-between align-items-center">
-            <div class="text-sm text-gray-400">Filtrar resultados</div>
-            <div class="flex align-items-center gap-2">
-              <span class="text-sm mr-2">Aliado:</span>
-              <p-dropdown 
-                [options]="aliadosOptions"
-                [(ngModel)]="selectedAliado"
-                placeholder="Todos"
-                [showClear]="true"
-                optionLabel="label"
-                optionValue="value">
-              </p-dropdown>
-            </div>
+    <div class="card h-full">
+      <div class="flex items-center justify-between mb-6">
+        <div>
+          <h3 class="font-semibold text-xl text-surface-900 dark:text-surface-0 mb-1">Transacciones del Día</h3>
+          <p class="text-sm text-muted-color">{{ filteredTransacciones.length }} transacciones encontradas</p>
+        </div>
+        <div class="flex items-center gap-3">
+          <div class="flex items-center gap-2">
+            <span class="text-sm text-muted-color">Aliado:</span>
+            <p-dropdown 
+              [options]="aliadosOptions"
+              [(ngModel)]="selectedAliado"
+              placeholder="Todos"
+              [showClear]="true"
+              optionLabel="label"
+              optionValue="value"
+              styleClass="p-dropdown-sm">
+            </p-dropdown>
           </div>
-        </ng-template>
+        </div>
+      </div>
+      <p-table [value]="filteredTransacciones" [paginator]="true" [rows]="8" responsiveLayout="scroll" styleClass="p-datatable-sm">
         <ng-template pTemplate="header">
           <tr>
             <th pSortableColumn="lp_creation_date">Fecha y Hora <p-sortIcon field="lp_creation_date"></p-sortIcon></th>
             <th pSortableColumn="per_document_number">
-              Documento <p-sortIcon field="per_document_number"></p-sortIcon>
-              <div class="mt-2">
-                <input 
-                  pInputText 
-                  type="text" 
-                  [(ngModel)]="documentoQuery" 
-                  placeholder="Buscar documento" 
-                  class="p-inputtext-sm w-full" />
+              <div class="flex items-center gap-2">
+                <span>Documento</span>
+                <p-sortIcon field="per_document_number"></p-sortIcon>
+              </div>
+              <div class="mt-3">
+                <div class="p-input-icon-left">
+                  <i class="pi pi-search"></i>
+                  <input 
+                    pInputText 
+                    type="text" 
+                    [(ngModel)]="documentoQuery" 
+                    placeholder="Buscar por documento..." 
+                    class="p-inputtext-sm w-full" />
+                </div>
               </div>
             </th>
             <th pSortableColumn="ec_name">Aliado <p-sortIcon field="ec_name"></p-sortIcon></th>

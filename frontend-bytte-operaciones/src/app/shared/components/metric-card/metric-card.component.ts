@@ -19,7 +19,7 @@ type CardColor = 'blue' | 'green' | 'orange' | 'purple' | 'pink' | 'cyan';
             </div>
           </div>
           <div class="flex items-center justify-center rounded-border w-10 h-10" [ngClass]="getIconContainerClass()">
-            <i [class]="'pi ' + icon + ' ' + getIconColorClass() + ' !text-xl'"></i>
+            <i [class]="'pi ' + icon + ' text-xl'" [style.color]="getIconColor()"></i>
           </div>
         </div>
         <ng-container *ngIf="trendValue !== undefined">
@@ -63,6 +63,18 @@ export class MetricCardComponent {
       purple: 'text-purple-500',
       pink: 'text-pink-500',
       cyan: 'text-cyan-500'
+    };
+    return colors[this.color];
+  }
+
+  getIconColor(): string {
+    const colors = {
+      blue: '#3b82f6', // blue-500
+      green: '#10b981', // green-500
+      orange: '#f97316', // orange-500
+      purple: '#8b5cf6', // purple-500
+      pink: '#ec4899', // pink-500
+      cyan: '#06b6d4' // cyan-500
     };
     return colors[this.color];
   }

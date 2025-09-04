@@ -26,9 +26,20 @@ interface TransaccionPorHora {
   ],
   template: `
     <div class="col-span-12 xl:col-span-6">
-      <div class="card">
-        <div class="font-semibold text-xl mb-4">Transacciones por Hora</div>
-        <p-chart type="line" [data]="lineData" [options]="lineOptions"></p-chart>
+      <div class="card h-full">
+        <div class="flex items-center justify-between mb-6">
+          <div>
+            <h3 class="font-semibold text-xl text-surface-900 dark:text-surface-0 mb-1">Transacciones por Hora</h3>
+            <p class="text-sm text-muted-color">Actividad transaccional durante el día</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <div class="w-3 h-3 bg-blue-500 rounded-full"></div>
+            <span class="text-sm text-muted-color">Total Transacciones</span>
+          </div>
+        </div>
+        <div class="relative" style="height: 300px;">
+          <p-chart type="line" [data]="lineData" [options]="lineOptions"></p-chart>
+        </div>
       </div>
     </div>
   `
@@ -101,13 +112,29 @@ export class TransaccionesPorHoraWidget implements OnInit, OnChanges {
     this.lineOptions = {
       maintainAspectRatio: false,
       aspectRatio: 0.8,
+      responsive: true,
+      interaction: {
+        intersect: false,
+        mode: 'index'
+      },
       plugins: {
         legend: {
-          labels: {
-            color: '#ffffff',
-            font: {
-              size: 12,
-              weight: '500'
+          display: false
+        },
+        tooltip: {
+          backgroundColor: 'rgba(0, 0, 0, 0.8)',
+          titleColor: '#ffffff',
+          bodyColor: '#ffffff',
+          borderColor: '#374151',
+          borderWidth: 1,
+          cornerRadius: 8,
+          displayColors: false,
+          callbacks: {
+            title: function(context: any) {
+              return `Hora: ${context[0].label}`;
+            },
+            label: function(context: any) {
+              return `Transacciones: ${context.parsed.y}`;
             }
           }
         }
@@ -147,14 +174,19 @@ export class TransaccionesPorHoraWidget implements OnInit, OnChanges {
       },
       elements: {
         point: {
-          radius: 4,
-          hoverRadius: 6,
+          radius: 5,
+          hoverRadius: 8,
           backgroundColor: '#ffffff',
           borderColor: '#3b82f6',
-          borderWidth: 2
+          borderWidth: 3,
+          hoverBackgroundColor: '#ffffff',
+          hoverBorderColor: '#1d4ed8',
+          hoverBorderWidth: 4
         },
         line: {
-          borderWidth: 3
+          borderWidth: 3,
+          borderCapStyle: 'round',
+          borderJoinStyle: 'round'
         }
       }
     };

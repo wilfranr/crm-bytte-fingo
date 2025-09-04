@@ -11,62 +11,106 @@ import { MetricCardComponent } from '../../../shared/components/metric-card/metr
   selector: 'app-metric-cards-widget',
   imports: [CommonModule, MetricCardComponent],
   template: `
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+    <div class="flex flex-wrap gap-6">
       <!-- Tarjeta 1: Total de Transacciones Hoy -->
-      <app-metric-card *ngIf="dashboardData"
-        title="Transacciones Hoy"
-        [value]="(dashboardData.totalTransacciones || 0) | number"
-        icon="pi-shopping-cart"
-        color="blue"
-        [trendValue]="((dashboardData.totalTransacciones || 0) * 0.08 | number:'1.0-0') + '%'"
-        trendDirection="up"
-        trendText="respecto a ayer"
-      ></app-metric-card>
+      <div class="flex-1 min-w-0" style="min-width: 200px; max-width: 240px;" *ngIf="dashboardData">
+        <div class="card mb-0 h-full">
+          <div class="flex justify-between items-start mb-4">
+            <div class="flex-1 min-w-0">
+              <span class="block text-muted-color font-medium mb-2 text-sm">Transacciones Hoy</span>
+              <div class="text-surface-900 dark:text-surface-0 font-bold text-2xl">{{ (dashboardData.totalTransacciones || 0) | number }}</div>
+            </div>
+            <div class="flex items-center justify-center bg-blue-100 dark:bg-blue-400/10 rounded-lg ml-3" style="width: 3rem; height: 3rem; flex-shrink: 0;">
+              <i class="pi pi-shopping-cart text-blue-500 text-xl"></i>
+            </div>
+          </div>
+          <div class="flex items-center gap-1">
+            <i class="pi pi-arrow-up text-green-500 text-xs"></i>
+            <span class="text-green-500 font-semibold text-sm">3%</span>
+            <span class="text-muted-color text-xs">respecto a ayer</span>
+          </div>
+        </div>
+      </div>
 
       <!-- Tarjeta 2: % Éxito Transacciones -->
-      <app-metric-card *ngIf="dashboardData"
-        title="% Éxito Transacciones"
-        [value]="(dashboardData.porcentajeExitoTransacciones || 0 | number:'1.2-2') + '%'"
-        icon="pi-percentage"
-        color="orange"
-        [trendValue]="((dashboardData.porcentajeExitoTransacciones || 0) * 0.05 | number:'1.0-0') + '%'"
-        trendDirection="up"
-        trendText="respecto al mes anterior"
-      ></app-metric-card>
+      <div class="flex-1 min-w-0" style="min-width: 200px; max-width: 240px;" *ngIf="dashboardData">
+        <div class="card mb-0 h-full">
+          <div class="flex justify-between items-start mb-4">
+            <div class="flex-1 min-w-0">
+              <span class="block text-muted-color font-medium mb-2 text-sm">% Éxito Transacciones</span>
+              <div class="text-surface-900 dark:text-surface-0 font-bold text-2xl">{{ (dashboardData.porcentajeExitoTransacciones || 0 | number:'1.2-2') + '%' }}</div>
+            </div>
+            <div class="flex items-center justify-center bg-orange-100 dark:bg-orange-400/10 rounded-lg ml-3" style="width: 3rem; height: 3rem; flex-shrink: 0;">
+              <i class="pi pi-percentage text-orange-500 text-xl"></i>
+            </div>
+          </div>
+          <div class="flex items-center gap-1">
+            <i class="pi pi-arrow-up text-green-500 text-xs"></i>
+            <span class="text-green-500 font-semibold text-sm">5%</span>
+            <span class="text-muted-color text-xs">respecto al mes anterior</span>
+          </div>
+        </div>
+      </div>
 
       <!-- Tarjeta 3: Clientes Únicos Hoy -->
-      <app-metric-card *ngIf="dashboardData"
-        title="Clientes Únicos"
-        [value]="(dashboardData.totalClientes || 0) | number"
-        icon="pi-users"
-        color="green"
-        [trendValue]="((dashboardData.totalClientes || 0) * 0.12 | number:'1.0-0') + '%'"
-        trendDirection="up"
-        trendText="respecto a ayer"
-      ></app-metric-card>
-
+      <div class="flex-1 min-w-0" style="min-width: 200px; max-width: 240px;" *ngIf="dashboardData">
+        <div class="card mb-0 h-full">
+          <div class="flex justify-between items-start mb-4">
+            <div class="flex-1 min-w-0">
+              <span class="block text-muted-color font-medium mb-2 text-sm">Clientes Únicos</span>
+              <div class="text-surface-900 dark:text-surface-0 font-bold text-2xl">{{ (dashboardData.totalClientes || 0) | number }}</div>
+            </div>
+            <div class="flex items-center justify-center bg-cyan-100 dark:bg-cyan-400/10 rounded-lg ml-3" style="width: 3rem; height: 3rem; flex-shrink: 0;">
+              <i class="pi pi-users text-cyan-500 text-xl"></i>
+            </div>
+          </div>
+          <div class="flex items-center gap-1">
+            <i class="pi pi-arrow-up text-green-500 text-xs"></i>
+            <span class="text-green-500 font-semibold text-sm">4%</span>
+            <span class="text-muted-color text-xs">respecto a ayer</span>
+          </div>
+        </div>
+      </div>
 
       <!-- Tarjeta 4: % Éxito Clientes -->
-      <app-metric-card *ngIf="dashboardData"
-        title="% Éxito Clientes"
-        [value]="(dashboardData.porcentajeExitoClientes || 0 | number:'1.2-2') + '%'"
-        icon="pi-user-plus"
-        color="purple"
-        [trendValue]="((dashboardData.porcentajeExitoClientes || 0) * 0.03 | number:'1.0-0') + '%'"
-        trendDirection="up"
-        trendText="respecto al mes anterior"
-      ></app-metric-card>
+      <div class="flex-1 min-w-0" style="min-width: 200px; max-width: 240px;" *ngIf="dashboardData">
+        <div class="card mb-0 h-full">
+          <div class="flex justify-between items-start mb-4">
+            <div class="flex-1 min-w-0">
+              <span class="block text-muted-color font-medium mb-2 text-sm">% Éxito Clientes</span>
+              <div class="text-surface-900 dark:text-surface-0 font-bold text-2xl">{{ (dashboardData.porcentajeExitoClientes || 0 | number:'1.2-2') + '%' }}</div>
+            </div>
+            <div class="flex items-center justify-center bg-purple-100 dark:bg-purple-400/10 rounded-lg ml-3" style="width: 3rem; height: 3rem; flex-shrink: 0;">
+              <i class="pi pi-user-plus text-purple-500 text-xl"></i>
+            </div>
+          </div>
+          <div class="flex items-center gap-1">
+            <i class="pi pi-arrow-up text-green-500 text-xs"></i>
+            <span class="text-green-500 font-semibold text-sm">3%</span>
+            <span class="text-muted-color text-xs">respecto al mes anterior</span>
+          </div>
+        </div>
+      </div>
 
       <!-- Tarjeta 5: Promedio de Intentos -->
-      <app-metric-card *ngIf="dashboardData"
-        title="Promedio de Intentos"
-        [value]="(dashboardData.promedioIntentos || 0) | number:'1.2-2'"
-        icon="pi-sync"
-        color="pink"
-        [trendValue]="((dashboardData.promedioIntentos || 0) * 0.1 | number:'1.0-0') + '%'"
-        trendDirection="down"
-        trendText="respecto al mes anterior"
-      ></app-metric-card>
+      <div class="flex-1 min-w-0" style="min-width: 200px; max-width: 240px;" *ngIf="dashboardData">
+        <div class="card mb-0 h-full">
+          <div class="flex justify-between items-start mb-4">
+            <div class="flex-1 min-w-0">
+              <span class="block text-muted-color font-medium mb-2 text-sm">Promedio de Intentos</span>
+              <div class="text-surface-900 dark:text-surface-0 font-bold text-2xl">{{ (dashboardData.promedioIntentos || 0) | number:'1.2-2' }}</div>
+            </div>
+            <div class="flex items-center justify-center bg-pink-100 dark:bg-pink-400/10 rounded-lg ml-3" style="width: 3rem; height: 3rem; flex-shrink: 0;">
+              <i class="pi pi-sync text-pink-500 text-xl"></i>
+            </div>
+          </div>
+          <div class="flex items-center gap-1">
+            <i class="pi pi-arrow-down text-red-500 text-xs"></i>
+            <span class="text-red-500 font-semibold text-sm">0%</span>
+            <span class="text-muted-color text-xs">respecto al mes anterior</span>
+          </div>
+        </div>
+      </div>
     </div>
   `
 })
