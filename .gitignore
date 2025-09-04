@@ -1,8 +1,22 @@
+# Dependencies
 node_modules/
-# Root dependency lock file
 package-lock.json
 
 # Environment files
 .env
-\"frontend-bytte-operaciones/.angular/cache/\" 
-\"frontend-bytte-operaciones/documentation/\" 
+
+# Angular cache and build files
+frontend-bytte-operaciones/.angular/
+frontend-bytte-operaciones/dist/
+frontend-bytte-operaciones/.nx/
+
+# Documentation
+frontend-bytte-operaciones/documentation/
+
+# IDE files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
