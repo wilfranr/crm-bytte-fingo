@@ -1,0 +1,184 @@
+<!--
+  DISEÑO OPTIMIZADO PARA VISTA DE CLIENTE 360°
+  - Layout: Información básica y financiera fija a la izquierda
+  - Tabs dinámicos a la derecha
+  - Diseño limpio y profesional siguiendo el mockup
+-->
+<div class="grid">
+  <!-- COLUMNA IZQUIERDA: INFORMACIÓN DEL CLIENTE -->
+  <div class="col-12 md:col-4">
+    <div class="card">
+      <!-- 1. CABECERA DEL CLIENTE -->
+      <div class="flex flex-column align-items-center text-center">
+        <div class="p-2 border-round bg-orange-50 dark:bg-orange-900 mb-3">
+          <i class="pi pi-user text-4xl text-orange-600 dark:text-orange-400"></i>
+        </div>
+        <div class="text-3xl font-bold text-900 dark:text-0 mb-2">{{ cliente?.nombreCompleto }}</div>
+        <div class="flex align-items-center gap-2">
+          <p-tag [value]="cliente?.estadoCliente" [severity]="cliente?.estadoCliente === 'Activo' ? 'success' : 'danger'" styleClass="font-bold"></p-tag>
+          <p-tag [value]="'Riesgo ' + cliente?.perfilRiesgo" [severity]="cliente?.perfilRiesgo === 'Bajo' ? 'info' : cliente?.perfilRiesgo === 'Medio' ? 'warning' : 'danger'" styleClass="font-bold"></p-tag>
+        </div>
+      </div>
+
+      <p-divider layout="horizontal" styleClass="my-4"></p-divider>
+
+      <!-- 2. INFORMACIÓN BÁSICA -->
+      <div class="mb-4">
+        <span class="text-xl font-semibold text-900 dark:text-0">Información Básica</span>
+      </div>
+      <ul class="list-none p-0 m-0">
+        <li class="flex align-items-center justify-content-between mb-3">
+          <span class="text-sm text-500">Documento</span>
+          <span class="font-medium text-900 dark:text-0">{{ cliente?.documento }}</span>
+        </li>
+        <li class="flex align-items-center justify-content-between mb-3">
+          <span class="text-sm text-500">Fecha de Nacimiento</span>
+          <span class="font-medium text-900 dark:text-0">{{ cliente?.fechaNacimiento | date: "dd/MM/yyyy" }}</span>
+        </li>
+        <li class="flex align-items-center justify-content-between mb-3">
+          <span class="text-sm text-500">Teléfono</span>
+          <span class="font-medium text-900 dark:text-0">{{ cliente?.telefono }}</span>
+        </li>
+        <li class="flex align-items-center justify-content-between mb-3">
+          <span class="text-sm text-500">Email</span>
+          <span class="font-medium text-900 dark:text-0">{{ cliente?.email }}</span>
+        </li>
+        <li class="flex align-items-center justify-content-between mb-3">
+          <span class="text-sm text-500">Dirección</span>
+          <span class="font-medium text-900 dark:text-0">{{ cliente?.direccion }}</span>
+        </li>
+        <li class="flex align-items-center justify-content-between">
+          <span class="text-sm text-500">Profesión</span>
+          <span class="font-medium text-900 dark:text-0">{{ cliente?.profesion }}</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- COLUMNA DERECHA: TABS DINÁMICOS -->
+  <div class="col-12 md:col-8">
+    <div class="card">
+      <p-tabView>
+        <!-- Tab 1: Información del Producto -->
+        <p-tabPanel>
+          <ng-template pTemplate="header">
+            <i class="pi pi-credit-card mr-2"></i>
+            <span>Información del Producto</span>
+          </ng-template>
+
+          <div class="p-4">
+            <div class="grid">
+              <div class="col-12 md:col-6 lg:col-4 mb-4">
+                <div class="flex flex-column">
+                  <span class="text-sm text-500 mb-1">Tipo de Tarjeta</span>
+                  <span class="text-lg font-semibold text-900 dark:text-0">{{ cliente?.producto?.tipoTarjeta }}</span>
+                </div>
+              </div>
+              <div class="col-12 md:col-6 lg:col-4 mb-4">
+                <div class="flex flex-column">
+                  <span class="text-sm text-500 mb-1">Número</span>
+                  <span class="text-lg font-semibold text-900 dark:text-0">{{ cliente?.producto?.numeroEnmascarado }}</span>
+                </div>
+              </div>
+              <div class="col-12 md:col-6 lg:col-4 mb-4">
+                <div class="flex flex-column">
+                  <span class="text-sm text-500 mb-1">Estado</span>
+                  <div class="mt-2">
+                    <p-tag [value]="cliente?.producto?.estadoTarjeta" [severity]="cliente?.producto?.estadoTarjeta === 'Activa' ? 'success' : 'danger'"></p-tag>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 md:col-6 lg:col-4 mb-4">
+                <div class="flex flex-column">
+                  <span class="text-sm text-500 mb-1">Línea Aprobada</span>
+                  <span class="text-lg font-semibold text-900 dark:text-0">{{ cliente?.producto?.lineaAprobada | currency: "COP" : "symbol-narrow" : "1.0-0" }}</span>
+                </div>
+              </div>
+              <div class="col-12 md:col-6 lg:col-4 mb-4">
+                <div class="flex flex-column">
+                  <span class="text-sm text-500 mb-1">Línea Disponible</span>
+                  <span class="text-lg font-semibold text-900 dark:text-0">{{ cliente?.producto?.lineaDisponible | currency: "COP" : "symbol-narrow" : "1.0-0" }}</span>
+                </div>
+              </div>
+              <div class="col-12 md:col-6 lg:col-4 mb-4">
+                <div class="flex flex-column">
+                  <span class="text-sm text-500 mb-1">Tasa E.A.</span>
+                  <span class="text-lg font-semibold text-900 dark:text-0">{{ cliente?.producto?.tasaInteresEA }}%</span>
+                </div>
+              </div>
+              <div class="col-12 md:col-6 lg:col-4 mb-4">
+                <div class="flex flex-column">
+                  <span class="text-sm text-500 mb-1">Fecha de Corte</span>
+                  <span class="text-lg font-semibold text-900 dark:text-0">{{ cliente?.producto?.fechaCorte | date: "dd/MM/yyyy" }}</span>
+                </div>
+              </div>
+              <div class="col-12 md:col-6 lg:col-4 mb-4">
+                <div class="flex flex-column">
+                  <span class="text-sm text-500 mb-1">Fecha de Vencimiento</span>
+                  <span class="text-lg font-semibold text-900 dark:text-0">{{ cliente?.producto?.fechaVencimiento | date: "dd/MM/yyyy" }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </p-tabPanel>
+
+        <!-- Tab 2: Comportamiento e Interacciones -->
+        <p-tabPanel>
+          <ng-template pTemplate="header">
+            <i class="pi pi-chart-line mr-2"></i>
+            <span>Comportamiento e Interacciones</span>
+          </ng-template>
+
+          <div class="p-4">
+            <div class="text-lg font-semibold mb-4">Últimas Interacciones</div>
+            <div class="flex flex-column gap-3">
+              <div *ngFor="let i of cliente?.interacciones" class="p-3 border-round surface-border border-1">
+                <div class="flex align-items-center justify-content-between">
+                  <div class="flex align-items-center">
+                    <i class="pi pi-circle-fill text-primary mr-3" style="font-size: 0.5rem"></i>
+                    <div>
+                      <div class="font-medium text-900 dark:text-0">{{ i.descripcion }}</div>
+                      <div class="text-sm text-500">{{ i.canal }}</div>
+                    </div>
+                  </div>
+                  <div class="text-sm text-500">{{ i.fecha | date: "dd/MM/yyyy HH:mm" }}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </p-tabPanel>
+
+        <!-- Tab 3: Casos de Soporte -->
+        <p-tabPanel>
+          <ng-template pTemplate="header">
+            <i class="pi pi-shield mr-2"></i>
+            <span>Casos de Soporte</span>
+          </ng-template>
+
+          <div class="p-4">
+            <p-table [value]="cliente?.casosSoporte || []" [rows]="5" [paginator]="true" styleClass="p-datatable-sm">
+              <ng-template pTemplate="header">
+                <tr>
+                  <th>ID</th>
+                  <th>Fecha</th>
+                  <th>Asunto</th>
+                  <th>Estado</th>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-caso>
+                <tr>
+                  <td>{{ caso.id }}</td>
+                  <td>{{ caso.fecha | date: "dd/MM/yyyy" }}</td>
+                  <td>{{ caso.asunto }}</td>
+                  <td>
+                    <p-tag [value]="caso.estado" [severity]="caso.estado === 'Cerrado' ? 'success' : 'warning'"></p-tag>
+                  </td>
+                </tr>
+              </ng-template>
+            </p-table>
+          </div>
+        </p-tabPanel>
+      </p-tabView>
+    </div>
+  </div>
+</div>
