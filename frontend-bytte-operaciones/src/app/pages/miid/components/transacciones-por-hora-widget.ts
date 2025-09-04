@@ -25,7 +25,7 @@ interface TransaccionPorHora {
     ChartModule
   ],
   template: `
-    <div class="col-span-12">
+    <div class="col-span-12 xl:col-span-6">
       <div class="card h-full">
         <div class="flex items-center justify-between mb-6">
           <div>
@@ -111,7 +111,7 @@ export class TransaccionesPorHoraWidget implements OnInit, OnChanges {
 
     this.lineOptions = {
       maintainAspectRatio: false,
-      aspectRatio: 2.5,
+      aspectRatio: 1.8,
       responsive: true,
       interaction: {
         intersect: false,

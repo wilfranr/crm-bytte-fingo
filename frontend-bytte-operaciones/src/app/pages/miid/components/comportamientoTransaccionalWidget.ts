@@ -28,7 +28,7 @@ interface DashboardData {
   standalone: true,
   selector: 'app-comportamiento-transaccional-widget',
   imports: [ChartModule],
-  template: `<div class="col-span-12">
+  template: `<div class="col-span-12 xl:col-span-6">
     <div class="card h-full">
       <div class="flex items-center justify-between mb-6">
         <div>
@@ -151,7 +151,7 @@ export class ComportamientoTransaccionalWidget implements OnChanges, OnDestroy {
       this.chartOptions = {
         responsive: true,
         maintainAspectRatio: false,
-        aspectRatio: 2.5,
+        aspectRatio: 1.8,
         plugins: {
           legend: {
             display: false
