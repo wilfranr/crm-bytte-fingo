@@ -37,7 +37,7 @@ interface TransaccionPorHora {
             <span class="text-sm text-muted-color">Total Transacciones</span>
           </div>
         </div>
-        <div class="relative" style="height: 400px;">
+        <div class="relative" style="height: 350px;">
           <p-chart type="line" [data]="lineData" [options]="lineOptions"></p-chart>
         </div>
       </div>
@@ -111,7 +111,7 @@ export class TransaccionesPorHoraWidget implements OnInit, OnChanges {
 
     this.lineOptions = {
       maintainAspectRatio: false,
-      aspectRatio: 1.8,
+      aspectRatio: 0.9,
       responsive: true,
       interaction: {
         intersect: false,

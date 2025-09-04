@@ -10,9 +10,9 @@ import { CommonModule } from '@angular/common';
   selector: 'app-metric-cards-widget',
   imports: [CommonModule],
   template: `
-    <div class="flex flex-wrap gap-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
       <!-- Tarjeta 1: Total de Transacciones Hoy -->
-      <div class="flex-1 min-w-0" style="min-width: 200px; max-width: 240px;" *ngIf="dashboardData">
+      <div class="col-span-1" *ngIf="dashboardData">
         <div class="card mb-0 h-full">
           <div class="flex justify-between items-start mb-4">
             <div class="flex-1 min-w-0">
@@ -32,7 +32,7 @@ import { CommonModule } from '@angular/common';
       </div>
 
       <!-- Tarjeta 2: % Éxito Transacciones -->
-      <div class="flex-1 min-w-0" style="min-width: 200px; max-width: 240px;" *ngIf="dashboardData">
+      <div class="col-span-1" *ngIf="dashboardData">
         <div class="card mb-0 h-full">
           <div class="flex justify-between items-start mb-4">
             <div class="flex-1 min-w-0">
@@ -52,7 +52,7 @@ import { CommonModule } from '@angular/common';
       </div>
 
       <!-- Tarjeta 3: Clientes Únicos Hoy -->
-      <div class="flex-1 min-w-0" style="min-width: 200px; max-width: 240px;" *ngIf="dashboardData">
+      <div class="col-span-1" *ngIf="dashboardData">
         <div class="card mb-0 h-full">
           <div class="flex justify-between items-start mb-4">
             <div class="flex-1 min-w-0">
@@ -72,7 +72,7 @@ import { CommonModule } from '@angular/common';
       </div>
 
       <!-- Tarjeta 4: % Éxito Clientes -->
-      <div class="flex-1 min-w-0" style="min-width: 200px; max-width: 240px;" *ngIf="dashboardData">
+      <div class="col-span-1" *ngIf="dashboardData">
         <div class="card mb-0 h-full">
           <div class="flex justify-between items-start mb-4">
             <div class="flex-1 min-w-0">
@@ -92,7 +92,7 @@ import { CommonModule } from '@angular/common';
       </div>
 
       <!-- Tarjeta 5: Promedio de Intentos -->
-      <div class="flex-1 min-w-0" style="min-width: 200px; max-width: 240px;" *ngIf="dashboardData">
+      <div class="col-span-1" *ngIf="dashboardData">
         <div class="card mb-0 h-full">
           <div class="flex justify-between items-start mb-4">
             <div class="flex-1 min-w-0">

@@ -4,21 +4,20 @@
   - Tabs dinámicos a la derecha
   - Diseño limpio y profesional siguiendo el mockup
 -->
-<div class="grid">
+<div class="flex flex-column lg:flex-row gap-4">
   <!-- COLUMNA IZQUIERDA: INFORMACIÓN DEL CLIENTE -->
-  <div class="col-12 md:col-4">
+  <div class="flex-1 lg:flex-none" style="min-width: 400px; max-width: 600px;">
     <div class="card">
       <!-- 1. CABECERA DEL CLIENTE -->
-      <div class="flex flex-column align-items-center text-center">
-        <div class="p-2 border-round bg-orange-50 dark:bg-orange-900 mb-3">
-          <i class="pi pi-user text-4xl text-orange-600 dark:text-orange-400"></i>
+     
+        <div class="flex align-items-center justify-content-center gap-4 mb-4">
+          <div class="p-3 border-round bg-orange-50 dark:bg-orange-900">
+            <i class="pi pi-user text-3xl text-orange-600 dark:text-orange-400"></i>
+          </div>
+          <div class="text-2xl font-bold text-900 dark:text-0">{{ cliente?.nombreCompleto }}</div>
+          <p-tag [value]="cliente?.estadoCliente" [severity]="cliente?.estadoCliente === 'Activo' ? 'success' : 'danger'" styleClass="text-sm px-3 py-2"></p-tag>
         </div>
-        <div class="text-3xl font-bold text-900 dark:text-0 mb-2">{{ cliente?.nombreCompleto }}</div>
-        <div class="flex align-items-center gap-2">
-          <p-tag [value]="cliente?.estadoCliente" [severity]="cliente?.estadoCliente === 'Activo' ? 'success' : 'danger'" styleClass="font-bold"></p-tag>
-          <p-tag [value]="'Riesgo ' + cliente?.perfilRiesgo" [severity]="cliente?.perfilRiesgo === 'Bajo' ? 'info' : cliente?.perfilRiesgo === 'Medio' ? 'warning' : 'danger'" styleClass="font-bold"></p-tag>
-        </div>
-      </div>
+      
 
       <p-divider layout="horizontal" styleClass="my-4"></p-divider>
 
@@ -56,7 +55,7 @@
   </div>
 
   <!-- COLUMNA DERECHA: TABS DINÁMICOS -->
-  <div class="col-12 md:col-8">
+  <div class="flex-1">
     <div class="card">
       <p-tabView>
         <!-- Tab 1: Información del Producto -->

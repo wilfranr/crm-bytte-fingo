@@ -36,7 +36,7 @@ interface DashboardData {
           <p class="text-sm text-muted-color">Los valores se muestran en cantidad de transacciones/clientes</p>
         </div>
       </div>
-      <div class="relative" style="height: 400px;">
+      <div class="relative" style="height: 350px;">
         <p-chart
           type="bar"
           [data]="chartData"
@@ -151,7 +151,7 @@ export class ComportamientoTransaccionalWidget implements OnChanges, OnDestroy {
       this.chartOptions = {
         responsive: true,
         maintainAspectRatio: false,
-        aspectRatio: 1.8,
+        aspectRatio: 0.9,
         plugins: {
           legend: {
             display: false

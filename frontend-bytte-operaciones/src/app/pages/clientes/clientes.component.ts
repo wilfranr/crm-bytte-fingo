@@ -89,14 +89,8 @@ export class ClientesComponent implements OnInit {
   }
 
   showTarjetas(cliente: Cliente): void {
-    this.selectedCliente = cliente;
     if (cliente._id) {
-      this.tarjetaService
-        .getTarjetasByCliente(cliente._id)
-        .subscribe((tarjetas) => {
-          this.tarjetasCliente = tarjetas;
-          this.displayTarjetasDialog = true;
-        });
+      this.router.navigate(['/clientes/detail', cliente._id]);
     }
   }
 
